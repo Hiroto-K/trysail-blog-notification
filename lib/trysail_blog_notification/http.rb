@@ -3,7 +3,7 @@ require 'net/https'
 require 'uri'
 
 module TrySailBlogNotification
-  module HTTP
+  class HTTP
 
     def initialize(url)
       @url = url
