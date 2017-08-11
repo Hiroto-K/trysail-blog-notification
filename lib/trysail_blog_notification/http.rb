@@ -34,6 +34,13 @@ module TrySailBlogNotification
     end
 
     def get_https
+      request = Net::HTTP::Get.new(@uri.path)
+      http = Net::HTTP.new(@uri.host, @uri.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      http.start do |h|
+        h.request(request)
+      end
     end
 
   end
