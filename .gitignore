@@ -1,0 +1,14 @@
+/data/*
+/config/*
+!/config/*.example.yml
+
+*.gem
+/doc/
+/rdoc/
+/.bundle/
+/vendor/bundle
+Gemfile.lock
+.ruby-version
+.rvmrc
+
+!.gitkeep
