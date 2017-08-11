@@ -17,12 +17,16 @@ module TrySailBlogNotification
     private
 
     def get_response
-      case @uri.scheme
-        when 'http' then
-          get_http
-        when 'https' then
-          get_https
-        else
+      request = Net::HTTP::Get.new(@uri.path)
+      http = Net::HTTP.new(@uri.host, @uri.port)
+
+      if @uri.scheme == 'https'
+        http.use_ssl = true
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      end
+
+      http.start do |h|
+        h.request(request)
       end
     end
 
