@@ -26,6 +26,11 @@ module TrySailBlogNotification
     end
 
     def get_http
+      request = Net::HTTP::Get.new(@uri.path)
+      http = Net::HTTP.new(@uri.host, @uri.port)
+      http.start do |h|
+        h.request(request)
+      end
     end
 
     def get_https
