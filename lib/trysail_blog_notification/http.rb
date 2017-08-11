@@ -16,6 +16,13 @@ module TrySailBlogNotification
     private
 
     def get_response
+      case @uri.scheme
+        when 'http' then
+          get_http
+        when 'https' then
+          get_https
+        else
+      end
     end
 
     def get_http
