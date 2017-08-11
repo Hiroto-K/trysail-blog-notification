@@ -18,5 +18,11 @@ module TrySailBlogNotification
     def get_response
     end
 
+    def get_http
+    end
+
+    def get_https
+    end
+
   end
 end
