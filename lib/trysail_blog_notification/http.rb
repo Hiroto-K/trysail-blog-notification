@@ -7,10 +7,11 @@ module TrySailBlogNotification
 
     def initialize(url)
       @url = url
+      @uri = URI.parse(URI.encode(@url))
       @response = get_response
     end
 
-    attr_reader :url, :response
+    attr_reader :url, :uri, :response
 
     private
 
