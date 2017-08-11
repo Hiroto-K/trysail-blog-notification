@@ -1,3 +1,7 @@
+require 'net/http'
+require 'net/https'
+require 'uri'
+
 module TrySailBlogNotification
   module HTTP
 
