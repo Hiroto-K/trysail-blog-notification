@@ -24,7 +24,9 @@ module TrySailBlogNotification
       current_statuses = {}
 
       @urls.each do |name, url|
-        last_articles = get_last_articles(Nokogiri::HTML.parse(open(url)))
+        html = open(url)
+        nokogiri = Nokogiri::HTML.parse(html)
+        last_articles = get_last_articles(nokogiri)
         current_statuses[name] =last_articles
       end
 
