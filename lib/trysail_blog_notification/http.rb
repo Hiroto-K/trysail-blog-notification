@@ -9,9 +9,10 @@ module TrySailBlogNotification
       @url = url
       @uri = URI.parse(URI.encode(@url))
       @response = get_response
+      @html = @response.body
     end
 
-    attr_reader :url, :uri, :response
+    attr_reader :url, :uri, :response, :html
 
     private
 
