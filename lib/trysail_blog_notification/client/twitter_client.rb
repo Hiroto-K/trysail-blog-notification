@@ -1,7 +1,8 @@
 module TrySailBlogNotification::Client
   class TwitterClient < BaseClient
 
-    def initialize(config)
+    def initialize(app, config)
+      @app = app
       @config = config
       @client = Twitter::REST::Client.new(@config)
     end
@@ -13,7 +14,7 @@ module TrySailBlogNotification::Client
       sys_date = Time.now.to_s
 
       text = "【ブログ更新 #{last_update}】\n#{name} : #{title}\n#{url}\nsys_date : #{sys_date}"
-      puts text
+      @app.log.info(text)
       @client.update(text)
     end
 

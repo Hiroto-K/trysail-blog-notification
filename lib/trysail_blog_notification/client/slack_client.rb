@@ -1,7 +1,8 @@
 module TrySailBlogNotification::Client
   class SlackClient < BaseClient
 
-    def initialize(config)
+    def initialize(app, config)
+      @app = app
       @config = config
 
       Slack.configure do |c|
@@ -28,6 +29,7 @@ module TrySailBlogNotification::Client
 システム時刻   : #{sys_date}
 EOS
 
+      @app.log.info(text)
       @client.chat_postMessage(channel: @config[:channel], text: text, as_user: true)
     end
 
