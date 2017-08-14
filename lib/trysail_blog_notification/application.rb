@@ -20,7 +20,7 @@ module TrySailBlogNotification
 
       @dump_file = @config[:data][:dump][:file]
       log_file = @config[:data][:log][:file]
-      log_level = @config[:data][:log][:file]
+      log_level = @config[:data][:log][:level]
       @log = TrySailBlogNotification::Log.new(log_file, log_level)
       @clients = []
 
