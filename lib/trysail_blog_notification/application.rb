@@ -171,8 +171,12 @@ module TrySailBlogNotification
       @log.logger.info("Run notification of \"#{name}\".")
 
       @clients.each do |client|
-        @log.logger.info("Call \"update\" method of \"#{client.class}\".")
-        client.update(name, status)
+        begin
+          @log.logger.info("Call \"update\" method of \"#{client.class}\".")
+          client.update(name, status)
+        rescue Exception => e
+          @log.logger.error(e)
+        end
       end
     end
 
