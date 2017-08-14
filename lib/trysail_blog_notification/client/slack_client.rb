@@ -22,7 +22,7 @@ module TrySailBlogNotification::Client
 #{name}のブログが更新されました。
 
 #{title}
-      #{url}
+#{url}
 
 ブログ更新時刻 : #{last_update}
 システム時刻   : #{sys_date}
