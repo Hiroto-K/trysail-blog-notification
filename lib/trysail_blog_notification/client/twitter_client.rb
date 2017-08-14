@@ -1,12 +1,21 @@
 module TrySailBlogNotification::Client
   class TwitterClient < BaseClient
 
+    # Initialize application.
+    #
+    # @param [TrySailBlogNotification::Application] app
+    # @param [Hash] config
     def initialize(app, config)
       @app = app
       @config = config
       @client = Twitter::REST::Client.new(@config)
     end
 
+
+    # Update.
+    #
+    # @param [String] name
+    # @param [Hash] status
     def update(name, status)
       title = status['title']
       url = status['url']
