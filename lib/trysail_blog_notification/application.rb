@@ -4,11 +4,6 @@ require 'open-uri'
 module TrySailBlogNotification
   class Application
 
-    # Log file path.
-    #
-    # @return String
-    attr_reader :log_file
-
     # Dump file path.
     #
     # @return String
@@ -19,10 +14,14 @@ module TrySailBlogNotification
     # @return TrySailBlogNotification::Log
     attr_reader :log
 
-    def initialize(dump_file, log_file)
-      @dump_file = dump_file
-      @log_file = log_file
-      @log = TrySailBlogNotification::Log.new(log_file, :debug)
+    def initialize(base_dir, config)
+      @base_dir = base_dir
+      @config = config
+
+      @dump_file = @config[:data][:dump][:file]
+      log_file = @config[:data][:log][:file]
+      log_level = @config[:data][:log][:file]
+      @log = TrySailBlogNotification::Log.new(log_file, log_level)
       @clients = []
 
       @urls = {
