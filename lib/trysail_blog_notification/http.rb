@@ -5,6 +5,9 @@ require 'uri'
 module TrySailBlogNotification
   class HTTP
 
+    # Initialize HTTP class.
+    #
+    # @param [String] url Target url.
     def initialize(url)
       @url = url
       @uri = URI.parse(URI.encode(@url))
@@ -15,10 +18,39 @@ module TrySailBlogNotification
       @html = @response.body
     end
 
-    attr_reader :url, :uri, :request, :http, :response, :html
+    # Target url.
+    #
+    # @return [String]
+    attr_reader :url
+
+    # Target url.
+    #
+    # @return [URI::HTTP|URI::HTTPS]
+    attr_reader :uri
+
+    # Request.
+    #
+    # @return [Net::HTTP::Get]
+    attr_reader :request
+
+    # Net::HTTP instance.
+    #
+    # @return [Net::HTTP]
+    attr_reader :http
+
+    # Response instance.
+    #
+    # @return [Net::HTTPResponse]
+    attr_reader :response
+
+    # Html.
+    #
+    # @return [String]
+    attr_reader :html
 
     private
 
+    # Get response.
     def get_response
       if @uri.scheme == 'https'
         @http.use_ssl = true
