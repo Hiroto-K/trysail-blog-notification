@@ -60,24 +60,7 @@ module TrySailBlogNotification
       add_clients
     end
 
-    # Set config. Expand file path.
-    #
-    # @param [Hash] config
-    # @return Hash
-    def set_config(config)
-      config[:data][:log][:file] = File.join(@base_dir, config[:data][:log][:file])
-      config[:data][:dump][:file] = File.join(@base_dir, config[:data][:dump][:file])
-
-      config
-    end
-
-    # Add clients.
-    def add_clients
-      add_client(TrySailBlogNotification::Client::TwitterClient.new(self, @config[:client][:twitter]))
-      add_client(TrySailBlogNotification::Client::SlackClient.new(self, @config[:client][:slack]))
-    end
-
-    # Add clients.
+    # Add client.
     #
     # @param [TrySailBlogNotification::Client::BaseClient] client
     def add_client(client)
@@ -112,6 +95,25 @@ module TrySailBlogNotification
       check_diff(current_statuses)
 
       write_to_file(current_statuses)
+    end
+
+    private
+
+    # Set config. Expand file path.
+    #
+    # @param [Hash] config
+    # @return Hash
+    def set_config(config)
+      config[:data][:log][:file] = File.join(@base_dir, config[:data][:log][:file])
+      config[:data][:dump][:file] = File.join(@base_dir, config[:data][:dump][:file])
+
+      config
+    end
+
+    # Add clients.
+    def add_clients
+      add_client(TrySailBlogNotification::Client::TwitterClient.new(self, @config[:client][:twitter]))
+      add_client(TrySailBlogNotification::Client::SlackClient.new(self, @config[:client][:slack]))
     end
 
     # Get last articles.
