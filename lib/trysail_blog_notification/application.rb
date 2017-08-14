@@ -55,9 +55,9 @@ module TrySailBlogNotification
     end
 
     def check_diff(current_statuses)
-      return unless File.exists?(@file)
+      return unless File.exists?(@dump_file)
 
-      json = File.open(@file, 'r') { |f| f.read }
+      json = File.open(@dump_file, 'r') { |f| f.read }
       old_statuses = JSON.parse(json)
 
       old_statuses.each do |name, old_status|
@@ -77,7 +77,7 @@ module TrySailBlogNotification
     def write_to_file(statuses)
       info = JSON.pretty_generate(statuses)
 
-      File.open(@file, 'w') do |f|
+      File.open(@dump_file, 'w') do |f|
         f.write(info)
       end
     end
