@@ -16,8 +16,9 @@ module TrySailBlogNotification
 
     def initialize(base_dir, config)
       @base_dir = base_dir
-      @config = config
+      @config = set_config(config)
 
+      pp @config
       @dump_file = @config[:data][:dump][:file]
       log_file = @config[:data][:log][:file]
       log_level = @config[:data][:log][:level]
@@ -31,6 +32,13 @@ module TrySailBlogNotification
       }
 
       add_clients
+    end
+
+    def set_config(config)
+      config[:data][:log][:file] = File.join(@base_dir, config[:data][:log][:file])
+      config[:data][:dump][:file] = File.join(@base_dir, config[:data][:dump][:file])
+
+      config
     end
 
     def add_clients
