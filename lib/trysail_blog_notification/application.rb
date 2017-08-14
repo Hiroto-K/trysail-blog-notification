@@ -8,8 +8,7 @@ module TrySailBlogNotification
 
     attr_reader :log_file, :dump_file
 
-    def initialize(file)
-      @file = File.expand_path(file)
+    def initialize
       @clients = []
 
       @urls = {
