@@ -44,8 +44,8 @@ module TrySailBlogNotification
     end
 
     def add_clients
-      add_client(TrySailBlogNotification::Client::TwitterClient(@config[:client][:twitter]))
-      add_client(TrySailBlogNotification::Client::SlackClient(@config[:client][:slack]))
+      add_client(TrySailBlogNotification::Client::TwitterClient.new(@config[:client][:twitter]))
+      add_client(TrySailBlogNotification::Client::SlackClient.new(@config[:client][:slack]))
     end
 
     def add_client(client)
