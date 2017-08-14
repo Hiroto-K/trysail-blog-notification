@@ -14,13 +14,9 @@ module TrySailBlogNotification
     # @return String
     attr_reader :dump_file
 
-    # Set log file path.
-    attr_writer :log_file
-
-    # Set dump file path.
-    attr_writer :dump_file
-
-    def initialize
+    def initialize(dump_file, log_file)
+      @dump_file = dump_file
+      @log_file = log_file
       @clients = []
 
       @urls = {
