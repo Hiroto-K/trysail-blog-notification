@@ -4,9 +4,21 @@ require 'open-uri'
 module TrySailBlogNotification
   class Application
 
-    attr_writer :log_file, :dump_file
+    # Log file path.
+    #
+    # @return String
+    attr_reader :log_file
 
-    attr_reader :log_file, :dump_file
+    # Dump file path.
+    #
+    # @return String
+    attr_reader :dump_file
+
+    # Set log file path.
+    attr_writer :log_file
+
+    # Set dump file path.
+    attr_writer :dump_file
 
     def initialize
       @clients = []
