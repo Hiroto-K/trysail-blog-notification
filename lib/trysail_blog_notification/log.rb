@@ -35,7 +35,7 @@ module TrySailBlogNotification
       @multiple_loggers = ActiveSupport::Logger.broadcast(@stdout_logger)
       @logger.extend(@multiple_loggers)
       @logger.level = get_level_value(level)
-      @logger.progname = App.name
+      @logger.progname = 'trysail-blog-notification'
     end
 
     # Send missing method.
