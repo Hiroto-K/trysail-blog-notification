@@ -1,13 +1,22 @@
-# Twitterの設定
-# CK,CS,AT,ATS
-:twitter :
-  :consumer_key        : ""
-  :consumer_secret     : ""
-  :access_token        : ""
-  :access_token_secret : ""
+:client :
+  # Twitterの設定
+  # CK,CS,AT,ATS
+  :twitter :
+    :consumer_key        : ""
+    :consumer_secret     : ""
+    :access_token        : ""
+    :access_token_secret : ""
 
-# Slackの設定
-# トークンとチャンネル名のみ
-:slack :
-  :token   : ""
-  :channel : ""
+  # Slackの設定
+  # トークンとチャンネル名のみ
+  :slack :
+    :token   : ""
+    :channel : ""
+
+:data :
+  :log :
+    :file  : "/data/log.log"
+    :level : :debug
+
+  :dump :
+    :file : "/data/dump.json"
