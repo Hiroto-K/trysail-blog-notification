@@ -22,6 +22,9 @@ module TrySailBlogNotification
       log_file = @config[:data][:log][:file]
       log_level = @config[:data][:log][:level]
       @log = TrySailBlogNotification::Log.new(log_file, log_level)
+
+      @log.logger.info('Started application.')
+
       @clients = []
 
       @urls = {
