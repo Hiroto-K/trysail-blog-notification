@@ -54,6 +54,8 @@ module TrySailBlogNotification
     end
 
     def run
+      @log.logger.info("Call \"#{__method__}\" method.")
+
       current_statuses = {}
 
       @urls.each do |name, url|
