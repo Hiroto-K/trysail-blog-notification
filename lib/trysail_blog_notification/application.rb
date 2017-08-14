@@ -4,6 +4,16 @@ require 'open-uri'
 module TrySailBlogNotification
   class Application
 
+    # Base dir
+    #
+    # @return String
+    attr_reader :base_dir
+
+    # Config
+    #
+    # @return Hash
+    attr_reader :config
+
     # Dump file path.
     #
     # @return String
@@ -14,6 +24,20 @@ module TrySailBlogNotification
     # @return TrySailBlogNotification::Log
     attr_reader :log
 
+    # Client instances.
+    #
+    # @return Array
+    attr_reader :clients
+
+    # Target urls
+    #
+    # @return Hash
+    attr_reader :urls
+
+    # Initialize application.
+    #
+    # @param [String] base_dir
+    # @param [Hash] config
     def initialize(base_dir, config)
       @base_dir = base_dir
       @config = set_config(config)
@@ -36,6 +60,10 @@ module TrySailBlogNotification
       add_clients
     end
 
+    # Set config. Expand file path.
+    #
+    # @param [Hash] config
+    # @return Hash
     def set_config(config)
       config[:data][:log][:file] = File.join(@base_dir, config[:data][:log][:file])
       config[:data][:dump][:file] = File.join(@base_dir, config[:data][:dump][:file])
@@ -43,16 +71,21 @@ module TrySailBlogNotification
       config
     end
 
+    # Add clients.
     def add_clients
       add_client(TrySailBlogNotification::Client::TwitterClient.new(@config[:client][:twitter]))
       add_client(TrySailBlogNotification::Client::SlackClient.new(@config[:client][:slack]))
     end
 
+    # Add clients.
+    #
+    # @param [TrySailBlogNotification::Client::BaseClient] client
     def add_client(client)
       raise "Client is not instance of 'Client::BaseClient'." unless client.is_a?(Client::BaseClient)
       @clients.push(client)
     end
 
+    # Run application.
     def run
       @log.logger.info("Call \"#{__method__}\" method.")
 
@@ -70,6 +103,10 @@ module TrySailBlogNotification
       write_to_file(current_statuses)
     end
 
+    # Get last articles.
+    #
+    # @param [Nokogiri::HTML::Document] nokogiri
+    # @return [Hash]
     def get_last_articles(nokogiri)
       articles = nokogiri.xpath('//div[@class="skinMainArea2"]/article[@class="js-entryWrapper"]')
       first_article = articles.first
@@ -86,6 +123,9 @@ module TrySailBlogNotification
       }
     end
 
+    # Check updates.
+    #
+    # @param [Hash] current_statuses
     def check_diff(current_statuses)
       return unless File.exists?(@dump_file)
 
@@ -100,12 +140,19 @@ module TrySailBlogNotification
       end
     end
 
+    # Check updates.
+    #
+    # @param [String] name
+    # @param [Hash] status
     def run_notification(name, status)
       @clients.each do |client|
         client.update(name, status)
       end
     end
 
+    # Write to dump file.
+    #
+    # @param [Hash] statuses
     def write_to_file(statuses)
       info = JSON.pretty_generate(statuses)
 
