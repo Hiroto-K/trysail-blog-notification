@@ -92,14 +92,25 @@ module TrySailBlogNotification
       current_statuses = {}
 
       @urls.each do |name, url|
+        @log.logger.info("Run \"#{name}\" : \"#{url}.\"")
+
+        @log.logger.info('Get response.')
+
         http = TrySailBlogNotification::HTTP.new(url)
         html = http.html
         nokogiri = Nokogiri::HTML.parse(html)
         last_articles = get_last_articles(nokogiri)
+
+        @log.logger.info(last_articles)
+
         current_statuses[name] =last_articles
       end
 
+      @log.logger.info('current_statuses')
+      @log.logger.info(current_statuses)
+
       check_diff(current_statuses)
+
       write_to_file(current_statuses)
     end
 
@@ -108,6 +119,8 @@ module TrySailBlogNotification
     # @param [Nokogiri::HTML::Document] nokogiri
     # @return [Hash]
     def get_last_articles(nokogiri)
+      @log.logger.info('Get last articles.')
+
       articles = nokogiri.xpath('//div[@class="skinMainArea2"]/article[@class="js-entryWrapper"]')
       first_article = articles.first
 
@@ -127,14 +140,24 @@ module TrySailBlogNotification
     #
     # @param [Hash] current_statuses
     def check_diff(current_statuses)
-      return unless File.exists?(@dump_file)
+      @log.logger.info('Check diff.')
 
+      unless File.exists?(@dump_file)
+        @log.logger.info("File \"#{@dump_file}\" is not exits.")
+        @log.logger.info('Skip check.')
+        return
+      end
+
+      @log.logger.info("Open dump file : \"#{@dump_file}\".")
       json = File.open(@dump_file, 'r') { |f| f.read }
       old_statuses = JSON.parse(json)
 
       old_statuses.each do |name, old_status|
+        @log.logger.info("Check diff of \"#{name}\".")
+
         new_status = current_statuses[name]
         unless new_status['last_update'] == old_status['last_update']
+          @log.logger.info("Call \"run_notification\".")
           run_notification(name, new_status)
         end
       end
@@ -145,7 +168,10 @@ module TrySailBlogNotification
     # @param [String] name
     # @param [Hash] status
     def run_notification(name, status)
+      @log.logger.info("Run notification of \"#{name}\".")
+
       @clients.each do |client|
+        @log.logger.info("Call \"update\" method of \"#{client.class}\".")
         client.update(name, status)
       end
     end
@@ -154,8 +180,12 @@ module TrySailBlogNotification
     #
     # @param [Hash] statuses
     def write_to_file(statuses)
+      @log.logger.info('Write to dump file.')
+
+      @log.logger.info('Generate json string.')
       info = JSON.pretty_generate(statuses)
 
+      @log.logger.info('Run write.')
       File.open(@dump_file, 'w') do |f|
         f.write(info)
       end
