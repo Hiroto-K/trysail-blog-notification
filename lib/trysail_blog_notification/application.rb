@@ -18,7 +18,6 @@ module TrySailBlogNotification
       @base_dir = base_dir
       @config = set_config(config)
 
-      pp @config
       @dump_file = @config[:data][:dump][:file]
       log_file = @config[:data][:log][:file]
       log_level = @config[:data][:log][:level]
