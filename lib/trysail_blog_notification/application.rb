@@ -14,9 +14,15 @@ module TrySailBlogNotification
     # @return String
     attr_reader :dump_file
 
+    # Logger
+    #
+    # @return TrySailBlogNotification::Log
+    attr_reader :log
+
     def initialize(dump_file, log_file)
       @dump_file = dump_file
       @log_file = log_file
+      @log = TrySailBlogNotification::Log.new(log_file, :debug)
       @clients = []
 
       @urls = {
