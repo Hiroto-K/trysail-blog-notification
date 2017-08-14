@@ -29,6 +29,13 @@ module TrySailBlogNotification
         '麻倉もも' => 'http://ameblo.jp/asakuramomoblog',
         '夏川椎菜' => 'http://ameblo.jp/natsukawashiinablog',
       }
+
+      add_clients
+    end
+
+    def add_clients
+      add_client(TrySailBlogNotification::Client::TwitterClient(@config[:client][:twitter]))
+      add_client(TrySailBlogNotification::Client::SlackClient(@config[:client][:slack]))
     end
 
     def add_client(client)
