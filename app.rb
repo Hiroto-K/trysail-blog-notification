@@ -14,8 +14,8 @@ twitter_client = TrySailBlogNotification::Client::TwitterClient.new(config[:twit
 slack_client = TrySailBlogNotification::Client::SlackClient.new(config[:slack])
 
 app = TrySailBlogNotification::Application.new(
-  File.join(File.dirname(__FILE__), '/data/dump.json'),
-  File.join(File.dirname(__FILE__), '/data/log.log')
+  File.dirname(__FILE__),
+  config
 )
 app.add_client(twitter_client)
 app.add_client(slack_client)
