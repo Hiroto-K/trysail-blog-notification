@@ -94,7 +94,7 @@ module TrySailBlogNotification
 
       check_diff(current_statuses)
 
-      write_to_file(current_statuses)
+      dump_to_file(current_statuses)
     end
 
     private
@@ -185,7 +185,7 @@ module TrySailBlogNotification
     # Write to dump file.
     #
     # @param [Hash] statuses
-    def write_to_file(statuses)
+    def dump_to_file(statuses)
       @log.logger.info('Write to dump file.')
       dumper = TrySailBlogNotification::Dumper.new(@dump_file)
 
