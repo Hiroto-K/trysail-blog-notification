@@ -187,14 +187,10 @@ module TrySailBlogNotification
     # @param [Hash] statuses
     def write_to_file(statuses)
       @log.logger.info('Write to dump file.')
-
-      @log.logger.info('Generate json string.')
-      info = JSON.pretty_generate(statuses)
+      dumper = TrySailBlogNotification::Dumper.new(@dump_file)
 
       @log.logger.info('Run write.')
-      File.open(@dump_file, 'w') do |f|
-        f.write(info)
-      end
+      dumper.dump(statuses)
     end
 
   end
