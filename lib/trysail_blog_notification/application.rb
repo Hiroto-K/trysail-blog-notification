@@ -64,7 +64,7 @@ module TrySailBlogNotification
     #
     # @param [TrySailBlogNotification::Client::BaseClient] client
     def add_client(client)
-      raise "Client is not instance of 'Client::BaseClient'." unless client.is_a?(Client::BaseClient)
+      raise "Client is not instance of 'TrySailBlogNotification::Client::BaseClient'." unless client.is_a?(TrySailBlogNotification::Client::BaseClient)
       @clients.push(client)
     end
 
