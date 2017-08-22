@@ -52,9 +52,9 @@ module TrySailBlogNotification
       @clients = []
 
       @urls = {
-        '雨宮天'   => 'http://ameblo.jp/amamiyasorablog',
-        '麻倉もも' => 'http://ameblo.jp/asakuramomoblog',
-        '夏川椎菜' => 'http://ameblo.jp/natsukawashiinablog',
+        '雨宮天'   => 'https://ameblo.jp/amamiyasorablog',
+        '麻倉もも' => 'https://ameblo.jp/asakuramomoblog',
+        '夏川椎菜' => 'https://ameblo.jp/natsukawashiinablog',
       }
 
       add_clients
