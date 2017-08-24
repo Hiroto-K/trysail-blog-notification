@@ -57,7 +57,11 @@ module TrySailBlogNotification
         '夏川椎菜' => 'https://ameblo.jp/natsukawashiinablog',
       }
 
-      add_clients
+      begin
+        add_clients
+      rescue RuntimeError => e
+        @log.logger.error(e)
+      end
     end
 
     # Add client.
@@ -95,6 +99,8 @@ module TrySailBlogNotification
       check_diff(current_statuses)
 
       dump_to_file(current_statuses)
+    rescue RuntimeError => e
+      @log.logger.error(e)
     end
 
     private
