@@ -84,6 +84,10 @@ module TrySailBlogNotification
         @log.logger.info('Get response.')
 
         http = TrySailBlogNotification::HTTP.new(url)
+
+        @log.logger.info(http.response)
+        raise "Response http code : '#{http.response.code}'." unless http.response.code == '200'
+
         html = http.html
         nokogiri = Nokogiri::HTML.parse(html)
         last_articles = get_last_articles(nokogiri)
