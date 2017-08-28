@@ -5,32 +5,32 @@ module TrySailBlogNotification
 
     # Base dir
     #
-    # @return String
+    # @return [String]
     attr_reader :base_dir
 
     # Config
     #
-    # @return Hash
+    # @return [Hash]
     attr_reader :config
 
     # Dump file path.
     #
-    # @return String
+    # @return [String]
     attr_reader :dump_file
 
     # Logger
     #
-    # @return TrySailBlogNotification::Log
+    # @return [TrySailBlogNotification::Log]
     attr_reader :log
 
     # Client instances.
     #
-    # @return Array
+    # @return [Array]
     attr_reader :clients
 
     # Target urls
     #
-    # @return Hash
+    # @return [Hash]
     attr_reader :urls
 
     # Initialize application.

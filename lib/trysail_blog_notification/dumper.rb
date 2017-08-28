@@ -5,17 +5,17 @@ module TrySailBlogNotification
 
     # Dump file path.
     #
-    # @return String
+    # @return [String]
     attr_reader :file
 
     # Statuses.
     #
-    # @return Hash
+    # @return [Hash]
     attr_reader :statuses
 
     # JSON statuses.
     #
-    # @return String
+    # @return [String]
     attr_reader :json_statuses
 
     # Initialize dumper.
