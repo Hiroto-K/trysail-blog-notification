@@ -1,5 +1,4 @@
 require 'fileutils'
-require 'open-uri'
 
 module TrySailBlogNotification
   class Application
