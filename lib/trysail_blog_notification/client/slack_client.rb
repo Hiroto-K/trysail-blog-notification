@@ -21,19 +21,16 @@ module TrySailBlogNotification::Client
     # @param [String] name
     # @param [Hash] status
     def update(name, status)
-      title = status['title']
-      url = status['url']
-      last_update = status['last_update']
-      sys_date = Time.now.to_s
+      super(name, status)
 
       text = <<"EOS"
 #{name}のブログが更新されました。
 
-#{title}
-#{url}
+#{@title}
+#{@url}
 
-ブログ更新時刻 : #{last_update}
-システム時刻   : #{sys_date}
+ブログ更新時刻 : #{@last_update}
+システム時刻   : #{@sys_date}
 EOS
 
       @app.log.info(text)
