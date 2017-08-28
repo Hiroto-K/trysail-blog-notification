@@ -20,5 +20,18 @@ module TrySailBlogNotification::Client
       @config = config
     end
 
+    # Update.
+    #
+    # @param [String] name
+    # @param [Hash] status
+    def update(name, status)
+      @sys_date   = Time.now
+      @sys_date_s = @sys_date.to_s
+
+      @title = status['title']
+      @url = status['url']
+      @last_update = status['last_update']
+    end
+
   end
 end
