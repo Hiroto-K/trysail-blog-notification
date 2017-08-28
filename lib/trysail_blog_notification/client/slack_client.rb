@@ -6,8 +6,7 @@ module TrySailBlogNotification::Client
     # @param [TrySailBlogNotification::Application] app
     # @param [Hash] config
     def initialize(app, config)
-      @app = app
-      @config = config
+      super(app, config)
 
       Slack.configure do |c|
         c.token = @config[:token]

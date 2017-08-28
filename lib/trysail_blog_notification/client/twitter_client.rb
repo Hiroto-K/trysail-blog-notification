@@ -6,8 +6,8 @@ module TrySailBlogNotification::Client
     # @param [TrySailBlogNotification::Application] app
     # @param [Hash] config
     def initialize(app, config)
-      @app = app
-      @config = config
+      super(app, config)
+
       @client = Twitter::REST::Client.new(@config)
     end
 
