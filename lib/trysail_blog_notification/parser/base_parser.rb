@@ -20,8 +20,11 @@ module TrySailBlogNotification::Parser
       @config = config
     end
 
-    # Start parse
-    def parse
+    # Start parse.
+    #
+    # @param [Nokogiri::HTML::Document] nokogiri
+    # @return [TrySailBlogNotification::LastArticle]
+    def parse(nokogiri)
     end
 
   end
