@@ -63,6 +63,10 @@ module TrySailBlogNotification
           url: 'https://ameblo.jp/natsukawashiinablog/',
           parser: TrySailBlogNotification::Parser::User::ShiinaNatsukawa
         },
+        '伊藤美来' => {
+          url: 'https://ameblo.jp/itou-miku/',
+          parser: TrySailBlogNotification::Parser::User::MikuItou
+        },
       }
 
       begin
