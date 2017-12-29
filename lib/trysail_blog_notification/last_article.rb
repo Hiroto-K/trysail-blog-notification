@@ -34,6 +34,36 @@ module TrySailBlogNotification
       @last_update = last_update
     end
 
+    # Convert to Hash.
+    #
+    # @return [Hash]
+    def to_h
+      {
+        title: @title,
+        url: @url,
+        last_update: @last_update,
+      }
+    end
+
+    alias_method :to_hash, :to_h
+
+    # Get hash object
+    #
+    # @param [Object] key
+    # @return [Object]
+    def [](key)
+      case key
+        when 'title', :title
+          @title
+        when 'url', :url
+          @url
+        when 'last_update', :last_update
+          @last_update
+        else
+          nil
+      end
+    end
+
     private
 
     # Set url
