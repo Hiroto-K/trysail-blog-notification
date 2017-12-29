@@ -51,9 +51,18 @@ module TrySailBlogNotification
       @clients = []
 
       @urls = {
-        '雨宮天'   => 'https://ameblo.jp/amamiyasorablog/',
-        '麻倉もも' => 'https://ameblo.jp/asakuramomoblog/',
-        '夏川椎菜' => 'https://ameblo.jp/natsukawashiinablog/',
+        '雨宮天' => {
+          url: 'https://ameblo.jp/amamiyasorablog/',
+          parser: TrySailBlogNotification::Parser::User::SoraAmamiya,
+        },
+        '麻倉もも' => {
+          url: 'https://ameblo.jp/asakuramomoblog/',
+          parser: TrySailBlogNotification::Parser::User::MomoAsakura,
+        },
+        '夏川椎菜' => {
+          url: 'https://ameblo.jp/natsukawashiinablog/',
+          parser: TrySailBlogNotification::Parser::User::ShiinaNatsukawa
+        },
       }
 
       begin
@@ -77,7 +86,10 @@ module TrySailBlogNotification
 
       current_statuses = {}
 
-      @urls.each do |name, url|
+      @urls.each do |name, info|
+        url = info[:url]
+        parser_class = info[:parser]
+
         @log.logger.info("Run \"#{name}\" : \"#{url}.\"")
 
         @log.logger.info('Get response.')
@@ -89,11 +101,11 @@ module TrySailBlogNotification
 
         html = http.html
         nokogiri = Nokogiri::HTML.parse(html)
-        last_articles = get_last_articles(nokogiri)
+        last_article = get_last_article(nokogiri, parser_class)
 
-        @log.logger.info(last_articles)
+        @log.logger.info(last_article)
 
-        current_statuses[name] =last_articles
+        current_statuses[name] =last_article
       end
 
       @log.logger.info('current_statuses')
@@ -125,26 +137,16 @@ module TrySailBlogNotification
       add_client(TrySailBlogNotification::Client::SlackClient.new(self, @config[:client][:slack]))
     end
 
-    # Get last articles.
+    # Get last article.
     #
     # @param [Nokogiri::HTML::Document] nokogiri
-    # @return [Hash]
-    def get_last_articles(nokogiri)
+    # @param [TrySailBlogNotification::Parser::BaseParser] klass
+    # @return [TrySailBlogNotification::LastArticle]
+    def get_last_article(nokogiri, klass)
       @log.logger.info('Get last articles.')
 
-      articles = nokogiri.xpath('//div[@class="skinMainArea2"]/article[@class="js-entryWrapper"]')
-      first_article = articles.first
-
-      title_obj = first_article.xpath('//h1/a[@class="skinArticleTitle"]').first
-      title = title_obj.children.first.content.strip
-      url = title_obj.attributes['href'].value
-      last_update = first_article.xpath('//span[@class="articleTime"]//time').first.content
-
-      {
-        'title'       => title,
-        'url'         => url,
-        'last_update' => last_update,
-      }
+      parser = klass.new(self, @config)
+      parser.parse(nokogiri)
     end
 
     # Check updates.
@@ -195,11 +197,16 @@ module TrySailBlogNotification
     #
     # @param [Hash] statuses
     def dump_to_file(statuses)
+      hashed_statuses = {}
+      statuses.each do |name, last_article|
+        hashed_statuses[name] = last_article.to_h
+      end
+
       @log.logger.info('Write to dump file.')
       dumper = TrySailBlogNotification::Dumper.new(@dump_file)
 
       @log.logger.info('Run write.')
-      dumper.dump(statuses)
+      dumper.dump(hashed_statuses)
     end
 
   end
