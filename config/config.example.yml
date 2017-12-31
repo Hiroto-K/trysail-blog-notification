@@ -15,7 +15,7 @@
 
 :data :
   :log :
-    :file  : "/data/log.log"
+    :file  : "/log/log.log"
     :level : :debug
 
   :dump :
