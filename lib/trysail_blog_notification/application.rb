@@ -50,20 +50,7 @@ module TrySailBlogNotification
 
       @clients = []
 
-      @urls = {
-        '雨宮天' => {
-          url: 'https://ameblo.jp/amamiyasorablog/',
-          parser: TrySailBlogNotification::Parser::User::SoraAmamiya,
-        },
-        '麻倉もも' => {
-          url: 'https://ameblo.jp/asakuramomoblog/',
-          parser: TrySailBlogNotification::Parser::User::MomoAsakura,
-        },
-        '夏川椎菜' => {
-          url: 'https://ameblo.jp/natsukawashiinablog/',
-          parser: TrySailBlogNotification::Parser::User::ShiinaNatsukawa
-        },
-      }
+      @urls = @config['urls']
 
       begin
         add_clients
