@@ -117,7 +117,7 @@ module TrySailBlogNotification
 
       config['urls'].keys.each do |name|
         parser = config['urls'][name]['parser']
-        config['urls'][name]['parser'] = parser.classify.constantize
+        config['urls'][name]['parser'] = parser.constantize
       end
 
       config
