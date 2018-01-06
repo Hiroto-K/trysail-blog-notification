@@ -74,8 +74,8 @@ module TrySailBlogNotification
       current_statuses = {}
 
       @urls.each do |name, info|
-        url = info[:url]
-        parser_class = info[:parser]
+        url = info['url']
+        parser_class = info['parser']
 
         @log.logger.info("Run \"#{name}\" : \"#{url}.\"")
 
