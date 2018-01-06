@@ -1,7 +1,7 @@
-/data/*
 /config/*
 !/config/*.example.yml
-
+/data/*
+/log/*
 *.gem
 /doc/
 /rdoc/
@@ -10,5 +10,4 @@
 Gemfile.lock
 .ruby-version
 .rvmrc
-
 !.gitkeep

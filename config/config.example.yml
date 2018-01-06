@@ -1,22 +1,35 @@
-:client :
+client :
   # Twitterの設定
   # CK,CS,AT,ATS
-  :twitter :
-    :consumer_key        : ""
-    :consumer_secret     : ""
-    :access_token        : ""
-    :access_token_secret : ""
+  twitter :
+    consumer_key        : ""
+    consumer_secret     : ""
+    access_token        : ""
+    access_token_secret : ""
 
   # Slackの設定
   # トークンとチャンネル名のみ
-  :slack :
-    :token   : ""
-    :channel : ""
+  slack :
+    token   : ""
+    channel : ""
 
-:data :
-  :log :
-    :file  : "/data/log.log"
-    :level : :debug
+data :
+  log :
+    file  : "/log/log.log"
+    level : :debug
 
-  :dump :
-    :file : "/data/dump.json"
+  dump :
+    file : "/data/dump.json"
+
+urls :
+  雨宮天 :
+    url : "https://ameblo.jp/amamiyasorablog/"
+    parser : TrySailBlogNotification::Parser::User::SoraAmamiya
+
+  麻倉もも :
+    url : "https://ameblo.jp/asakuramomoblog/"
+    parser : TrySailBlogNotification::Parser::User::MomoAsakura
+
+  夏川椎菜 :
+    url : "https://ameblo.jp/natsukawashiinablog/"
+    parser : TrySailBlogNotification::Parser::User::ShiinaNatsukawa
