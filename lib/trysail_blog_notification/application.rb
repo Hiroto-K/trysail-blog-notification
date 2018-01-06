@@ -115,6 +115,11 @@ module TrySailBlogNotification
       config['data']['log']['file'] = File.join(@base_dir, config['data']['log']['file'])
       config['data']['dump']['file'] = File.join(@base_dir, config['data']['dump']['file'])
 
+      config['urls'].keys.each do |name|
+        parser = config['urls'][name]['parser']
+        config['urls'][name]['parser'] = parser.classify.constantize
+      end
+
       config
     end
 
