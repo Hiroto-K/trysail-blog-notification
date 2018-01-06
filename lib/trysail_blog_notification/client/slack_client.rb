@@ -9,7 +9,7 @@ module TrySailBlogNotification::Client
       super(app, config)
 
       Slack.configure do |c|
-        c.token = @config[:token]
+        c.token = @config['token']
       end
 
       @client = Slack::Web::Client.new
@@ -34,7 +34,7 @@ module TrySailBlogNotification::Client
 EOS
 
       @app.log.info(text)
-      @client.chat_postMessage(channel: @config[:channel], text: text, as_user: true)
+      @client.chat_postMessage(channel: @config['channel'], text: text, as_user: true)
     end
 
   end

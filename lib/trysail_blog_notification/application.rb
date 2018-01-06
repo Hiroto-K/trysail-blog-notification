@@ -41,9 +41,9 @@ module TrySailBlogNotification
       @base_dir = base_dir
       @config = set_config(config)
 
-      @dump_file = @config[:data][:dump][:file]
-      log_file = @config[:data][:log][:file]
-      log_level = @config[:data][:log][:level]
+      @dump_file = @config['data']['dump']['file']
+      log_file = @config['data']['log']['file']
+      log_level = @config['data']['log']['level']
       @log = TrySailBlogNotification::Log.new(log_file, log_level)
 
       @log.logger.info('Started application.')
@@ -125,16 +125,16 @@ module TrySailBlogNotification
     # @param [Hash] config
     # @return Hash
     def set_config(config)
-      config[:data][:log][:file] = File.join(@base_dir, config[:data][:log][:file])
-      config[:data][:dump][:file] = File.join(@base_dir, config[:data][:dump][:file])
+      config['data']['log']['file'] = File.join(@base_dir, config['data']['log']['file'])
+      config['data']['dump']['file'] = File.join(@base_dir, config['data']['dump']['file'])
 
       config
     end
 
     # Add clients.
     def add_clients
-      add_client(TrySailBlogNotification::Client::TwitterClient.new(self, @config[:client][:twitter]))
-      add_client(TrySailBlogNotification::Client::SlackClient.new(self, @config[:client][:slack]))
+      add_client(TrySailBlogNotification::Client::TwitterClient.new(self, @config['client']['twitter']))
+      add_client(TrySailBlogNotification::Client::SlackClient.new(self, @config['client']['slack']))
     end
 
     # Get last article.
