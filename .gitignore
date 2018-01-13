@@ -2,6 +2,7 @@
 !/config/*.example.yml
 /data/*
 /log/*
+/plugin/*
 *.gem
 /doc/
 /rdoc/
