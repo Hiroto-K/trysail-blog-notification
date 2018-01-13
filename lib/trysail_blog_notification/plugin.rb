@@ -13,5 +13,17 @@ module TrySailBlogNotification
       @base_dir = base_dir
     end
 
+    # Get plugin files
+    #
+    # @return [Array]
+    def get_plugin_files
+    end
+
+    # Load plugin files
+    #
+    # @return [Object]
+    def load_plugins
+    end
+
   end
 end
