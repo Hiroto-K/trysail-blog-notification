@@ -15,4 +15,6 @@ app = TrySailBlogNotification::Application.new(
   config
 )
 
+app.load_plugin
+
 app.run
