@@ -1,7 +1,7 @@
 module TrySailBlogNotification::Plugins
   module Client
 
-    class BaseClient < TrySailBlogNotification::Cliet::BaseClient
+    class BaseClient < TrySailBlogNotification::Client::BaseClient
     end
 
   end
