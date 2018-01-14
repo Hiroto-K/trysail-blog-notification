@@ -43,7 +43,7 @@ module TrySailBlogNotification
     # @param [Hash] config
     def initialize(base_dir, config)
       @base_dir = base_dir
-      @config = set_config(config)
+      @config = set_file_config(config)
 
       @dump_file = @config['data']['dump']['file']
       log_file = @config['data']['log']['file']
@@ -54,9 +54,12 @@ module TrySailBlogNotification
 
       @clients = []
 
-      @urls = @config['urls']
       @plugin = TrySailBlogNotification::Plugin.new(@base_dir)
       @plugin.load_plugins
+
+      @config = set_urls_config(config)
+
+      @urls = @config['urls']
 
       begin
         add_clients
@@ -127,14 +130,22 @@ module TrySailBlogNotification
 
     private
 
-    # Set config. Expand file path.
+    # Set file config. Expand file path.
     #
     # @param [Hash] config
-    # @return Hash
-    def set_config(config)
+    # @return [Hash]
+    def set_file_config(config)
       config['data']['log']['file'] = File.join(@base_dir, config['data']['log']['file'])
       config['data']['dump']['file'] = File.join(@base_dir, config['data']['dump']['file'])
 
+      config
+    end
+
+    # Set urls config.
+    #
+    # @param [Hash] config
+    # @return [Hash]
+    def set_urls_config(config)
       config['urls'].keys.each do |name|
         parser = config['urls'][name]['parser']
         config['urls'][name]['parser'] = parser.constantize
