@@ -33,6 +33,10 @@ module TrySailBlogNotification
     # @return [Hash]
     attr_reader :urls
 
+    # Plugin
+    #
+    # @return [TrySailBlogNotification::Plugin]
+
     # Initialize application.
     #
     # @param [String] base_dir
@@ -51,6 +55,7 @@ module TrySailBlogNotification
       @clients = []
 
       @urls = @config['urls']
+      @plugin = TrySailBlogNotification::Plugin.new(@base_dir)
 
       begin
         add_clients
