@@ -72,6 +72,12 @@ module TrySailBlogNotification
       @clients.push(client)
     end
 
+    # Load plugins
+    def load_plugin
+      @log.logger.info('Load plugins')
+      @plugin.load_plugins
+    end
+
     # Run application.
     def run
       @log.logger.info("Call \"#{__method__}\" method.")
