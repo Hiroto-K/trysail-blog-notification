@@ -23,6 +23,9 @@ module TrySailBlogNotification
     #
     # @return [Object]
     def load_plugins
+      get_plugin_files.each do |file|
+        require file
+      end
     end
 
   end
