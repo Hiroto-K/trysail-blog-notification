@@ -17,6 +17,14 @@ module TrySailBlogNotification
     #
     # @return [Array]
     def get_plugin_files
+      plugin_files = []
+      dirs = Dir.glob(File.join(@base_dir, '/plugin/*')).select {|d| File.directory?(d) }.sort
+      dirs.each do |dir|
+        base_name = File.basename(dir)
+        plugin_file = File.join(dir, "#{base_name}.rb")
+        plugin_files.push(plugin_file)
+      end
+      plugin_files
     end
 
     # Load plugin files
