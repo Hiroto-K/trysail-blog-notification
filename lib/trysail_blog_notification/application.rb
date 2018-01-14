@@ -75,7 +75,15 @@ module TrySailBlogNotification
     # Load plugins
     def load_plugin
       @log.logger.info('Load plugins')
-      @plugin.load_plugins
+      @plugin.get_plugin_files.each do |file|
+        begin
+          @log.logger.info("Load plugin file : #{file}")
+          require file
+        rescue RuntimeError => e
+          @log.logger.error("Error in load plugin : #{file}")
+          @log.logger.error(e)
+        end
+      end
     end
 
     # Run application.
