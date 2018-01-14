@@ -56,6 +56,7 @@ module TrySailBlogNotification
 
       @urls = @config['urls']
       @plugin = TrySailBlogNotification::Plugin.new(@base_dir)
+      @plugin.load_plugins
 
       begin
         add_clients
