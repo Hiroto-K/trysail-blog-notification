@@ -33,13 +33,17 @@ module TrySailBlogNotification
     # @return [Hash]
     attr_reader :urls
 
+    # Plugin
+    #
+    # @return [TrySailBlogNotification::Plugin]
+
     # Initialize application.
     #
     # @param [String] base_dir
     # @param [Hash] config
     def initialize(base_dir, config)
       @base_dir = base_dir
-      @config = set_config(config)
+      @config = set_file_config(config)
 
       @dump_file = @config['data']['dump']['file']
       log_file = @config['data']['log']['file']
@@ -49,6 +53,11 @@ module TrySailBlogNotification
       @log.logger.info('Started application.')
 
       @clients = []
+
+      @plugin = TrySailBlogNotification::Plugin.new(@base_dir)
+      @plugin.load_plugins
+
+      @config = set_urls_config(config)
 
       @urls = @config['urls']
 
@@ -65,6 +74,20 @@ module TrySailBlogNotification
     def add_client(client)
       raise "Client is not instance of 'TrySailBlogNotification::Client::BaseClient'." unless client.is_a?(TrySailBlogNotification::Client::BaseClient)
       @clients.push(client)
+    end
+
+    # Load plugins
+    def load_plugin
+      @log.logger.info('Load plugins')
+      @plugin.get_plugin_files.each do |file|
+        begin
+          @log.logger.info("Load plugin file : #{file}")
+          require file
+        rescue RuntimeError => e
+          @log.logger.error("Error in load plugin : #{file}")
+          @log.logger.error(e)
+        end
+      end
     end
 
     # Run application.
@@ -107,14 +130,22 @@ module TrySailBlogNotification
 
     private
 
-    # Set config. Expand file path.
+    # Set file config. Expand file path.
     #
     # @param [Hash] config
-    # @return Hash
-    def set_config(config)
+    # @return [Hash]
+    def set_file_config(config)
       config['data']['log']['file'] = File.join(@base_dir, config['data']['log']['file'])
       config['data']['dump']['file'] = File.join(@base_dir, config['data']['dump']['file'])
 
+      config
+    end
+
+    # Set urls config.
+    #
+    # @param [Hash] config
+    # @return [Hash]
+    def set_urls_config(config)
       config['urls'].keys.each do |name|
         parser = config['urls'][name]['parser']
         config['urls'][name]['parser'] = parser.constantize
