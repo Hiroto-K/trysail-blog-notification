@@ -31,7 +31,7 @@ module TrySailBlogNotification::Parser
     # @param [Nokogiri::XML::Element] article
     # @return [Nokogiri::XML::Element]
     def get_title_obj(article)
-      article.xpath('./h1/a[@class="skinArticleTitle"]').first
+      article.xpath('.//h1/a[@class="skinArticleTitle"]').first
     end
 
     # Get last article title.
@@ -55,7 +55,7 @@ module TrySailBlogNotification::Parser
     # @param [Nokogiri::XML::Element]
     # @return [String]
     def get_last_update(article)
-      article.xpath('./span[@class="articleTime"]//time').first.content
+      article.xpath('.//span[@class="articleTime"]//time').first.content
     end
 
   end
