@@ -11,11 +11,10 @@ module TrySailBlogNotification::Client
       @client = Twitter::REST::Client.new(@config)
     end
 
-
     # Update.
     #
     # @param [String] name
-    # @param [Hash] status
+    # @param [TrySailBlogNotification::LastArticle] status
     def update(name, status)
       super(name, status)
 

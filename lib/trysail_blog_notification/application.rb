@@ -202,7 +202,7 @@ module TrySailBlogNotification
     # Check updates.
     #
     # @param [String] name
-    # @param [Hash] status
+    # @param [TrySailBlogNotification::LastArticle] status
     def run_notification(name, status)
       @log.logger.info("Run notification of \"#{name}\".")
 

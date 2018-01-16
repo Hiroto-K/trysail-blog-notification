@@ -23,7 +23,7 @@ module TrySailBlogNotification::Client
     # Update.
     #
     # @param [String] name
-    # @param [Hash] status
+    # @param [TrySailBlogNotification::LastArticle] status
     def update(name, status)
       @sys_date   = Time.now
       @sys_date_s = @sys_date.to_s
