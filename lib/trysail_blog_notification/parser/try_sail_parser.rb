@@ -1,3 +1,5 @@
+require File.join(File.dirname(__FILE__), '/base_parser.rb')
+
 module TrySailBlogNotification::Parser
   class TrySailParser < BaseParser
 
