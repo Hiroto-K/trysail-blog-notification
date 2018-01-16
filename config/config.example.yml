@@ -24,12 +24,12 @@ data :
 urls :
   雨宮天 :
     url : "https://ameblo.jp/amamiyasorablog/"
-    parser : TrySailBlogNotification::Parser::User::SoraAmamiya
+    parser : TrySailBlogNotification::Parser::SoraAmamiya
 
   麻倉もも :
     url : "https://ameblo.jp/asakuramomoblog/"
-    parser : TrySailBlogNotification::Parser::User::MomoAsakura
+    parser : TrySailBlogNotification::Parser::MomoAsakura
 
   夏川椎菜 :
     url : "https://ameblo.jp/natsukawashiinablog/"
-    parser : TrySailBlogNotification::Parser::User::ShiinaNatsukawa
+    parser : TrySailBlogNotification::Parser::ShiinaNatsukawa
