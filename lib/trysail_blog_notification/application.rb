@@ -192,7 +192,7 @@ module TrySailBlogNotification
         @log.logger.info("Check diff of \"#{name}\".")
 
         new_status = current_statuses[name]
-        unless new_status['last_update'] == old_status['last_update']
+        unless new_status['url'] == old_status['url'] || new_status['last_update'] == old_status['last_update']
           @log.logger.info("Call \"run_notification\".")
           run_notification(name, new_status)
         end
