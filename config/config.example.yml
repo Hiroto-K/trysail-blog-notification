@@ -1,4 +1,4 @@
-client :
+clients :
   # Twitter
   twitter :
     client : TrySailBlogNotification::Client::TwitterClient
