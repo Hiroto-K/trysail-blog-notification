@@ -160,9 +160,9 @@ module TrySailBlogNotification
     # @param [Hash] config
     # @return [Hash]
     def set_clients_config(config)
-      config['client'].keys.each do |name|
-        client_class = config['client'][name]['client']
-        config['client'][name]['client'] = client_class.constantize
+      config['clients'].keys.each do |name|
+        client_class = config['clients'][name]['clients']
+        config['clients'][name]['clients'] = client_class.constantize
       end
 
       config
