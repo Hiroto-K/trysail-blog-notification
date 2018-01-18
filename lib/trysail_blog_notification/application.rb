@@ -172,10 +172,10 @@ module TrySailBlogNotification
     def add_clients
       @config['clients'].each do |name, options|
 
-        @log.logger.info("Register #{name} client.")
-
         client_class = options['client']
         config = options['config']
+
+        @log.logger.info("Register #{name}(\"#{client_class}\") client.")
 
         add_client(client_class.new(self, config))
       end
