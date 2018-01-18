@@ -57,7 +57,8 @@ module TrySailBlogNotification
       @plugin = TrySailBlogNotification::Plugin.new(@base_dir)
       @plugin.load_plugins
 
-      @config = set_urls_config(config)
+      @config = set_urls_config(@config)
+      @config = set_clients_config(@config)
 
       @urls = @config['urls']
 
@@ -149,6 +150,19 @@ module TrySailBlogNotification
       config['urls'].keys.each do |name|
         parser = config['urls'][name]['parser']
         config['urls'][name]['parser'] = parser.constantize
+      end
+
+      config
+    end
+
+    # Set clients config.
+    #
+    # @param [Hash] config
+    # @return [Hash]
+    def set_clients_config(config)
+      config['client'].keys.each do |name|
+        client_class = config['client'][name]['client']
+        config['client'][name]['client'] = client_class.constantize
       end
 
       config
