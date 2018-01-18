@@ -170,8 +170,15 @@ module TrySailBlogNotification
 
     # Add clients.
     def add_clients
-      add_client(TrySailBlogNotification::Client::TwitterClient.new(self, @config['client']['twitter']))
-      add_client(TrySailBlogNotification::Client::SlackClient.new(self, @config['client']['slack']))
+      @config['clients'].each do |name, options|
+
+        @log.logger.info("Register #{name} client.")
+
+        client_class = options['client']
+        config = options['config']
+
+        add_client(client_class.new(self, config))
+      end
     end
 
     # Get last article.
