@@ -57,7 +57,8 @@ module TrySailBlogNotification
       @plugin = TrySailBlogNotification::Plugin.new(@base_dir)
       @plugin.load_plugins
 
-      @config = set_urls_config(config)
+      @config = set_urls_config(@config)
+      @config = set_clients_config(@config)
 
       @urls = @config['urls']
 
@@ -154,10 +155,30 @@ module TrySailBlogNotification
       config
     end
 
+    # Set clients config.
+    #
+    # @param [Hash] config
+    # @return [Hash]
+    def set_clients_config(config)
+      config['clients'].keys.each do |name|
+        client_class = config['clients'][name]['client']
+        config['clients'][name]['client'] = client_class.constantize
+      end
+
+      config
+    end
+
     # Add clients.
     def add_clients
-      add_client(TrySailBlogNotification::Client::TwitterClient.new(self, @config['client']['twitter']))
-      add_client(TrySailBlogNotification::Client::SlackClient.new(self, @config['client']['slack']))
+      @config['clients'].each do |name, options|
+
+        client_class = options['client']
+        config = options['config']
+
+        @log.logger.info("Register #{name}(\"#{client_class}\") client.")
+
+        add_client(client_class.new(self, config))
+      end
     end
 
     # Get last article.

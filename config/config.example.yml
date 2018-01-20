@@ -1,17 +1,24 @@
-client :
-  # Twitterの設定
-  # CK,CS,AT,ATS
+clients :
+  # Twitter
   twitter :
-    consumer_key        : ""
-    consumer_secret     : ""
-    access_token        : ""
-    access_token_secret : ""
+    client : TrySailBlogNotification::Client::TwitterClient
 
-  # Slackの設定
-  # トークンとチャンネル名のみ
+    # 設定
+    # CK,CS,AT,ATS
+    config :
+      consumer_key        : ""
+      consumer_secret     : ""
+      access_token        : ""
+      access_token_secret : ""
+
+  # Slack
   slack :
-    token   : ""
-    channel : ""
+    client : TrySailBlogNotification::Client::SlackClient
+
+    # tokenとチャンネル名を設定
+    config :
+      token   : ""
+      channel : ""
 
 data :
   log :
