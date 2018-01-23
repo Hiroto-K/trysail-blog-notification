@@ -18,7 +18,12 @@ module TrySailBlogNotification::Client
     def update(name, status)
       super(name, status)
 
-      text = "【ブログ更新 #{@last_update}】\n#{name} : #{@title}\n#{@url}\nsys_date : #{@sys_date}"
+      text = <<"EOS"
+【ブログ更新 #{@last_update}】
+#{name} : #{@title}
+#{@url}
+sys_date : #{@sys_date}
+EOS
       @app.log.info(text)
       @client.update(text)
     end
