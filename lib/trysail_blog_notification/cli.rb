@@ -1,8 +1,8 @@
 module TrySailBlogNotification
   class Cli < Thor
 
-    desc "run", "Run trysail-blog-notification."
-    def run
+    desc "start", "Run trysail-blog-notification."
+    def start
     end
 
   end
