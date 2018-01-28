@@ -1,4 +1,4 @@
 module TrySailBlogNotification::Command
-  class RunCommand
+  class StartCommand
   end
 end
