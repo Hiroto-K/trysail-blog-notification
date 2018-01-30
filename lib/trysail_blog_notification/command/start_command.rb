@@ -32,7 +32,7 @@ module TrySailBlogNotification::Command
         nokogiri = Nokogiri::HTML.parse(html)
         last_article = get_last_article(nokogiri, parser_class)
 
-        log.logger.info(last_article)
+        @log.logger.info(last_article)
 
         current_statuses[name] =last_article
       end
