@@ -101,6 +101,8 @@ module TrySailBlogNotification
 
     # Run application.
     def run
+      TrySailBlogNotification::Cli.start(ARGV)
+
       @log.logger.info("Call \"#{__method__}\" method.")
 
       current_statuses = {}
