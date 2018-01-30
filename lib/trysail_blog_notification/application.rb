@@ -36,6 +36,7 @@ module TrySailBlogNotification
     # Plugin
     #
     # @return [TrySailBlogNotification::Plugin]
+    attr_reader :plugin
 
     # Initialize application.
     #
