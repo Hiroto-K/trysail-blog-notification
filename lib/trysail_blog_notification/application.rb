@@ -42,6 +42,7 @@ module TrySailBlogNotification
     # @param [String] base_dir
     # @param [Hash] config
     def initialize(base_dir, config)
+      @@app = self
       @base_dir = base_dir
       @config = set_file_config(config)
 
@@ -67,6 +68,13 @@ module TrySailBlogNotification
       rescue RuntimeError => e
         @log.logger.error(e)
       end
+    end
+
+    # Get application instance
+    #
+    # @return [TrySailBlogNotification::Application]
+    def self.app
+      @@app
     end
 
     # Add client.
