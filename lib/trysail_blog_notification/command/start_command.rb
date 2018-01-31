@@ -1,6 +1,7 @@
 module TrySailBlogNotification::Command
   class StartCommand < BaseCommand
 
+    # Initialize StartCommand
     def initialize
       @application = TrySailBlogNotification::Application.app
       @config = @application.config
@@ -10,6 +11,7 @@ module TrySailBlogNotification::Command
       @urls = @application.urls
     end
 
+    # Start command.
     def start
       @log.logger.info("Call \"#{__method__}\" method.")
 
