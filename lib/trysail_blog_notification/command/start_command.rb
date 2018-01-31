@@ -1,5 +1,5 @@
 module TrySailBlogNotification::Command
-  class StartCommand
+  class StartCommand < BaseCommand
 
     def initialize
       @application = TrySailBlogNotification::Application.app
