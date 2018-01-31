@@ -3,7 +3,7 @@ module TrySailBlogNotification::Command
 
     # Initialize StartCommand
     def initialize
-      @application = TrySailBlogNotification::Application.app
+      @application = app
       @config = @application.config
       @dump_file = @application.dump_file
       @log = @application.log
