@@ -1,7 +1,7 @@
 module TrySailBlogNotification::Command
   class BaseCommand
 
-    # Start
+    # Start command.
     def start
     end
 
