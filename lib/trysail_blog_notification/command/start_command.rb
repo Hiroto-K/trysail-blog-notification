@@ -2,7 +2,12 @@ module TrySailBlogNotification::Command
   class StartCommand < BaseCommand
 
     # Initialize StartCommand
-    def initialize
+    #
+    # @param [Hash] options
+    # @param [Array] args
+    def initialize(options, args)
+      super(options, args)
+
       @application = app
       @config = @application.config
       @dump_file = @application.dump_file
