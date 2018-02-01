@@ -5,7 +5,7 @@ module TrySailBlogNotification
 
     desc 'start', 'Run trysail-blog-notification.'
     def start
-      command = TrySailBlogNotification::Command::StartCommand.new
+      command = TrySailBlogNotification::Command::StartCommand.new(options, args)
       command.start
     end
 
