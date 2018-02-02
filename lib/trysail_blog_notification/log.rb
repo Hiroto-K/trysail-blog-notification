@@ -38,6 +38,16 @@ module TrySailBlogNotification
       @logger.progname = 'trysail-blog-notification'
     end
 
+    # Set logger level
+    #
+    # @param [String|Symbol] level
+    # @return [Object]
+    def level=(level)
+      level_value = get_level_value(level)
+      @logger.level = level_value
+      level_value
+    end
+
     # Send missing method.
     #
     # @param [String] name Method name.
