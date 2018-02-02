@@ -6,7 +6,7 @@ module TrySailBlogNotification
     package_name 'trysail-blog-notification'
 
     desc 'start', 'Run trysail-blog-notification.'
-    option 'no-notification', type: :boolean, default: false
+    option 'no-notification', desc: 'No send the notification.', type: :boolean, default: false
     def start
       command = TrySailBlogNotification::Command::StartCommand.new(options, args)
       command.start
