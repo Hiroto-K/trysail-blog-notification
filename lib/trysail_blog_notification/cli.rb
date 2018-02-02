@@ -1,6 +1,8 @@
 module TrySailBlogNotification
   class Cli < Thor
 
+    class_option 'log-level', desc: 'Set the logger level (fatal, error, warn, info, debug).', type: :string
+
     package_name 'trysail-blog-notification'
 
     desc 'start', 'Run trysail-blog-notification.'
