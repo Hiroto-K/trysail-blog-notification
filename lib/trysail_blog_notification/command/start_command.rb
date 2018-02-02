@@ -18,7 +18,7 @@ module TrySailBlogNotification::Command
 
     # Start command.
     def start
-      @log.logger.info("Call \"#{__method__}\" method.")
+      @log.logger.debug("Call \"#{__method__}\" method.")
 
       current_statuses = {}
 
@@ -26,26 +26,26 @@ module TrySailBlogNotification::Command
         url = info['url']
         parser_class = info['parser']
 
-        @log.logger.info("Run \"#{name}\" : \"#{url}.\"")
+        @log.logger.debug("Run \"#{name}\" : \"#{url}.\"")
 
-        @log.logger.info('Get response.')
+        @log.logger.debug('Get response.')
 
         http = TrySailBlogNotification::HTTP.new(url)
 
-        @log.logger.info(http.response)
+        @log.logger.debug(http.response)
         raise "Response http code : '#{http.response.code}'." unless http.response.code == '200'
 
         html = http.html
         nokogiri = Nokogiri::HTML.parse(html)
         last_article = get_last_article(nokogiri, parser_class)
 
-        @log.logger.info(last_article)
+        @log.logger.debug(last_article)
 
         current_statuses[name] =last_article
       end
 
-      @log.logger.info('current_statuses')
-      @log.logger.info(current_statuses)
+      @log.logger.debug('current_statuses')
+      @log.logger.debug(current_statuses)
 
       check_diff(current_statuses)
 
@@ -62,7 +62,7 @@ module TrySailBlogNotification::Command
     # @param [TrySailBlogNotification::Parser::BaseParser] klass
     # @return [TrySailBlogNotification::LastArticle]
     def get_last_article(nokogiri, klass)
-      @log.logger.info('Get last articles.')
+      @log.logger.debug('Get last articles.')
 
       parser = klass.new(@application, @config)
       parser.parse(nokogiri)
@@ -72,27 +72,27 @@ module TrySailBlogNotification::Command
     #
     # @param [Hash] current_statuses
     def check_diff(current_statuses)
-      @log.logger.info('Check diff.')
+      @log.logger.debug('Check diff.')
 
       unless File.exists?(@dump_file)
-        @log.logger.info("File \"#{@dump_file}\" is not exits.")
-        @log.logger.info('Skip check.')
+        @log.logger.debug("File \"#{@dump_file}\" is not exits.")
+        @log.logger.debug('Skip check.')
         return
       end
 
-      @log.logger.info("Open dump file : \"#{@dump_file}\".")
+      @log.logger.debug("Open dump file : \"#{@dump_file}\".")
       json = File.open(@dump_file, 'r') { |f| f.read }
       old_statuses = JSON.parse(json)
 
       old_statuses.each do |name, old_status|
-        @log.logger.info("Check diff of \"#{name}\".")
+        @log.logger.debug("Check diff of \"#{name}\".")
 
         new_status = current_statuses[name]
         unless new_status['url'] == old_status['url'] || new_status['last_update'] == old_status['last_update']
           if options['no-notification']
             @log.logger.info('Option "--no-notification" is enabled. No send the notification.')
           else
-            @log.logger.info("Call \"run_notification\".")
+            @log.logger.debug("Call \"run_notification\".")
             run_notification(name, new_status)
           end
         end
@@ -104,11 +104,11 @@ module TrySailBlogNotification::Command
     # @param [String] name
     # @param [TrySailBlogNotification::LastArticle] status
     def run_notification(name, status)
-      @log.logger.info("Run notification of \"#{name}\".")
+      @log.logger.debug("Run notification of \"#{name}\".")
 
       @clients.each do |client|
         begin
-          @log.logger.info("Call \"update\" method of \"#{client.class}\".")
+          @log.logger.debug("Call \"update\" method of \"#{client.class}\".")
           client.update(name, status)
         rescue Exception => e
           @log.logger.error(e)
@@ -125,10 +125,10 @@ module TrySailBlogNotification::Command
         hashed_statuses[name] = last_article.to_h
       end
 
-      @log.logger.info('Write to dump file.')
+      @log.logger.debug('Write to dump file.')
       dumper = TrySailBlogNotification::Dumper.new(@dump_file)
 
-      @log.logger.info('Run write.')
+      @log.logger.debug('Run write.')
       dumper.dump(hashed_statuses)
     end
 

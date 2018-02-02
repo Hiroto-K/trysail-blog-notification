@@ -88,10 +88,10 @@ module TrySailBlogNotification
 
     # Load plugins
     def load_plugin
-      @log.logger.info('Load plugins')
+      @log.logger.debug('Load plugins')
       @plugin.get_plugin_files.each do |file|
         begin
-          @log.logger.info("Load plugin file : #{file}")
+          @log.logger.debug("Load plugin file : #{file}")
           require file
         rescue RuntimeError => e
           @log.logger.error("Error in load plugin : #{file}")
@@ -153,7 +153,7 @@ module TrySailBlogNotification
         client_class = options['client']
         config = options['config']
 
-        @log.logger.info("Register #{name}(\"#{client_class}\") client.")
+        @log.logger.debug("Register #{name}(\"#{client_class}\") client.")
 
         add_client(client_class.new(self, config))
       end
