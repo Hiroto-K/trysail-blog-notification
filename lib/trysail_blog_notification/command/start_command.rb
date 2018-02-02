@@ -89,8 +89,12 @@ module TrySailBlogNotification::Command
 
         new_status = current_statuses[name]
         unless new_status['url'] == old_status['url'] || new_status['last_update'] == old_status['last_update']
-          @log.logger.info("Call \"run_notification\".")
-          run_notification(name, new_status)
+          if options['no-notification']
+            @log.logger.info('Option "--no-notification" is enabled. No send the notification.')
+          else
+            @log.logger.info("Call \"run_notification\".")
+            run_notification(name, new_status)
+          end
         end
       end
     end
