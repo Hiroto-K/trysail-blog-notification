@@ -11,5 +11,16 @@ module TrySailBlogNotification
       command.start
     end
 
+    no_commands do
+
+      def invoke_command(command, *args)
+        app = TrySailBlogNotification::Application.app
+        app.log.level = options['log-level'] unless options['log-level'].nil?
+
+        super(command, *args)
+      end
+
+    end
+
   end
 end
