@@ -80,9 +80,7 @@ module TrySailBlogNotification::Command
         return
       end
 
-      @log.logger.debug("Open dump file : \"#{@dump_file}\".")
-      json = File.open(@dump_file, 'r') { |f| f.read }
-      old_statuses = JSON.parse(json)
+      old_statuses = get_old_states
 
       old_statuses.each do |name, old_status|
         @log.logger.debug("Check diff of \"#{name}\".")
@@ -97,6 +95,15 @@ module TrySailBlogNotification::Command
           end
         end
       end
+    end
+
+    # Get old state.
+    #
+    # @return [Hash]
+    def get_old_states
+      @log.logger.debug("Open dump file : \"#{@dump_file}\".")
+      loader = TrySailBlogNotification::StateLoader.new(@dump_file)
+      loader.states
     end
 
     # Check updates.
