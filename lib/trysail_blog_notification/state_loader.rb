@@ -11,17 +11,17 @@ module TrySailBlogNotification
     # @return [String]
     attr_reader :json
 
-    # Raw statuses
+    # Raw states
     #
     # @return [Hash]
     attr_reader :raw_states
 
-    # Statuses
+    # States
     #
     # @return [Hash]
     attr_reader :states
 
-    # Initialize DataLoader.
+    # Initialize StateLoader.
     #
     # @param [String] file JSON file path.
     def initialize(file)
@@ -53,8 +53,8 @@ module TrySailBlogNotification
       @raw_states = JSON.parse(@json)
       @states = {}
 
-      @raw_states.each do |name, status|
-        @states[name] = TrySailBlogNotification::LastArticle.new(status['title'], status['url'], status['last_update'])
+      @raw_states.each do |name, state|
+        @states[name] = TrySailBlogNotification::LastArticle.new(state['title'], state['url'], state['last_update'])
       end
     end
 
