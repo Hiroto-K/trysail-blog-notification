@@ -1,5 +1,5 @@
 module TrySailBlogNotification
-  class DataLoader
+  class StateLoader
 
     # JSON file path.
     #
