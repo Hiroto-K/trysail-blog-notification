@@ -20,7 +20,7 @@ module TrySailBlogNotification::Command
     def start
       @log.logger.debug("Call \"#{__method__}\" method.")
 
-      current_statuses = {}
+      current_states = {}
 
       @urls.each do |name, info|
         url = info['url']
@@ -41,15 +41,15 @@ module TrySailBlogNotification::Command
 
         @log.logger.debug(last_article)
 
-        current_statuses[name] =last_article
+        current_states[name] =last_article
       end
 
       @log.logger.debug('current_states')
-      @log.logger.debug(current_statuses)
+      @log.logger.debug(current_states)
 
-      check_diff(current_statuses)
+      check_diff(current_states)
 
-      dump_to_file(current_statuses)
+      dump_to_file(current_states)
     rescue RuntimeError => e
       @log.logger.error(e)
     end
