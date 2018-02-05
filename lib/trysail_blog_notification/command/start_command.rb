@@ -85,13 +85,13 @@ module TrySailBlogNotification::Command
       old_states.each do |name, old_state|
         @log.logger.debug("Check diff of \"#{name}\".")
 
-        new_status = current_statuses[name]
-        unless new_status['url'] == old_state['url'] || new_status['last_update'] == old_state['last_update']
+        new_state = current_statuses[name]
+        unless new_state['url'] == old_state['url'] || new_state['last_update'] == old_state['last_update']
           if options['no-notification']
             @log.logger.info('Option "--no-notification" is enabled. No send the notification.')
           else
             @log.logger.debug("Call \"run_notification\".")
-            run_notification(name, new_status)
+            run_notification(name, new_state)
           end
         end
       end
