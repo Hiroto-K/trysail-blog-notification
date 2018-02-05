@@ -125,18 +125,18 @@ module TrySailBlogNotification::Command
 
     # Write to dump file.
     #
-    # @param [Hash] statuses
-    def dump_to_file(statuses)
-      hashed_statuses = {}
-      statuses.each do |name, last_article|
-        hashed_statuses[name] = last_article.to_h
+    # @param [Hash] states
+    def dump_to_file(states)
+      hashed_states = {}
+      states.each do |name, last_article|
+        hashed_states[name] = last_article.to_h
       end
 
       @log.logger.debug('Write to dump file.')
       dumper = TrySailBlogNotification::Dumper.new(@dump_file)
 
       @log.logger.debug('Run write.')
-      dumper.dump(hashed_statuses)
+      dumper.dump(hashed_states)
     end
 
   end
