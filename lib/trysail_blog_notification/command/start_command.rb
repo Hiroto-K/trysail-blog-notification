@@ -44,7 +44,7 @@ module TrySailBlogNotification::Command
         current_statuses[name] =last_article
       end
 
-      @log.logger.debug('current_statuses')
+      @log.logger.debug('current_states')
       @log.logger.debug(current_statuses)
 
       check_diff(current_statuses)
@@ -70,8 +70,8 @@ module TrySailBlogNotification::Command
 
     # Check updates.
     #
-    # @param [Hash] current_statuses
-    def check_diff(current_statuses)
+    # @param [Hash] current_states
+    def check_diff(current_states)
       @log.logger.debug('Check diff.')
 
       unless File.exists?(@dump_file)
@@ -85,7 +85,7 @@ module TrySailBlogNotification::Command
       old_states.each do |name, old_state|
         @log.logger.debug("Check diff of \"#{name}\".")
 
-        new_state = current_statuses[name]
+        new_state = current_states[name]
         unless new_state['url'] == old_state['url'] || new_state['last_update'] == old_state['last_update']
           if options['no-notification']
             @log.logger.info('Option "--no-notification" is enabled. No send the notification.')
