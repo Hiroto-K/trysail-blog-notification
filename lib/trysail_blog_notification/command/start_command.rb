@@ -80,9 +80,9 @@ module TrySailBlogNotification::Command
         return
       end
 
-      old_statuses = get_old_states
+      old_states = get_old_states
 
-      old_statuses.each do |name, old_status|
+      old_states.each do |name, old_status|
         @log.logger.debug("Check diff of \"#{name}\".")
 
         new_status = current_statuses[name]
