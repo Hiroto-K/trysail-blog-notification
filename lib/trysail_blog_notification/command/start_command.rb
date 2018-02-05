@@ -109,14 +109,14 @@ module TrySailBlogNotification::Command
     # Check updates.
     #
     # @param [String] name
-    # @param [TrySailBlogNotification::LastArticle] status
-    def run_notification(name, status)
+    # @param [TrySailBlogNotification::LastArticle] state
+    def run_notification(name, state)
       @log.logger.debug("Run notification of \"#{name}\".")
 
       @clients.each do |client|
         begin
           @log.logger.debug("Call \"update\" method of \"#{client.class}\".")
-          client.update(name, status)
+          client.update(name, state)
         rescue Exception => e
           @log.logger.error(e)
         end
