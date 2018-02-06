@@ -133,7 +133,7 @@ module TrySailBlogNotification::Command
       end
 
       @log.logger.debug('Write to dump file.')
-      dumper = TrySailBlogNotification::Dumper.new(@dump_file)
+      dumper = TrySailBlogNotification::StateDumper.new(@dump_file)
 
       @log.logger.debug('Run write.')
       dumper.dump(hashed_states)

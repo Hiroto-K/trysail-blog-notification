@@ -1,7 +1,7 @@
 require 'json'
 
 module TrySailBlogNotification
-  class Dumper
+  class StateDumper
 
     # Dump file path.
     #
