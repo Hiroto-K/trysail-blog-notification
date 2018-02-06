@@ -12,6 +12,11 @@ module TrySailBlogNotification
       command.start
     end
 
+    desc 'console', 'Start trysail-blog-notification console'
+    def console
+      Pry.start
+    end
+
     no_commands do
 
       def invoke_command(command, *args)
