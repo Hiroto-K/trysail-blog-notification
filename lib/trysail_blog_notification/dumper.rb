@@ -8,15 +8,15 @@ module TrySailBlogNotification
     # @return [String]
     attr_reader :file
 
-    # Statuses.
+    # States.
     #
     # @return [Hash]
-    attr_reader :statuses
+    attr_reader :states
 
-    # JSON statuses.
+    # JSON states.
     #
     # @return [String]
-    attr_reader :json_statuses
+    attr_reader :json_states
 
     # Initialize dumper.
     #
@@ -27,12 +27,12 @@ module TrySailBlogNotification
 
     # Dump to file.
     #
-    # @param [Hash] statuses Current statues.
-    def dump(statuses)
-      @statuses = statuses
-      @json_statuses = JSON.pretty_generate(@statuses)
+    # @param [Hash] states Current states.
+    def dump(states)
+      @states = states
+      @json_states = JSON.pretty_generate(@states)
       File.open(@file, 'w') do |f|
-        f.write(@json_statuses)
+        f.write(@json_states)
       end
     end
 

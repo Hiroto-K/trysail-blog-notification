@@ -20,7 +20,7 @@ module TrySailBlogNotification::Command
     def start
       @log.logger.debug("Call \"#{__method__}\" method.")
 
-      current_statuses = {}
+      current_states = {}
 
       @urls.each do |name, info|
         url = info['url']
@@ -41,15 +41,15 @@ module TrySailBlogNotification::Command
 
         @log.logger.debug(last_article)
 
-        current_statuses[name] =last_article
+        current_states[name] =last_article
       end
 
-      @log.logger.debug('current_statuses')
-      @log.logger.debug(current_statuses)
+      @log.logger.debug('current_states')
+      @log.logger.debug(current_states)
 
-      check_diff(current_statuses)
+      check_diff(current_states)
 
-      dump_to_file(current_statuses)
+      dump_to_file(current_states)
     rescue RuntimeError => e
       @log.logger.error(e)
     end
@@ -70,8 +70,8 @@ module TrySailBlogNotification::Command
 
     # Check updates.
     #
-    # @param [Hash] current_statuses
-    def check_diff(current_statuses)
+    # @param [Hash] current_states
+    def check_diff(current_states)
       @log.logger.debug('Check diff.')
 
       unless File.exists?(@dump_file)
@@ -80,36 +80,43 @@ module TrySailBlogNotification::Command
         return
       end
 
-      @log.logger.debug("Open dump file : \"#{@dump_file}\".")
-      json = File.open(@dump_file, 'r') { |f| f.read }
-      old_statuses = JSON.parse(json)
+      old_states = get_old_states
 
-      old_statuses.each do |name, old_status|
+      old_states.each do |name, old_state|
         @log.logger.debug("Check diff of \"#{name}\".")
 
-        new_status = current_statuses[name]
-        unless new_status['url'] == old_status['url'] || new_status['last_update'] == old_status['last_update']
+        new_state = current_states[name]
+        unless new_state['url'] == old_state['url'] || new_state['last_update'] == old_state['last_update']
           if options['no-notification']
             @log.logger.info('Option "--no-notification" is enabled. No send the notification.')
           else
             @log.logger.debug("Call \"run_notification\".")
-            run_notification(name, new_status)
+            run_notification(name, new_state)
           end
         end
       end
     end
 
+    # Get old state.
+    #
+    # @return [Hash]
+    def get_old_states
+      @log.logger.debug("Open dump file : \"#{@dump_file}\".")
+      loader = TrySailBlogNotification::StateLoader.new(@dump_file)
+      loader.states
+    end
+
     # Check updates.
     #
     # @param [String] name
-    # @param [TrySailBlogNotification::LastArticle] status
-    def run_notification(name, status)
+    # @param [TrySailBlogNotification::LastArticle] state
+    def run_notification(name, state)
       @log.logger.debug("Run notification of \"#{name}\".")
 
       @clients.each do |client|
         begin
           @log.logger.debug("Call \"update\" method of \"#{client.class}\".")
-          client.update(name, status)
+          client.update(name, state)
         rescue Exception => e
           @log.logger.error(e)
         end
@@ -118,18 +125,18 @@ module TrySailBlogNotification::Command
 
     # Write to dump file.
     #
-    # @param [Hash] statuses
-    def dump_to_file(statuses)
-      hashed_statuses = {}
-      statuses.each do |name, last_article|
-        hashed_statuses[name] = last_article.to_h
+    # @param [Hash] states
+    def dump_to_file(states)
+      hashed_states = {}
+      states.each do |name, last_article|
+        hashed_states[name] = last_article.to_h
       end
 
       @log.logger.debug('Write to dump file.')
       dumper = TrySailBlogNotification::Dumper.new(@dump_file)
 
       @log.logger.debug('Run write.')
-      dumper.dump(hashed_statuses)
+      dumper.dump(hashed_states)
     end
 
   end
