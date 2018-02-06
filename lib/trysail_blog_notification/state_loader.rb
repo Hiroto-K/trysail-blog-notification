@@ -1,3 +1,5 @@
+require 'json'
+
 module TrySailBlogNotification
   class StateLoader
 
