@@ -6,3 +6,7 @@ gem 'thor', '~>0.20'
 gem 'nokogiri', '~>1.8'
 gem 'twitter', '~>6.1'
 gem 'slack-ruby-client', '~>0.8'
+
+group :test do
+  gem 'test-unit', '~>3.1', require: %w(test/unit)
+end
