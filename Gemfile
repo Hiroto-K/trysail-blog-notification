@@ -8,5 +8,5 @@ gem 'twitter', '~>6.1'
 gem 'slack-ruby-client', '~>0.8'
 
 group :test do
-  gem 'test-unit', '~>3.1', require: %w(test/unit)
+  gem 'test-unit', '~>3.2', require: %w(test/unit)
 end
