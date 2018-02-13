@@ -1,7 +1,7 @@
 clients :
   # Twitter
   twitter :
-    client : TrySailBlogNotification::Client::TwitterClient
+    client : "TrySailBlogNotification::Client::TwitterClient"
 
     # 設定
     # CK,CS,AT,ATS
@@ -13,7 +13,7 @@ clients :
 
   # Slack
   slack :
-    client : TrySailBlogNotification::Client::SlackClient
+    client : "TrySailBlogNotification::Client::SlackClient"
 
     # tokenとチャンネル名を設定
     config :
@@ -31,12 +31,12 @@ data :
 urls :
   雨宮天 :
     url : "https://ameblo.jp/amamiyasorablog/"
-    parser : TrySailBlogNotification::Parser::SoraAmamiya
+    parser : "TrySailBlogNotification::Parser::SoraAmamiya"
 
   麻倉もも :
     url : "https://ameblo.jp/asakuramomoblog/"
-    parser : TrySailBlogNotification::Parser::MomoAsakura
+    parser : "TrySailBlogNotification::Parser::MomoAsakura"
 
   夏川椎菜 :
     url : "https://ameblo.jp/natsukawashiinablog/"
-    parser : TrySailBlogNotification::Parser::ShiinaNatsukawa
+    parser : "TrySailBlogNotification::Parser::ShiinaNatsukawa"
