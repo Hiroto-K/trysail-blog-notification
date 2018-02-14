@@ -45,7 +45,7 @@ module TrySailBlogNotification
     def initialize(base_dir, config)
       @@app = self
       @base_dir = base_dir
-      @config = set_file_config(config)
+      @config = set_file_config(config.with_indifferent_access)
 
       @dump_file = @config['data']['dump']['file']
       log_file = @config['data']['log']['file']
