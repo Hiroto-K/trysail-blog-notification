@@ -1,5 +1,5 @@
 module TrySailBlogNotification::Test
-  class TestLastArticle < Test::Unit::TestCase
+  class TestLastArticle < TestCase
 
     def initialize(*args)
       super(*args)
