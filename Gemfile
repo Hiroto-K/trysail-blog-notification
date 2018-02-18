@@ -6,3 +6,9 @@ gem 'thor', '~>0.20'
 gem 'nokogiri', '~>1.8'
 gem 'twitter', '~>6.1'
 gem 'slack-ruby-client', '~>0.8'
+
+group :plugin do
+  Dir.glob(File.join(File.dirname(__FILE__), "/plugin/*/Gemfile")).sort.each do |path|
+    eval_gemfile path
+  end
+end
