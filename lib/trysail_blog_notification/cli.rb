@@ -14,7 +14,8 @@ module TrySailBlogNotification
 
     desc 'console', 'Start trysail-blog-notification console'
     def console
-      Pry.start
+      command = TrySailBlogNotification::Command::ConsoleCommand.new(options, args)
+      command.start
     end
 
     no_commands do

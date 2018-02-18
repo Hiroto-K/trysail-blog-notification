@@ -11,6 +11,7 @@ TrySailのメンバーのブログ更新をTwitterなりSlackで受け取る。
 
 - [Hiroto-K/tbn-ari-ozawa-plugin](https://github.com/Hiroto-K/tbn-ari-ozawa-plugin)
 - [Hiroto-K/tbn-miku-ito-plugin](https://github.com/Hiroto-K/tbn-miku-ito-plugin)
+- [Hiroto-K/tbn-moe-toyota-plugin](https://github.com/Hiroto-K/tbn-moe-toyota-plugin)
 
 ## License
 

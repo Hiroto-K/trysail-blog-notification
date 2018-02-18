@@ -49,7 +49,9 @@ module TrySailBlogNotification::Parser
     # @param [Nokogiri::XML::Element] title_object
     # @return [String]
     def get_url(title_object)
-      title_object.attributes['href'].value
+      path = title_object.attributes['href'].value
+
+      build_url(path)
     end
 
     # Get last update date.

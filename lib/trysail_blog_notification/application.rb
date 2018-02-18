@@ -45,11 +45,11 @@ module TrySailBlogNotification
     def initialize(base_dir, config)
       @@app = self
       @base_dir = base_dir
-      @config = set_file_config(config)
+      @config = set_file_config(config.with_indifferent_access)
 
-      @dump_file = @config['data']['dump']['file']
-      log_file = @config['data']['log']['file']
-      log_level = @config['data']['log']['level']
+      @dump_file = @config[:data][:dump][:file]
+      log_file = @config[:data][:log][:file]
+      log_level = @config[:data][:log][:level]
       @log = TrySailBlogNotification::Log.new(log_file, log_level)
 
       @log.logger.info('Started application.')
@@ -62,7 +62,7 @@ module TrySailBlogNotification
       @config = set_urls_config(@config)
       @config = set_clients_config(@config)
 
-      @urls = @config['urls']
+      @urls = @config[:urls]
 
       begin
         add_clients
@@ -114,8 +114,8 @@ module TrySailBlogNotification
     # @param [Hash] config
     # @return [Hash]
     def set_file_config(config)
-      config['data']['log']['file'] = File.join(@base_dir, config['data']['log']['file'])
-      config['data']['dump']['file'] = File.join(@base_dir, config['data']['dump']['file'])
+      config[:data][:log][:file] = File.join(@base_dir, config[:data][:log][:file])
+      config[:data][:dump][:file] = File.join(@base_dir, config[:data][:dump][:file])
 
       config
     end
@@ -125,9 +125,9 @@ module TrySailBlogNotification
     # @param [Hash] config
     # @return [Hash]
     def set_urls_config(config)
-      config['urls'].keys.each do |name|
-        parser = config['urls'][name]['parser']
-        config['urls'][name]['parser'] = parser.constantize
+      config[:urls].keys.each do |name|
+        parser = config[:urls][name][:parser]
+        config[:urls][name][:parser] = parser.constantize
       end
 
       config
@@ -138,9 +138,9 @@ module TrySailBlogNotification
     # @param [Hash] config
     # @return [Hash]
     def set_clients_config(config)
-      config['clients'].keys.each do |name|
-        client_class = config['clients'][name]['client']
-        config['clients'][name]['client'] = client_class.constantize
+      config[:clients].keys.each do |name|
+        client_class = config[:clients][name][:client]
+        config[:clients][name][:client] = client_class.constantize
       end
 
       config
@@ -148,10 +148,10 @@ module TrySailBlogNotification
 
     # Add clients.
     def add_clients
-      @config['clients'].each do |name, options|
+      @config[:clients].each do |name, options|
 
-        client_class = options['client']
-        config = options['config']
+        client_class = options[:client]
+        config = options[:config]
 
         @log.logger.debug("Register #{name}(\"#{client_class}\") client.")
 
