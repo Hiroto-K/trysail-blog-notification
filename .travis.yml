@@ -13,3 +13,7 @@ before_script:
 script:
   - 'find . -type "f" -name "*.rb"  ! -path "*/vendor/*" -exec ruby -cw {} \;'
   - ruby test.rb
+
+notifications:
+  on_success: never
+  on_failure: never
