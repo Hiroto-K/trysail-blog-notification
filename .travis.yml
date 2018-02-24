@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+  - 2.4.3
+  - 2.5.0
+
+cache:
+  directories:
+    - vendor/bundle
+
+before_script:
+  - bundle install --path vendor/bundler --jobs 4
+
+script:
+  - 'find . -type "f" -name "*.rb"  ! -path "*/vendor/*" -exec ruby -cw {} \;'
+  - ruby test.rb
