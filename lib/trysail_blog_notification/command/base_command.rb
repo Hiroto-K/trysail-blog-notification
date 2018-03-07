@@ -16,7 +16,7 @@ module TrySailBlogNotification::Command
     # @param [Hash] options
     # @param [Array] args
     def initialize(options, args)
-      @options = options
+      @options = options.with_indifferent_access
       @args = args
     end
 
