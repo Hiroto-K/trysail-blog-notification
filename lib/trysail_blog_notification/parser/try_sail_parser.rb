@@ -51,7 +51,7 @@ module TrySailBlogNotification::Parser
     def get_url(title_object)
       path = title_object.attributes['href'].value
 
-      build_url(path)
+      build_url(path: path)
     end
 
     # Get last update date.

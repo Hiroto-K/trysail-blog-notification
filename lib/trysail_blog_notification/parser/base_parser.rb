@@ -32,10 +32,11 @@ module TrySailBlogNotification::Parser
 
     # Build url from path
     #
+    # @param [String] host
     # @param [String] path
     # @return [String]
-    def build_url(path)
-      URI.join(@blog_host, path).to_s
+    def build_url(host: @blog_host, path:)
+      URI.join(host, path).to_s
     end
 
   end
