@@ -85,6 +85,11 @@ module TrySailBlogNotification::Command
       old_states.each do |name, old_state|
         @log.logger.debug("Check diff of \"#{name}\".")
 
+        if current_states[name].nil?
+          @log.logger.info("current_states[#{name}] is nil. Skip check diff.")
+          next
+        end
+
         new_state = current_states[name]
         unless new_state['url'] == old_state['url'] || new_state['last_update'] == old_state['last_update']
           if options['no-notification']
