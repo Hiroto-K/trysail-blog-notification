@@ -57,17 +57,6 @@ module TrySailBlogNotification
       @clients = []
 
       @plugin = TrySailBlogNotification::Plugin.new(@base_dir)
-
-      @config = set_urls_config(@config)
-      @config = set_clients_config(@config)
-
-      @urls = @config[:urls]
-
-      begin
-        add_clients
-      rescue RuntimeError => e
-        @log.logger.error(e)
-      end
     end
 
     # Get application instance
@@ -101,6 +90,12 @@ module TrySailBlogNotification
 
     # Run application.
     def run
+      @config = set_urls_config(@config)
+      @config = set_clients_config(@config)
+      @urls = @config[:urls]
+
+      add_clients
+
       TrySailBlogNotification::Cli.start(ARGV)
     rescue RuntimeError => e
       @log.logger.error(e)
