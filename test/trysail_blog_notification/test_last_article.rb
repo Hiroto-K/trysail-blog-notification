@@ -1,4 +1,4 @@
-module TrySailBlogNotification::Test
+module TrySailBlogNotificationTest
   class TestLastArticle < TestCase
 
     def initialize(*args)

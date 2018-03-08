@@ -1,10 +1,6 @@
-module TrySailBlogNotification
+module TrySailBlogNotificationTest
 
-  module Test
-
-    class TestCase < ::Test::Unit::TestCase
-    end
-
+  class TestCase < ::Test::Unit::TestCase
   end
 
 end
