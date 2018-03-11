@@ -5,7 +5,7 @@ module TrySailBlogNotification
 
     class_option 'log-level', desc: 'Set the logger level (fatal, error, warn, info, debug).', type: :string
 
-    package_name 'trysail-blog-notification'
+    package_name TrySailBlogNotification::Application::NAME
 
     desc 'start', 'Run trysail-blog-notification.'
     option 'no-notification', desc: 'No send the notification.', type: :boolean, default: false
