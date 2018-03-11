@@ -5,19 +5,6 @@ require 'uri'
 module TrySailBlogNotification
   class HTTP
 
-    # Initialize HTTP class.
-    #
-    # @param [String] url Target url.
-    def initialize(url)
-      @url = url
-      @uri = URI.parse(URI.encode(@url))
-      @request = Net::HTTP::Get.new(@uri.path)
-      @http = Net::HTTP.new(@uri.host, @uri.port)
-
-      @response = get_response
-      @html = @response.body
-    end
-
     # Target url.
     #
     # @return [String]
@@ -47,6 +34,19 @@ module TrySailBlogNotification
     #
     # @return [String]
     attr_reader :html
+
+    # Initialize HTTP class.
+    #
+    # @param [String] url Target url.
+    def initialize(url)
+      @url = url
+      @uri = URI.parse(URI.encode(@url))
+      @request = Net::HTTP::Get.new(@uri.path)
+      @http = Net::HTTP.new(@uri.host, @uri.port)
+
+      @response = get_response
+      @html = @response.body
+    end
 
     private
 
