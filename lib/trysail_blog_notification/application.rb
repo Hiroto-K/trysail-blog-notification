@@ -5,6 +5,8 @@ require 'fileutils'
 module TrySailBlogNotification
   class Application
 
+    NAME = 'trysail-blog-notification'
+
     # Base dir
     #
     # @return [String]
