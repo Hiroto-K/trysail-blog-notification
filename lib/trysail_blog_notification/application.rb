@@ -5,6 +5,7 @@ require 'fileutils'
 module TrySailBlogNotification
   class Application
 
+    # Application name.
     NAME = 'trysail-blog-notification'
 
     # Base dir
