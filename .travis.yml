@@ -15,5 +15,8 @@ script:
   - ruby test.rb
 
 notifications:
-  on_success: never
-  on_failure: never
+  email: false
+  slack:
+    on_success: always
+    on_failure: always
+    secure: "EIL6QjV6yT82Rh0lBzJvi18BrVPvwBB95YhYR9p9YsI+yemjSlkKsGwWBuc2f+Qe6kADvQPwxg3RCsQVg5hyhwc3ddv4LDDPgmtVwOrIGnc4/5pSdD+eRYTaTjHdK7oE7x/rlvTHMevlbzd2KqrkySPqD+BUIlc23kCG4X94XTIsDoPz/XNzcsX4vqMFCa8CxYkWl7JdpF9gC0FMJ6gj8RToNjkSBLj+VQLEH+riAV9yNXjiA3LJq3xXIYSM/imIz+GGLTK7yqVLEXfLkDUA7sRFWoMdwV5SBhHJMrDZqRkF95zs+gIO+tNYGslO5BCak8ML9ZUEBGepUkBYMipvJD9K74OYDBPmFYDHGAZXWqKPUWm+YYYjVx3zVrplBabfEz6RoM/XNy7Kj7lWH332GdcOzQ0hUURyi3cN+1nOBrbc4AEuVNWDDff5qsRY8Gr+r9VbCNuFFfveg1cDLxbkPbbUCY1J5Q+YklrclgdXr9ChImtxvX7Ff7BWx2aeNLvkQrhsEReVnVJfRnCtcAjFzms2nhzq2oc3RYYxjtSJnNGP4toiL9AV5Vw24heoQk91R96nbDQaw5jI6D+NLscNmMccz0ITRC9FsSS1NmsQS7D+ce5evMzrKI2X5MDdFSbiMzMGiCJAEIU/Qz0CuL3nNIEBZ0kDovfziEmW0RQyhq4="
