@@ -33,6 +33,7 @@ module TrySailBlogNotification::Command
         @log.logger.debug('Get response.')
 
         http = TrySailBlogNotification::HTTP.new(url)
+        http.request
 
         @log.logger.debug(http.response)
         raise "Response http code : '#{http.response.code}'." unless http.response.code == '200'

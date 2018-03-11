@@ -43,9 +43,16 @@ module TrySailBlogNotification
       @uri = URI.parse(URI.encode(@url))
       @request = Net::HTTP::Get.new(@uri.path)
       @http = Net::HTTP.new(@uri.host, @uri.port)
+    end
 
+    # Send request.
+    #
+    # @return [Net::HTTPResponse]
+    def request
       @response = get_response
       @html = @response.body
+
+      @response
     end
 
     private
