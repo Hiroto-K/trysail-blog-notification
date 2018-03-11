@@ -37,7 +37,7 @@ module TrySailBlogNotification
       @multiple_loggers = ActiveSupport::Logger.broadcast(@stdout_logger)
       @logger.extend(@multiple_loggers)
       @logger.level = get_level_value(level)
-      @logger.progname = 'trysail-blog-notification'
+      @logger.progname = TrySailBlogNotification::Application::NAME
     end
 
     # Set logger level
