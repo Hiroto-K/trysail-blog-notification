@@ -3,6 +3,8 @@
 module TrySailBlogNotification::Command
   class BaseCommand
 
+    include TrySailBlogNotification::Util
+
     # Command options.
     #
     # @return [Hash]
@@ -24,15 +26,6 @@ module TrySailBlogNotification::Command
 
     # Start command.
     def start
-    end
-
-    private
-
-    # Return application instance.
-    #
-    # @return [TrySailBlogNotification::Application]
-    def app
-      TrySailBlogNotification::Application.app
     end
 
   end
