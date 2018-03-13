@@ -5,11 +5,6 @@ module TrySailBlogNotification::Parser
 
     include TrySailBlogNotification::Util
 
-    # Application instance.
-    #
-    # @return [TrySailBlogNotification::Application]
-    attr_reader :app
-
     # Config hash.
     #
     # @return [Hash]
@@ -17,10 +12,8 @@ module TrySailBlogNotification::Parser
 
     # Initialize parser.
     #
-    # @param [TrySailBlogNotification::Application] app Application instance.
     # @param [Hash] config Config hash.
-    def initialize(app, config)
-      @app = app
+    def initialize(config)
       @config = config
       @blog_host = 'https://ameblo.jp/'
     end
