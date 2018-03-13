@@ -67,7 +67,7 @@ module TrySailBlogNotification::Command
     def get_last_article(nokogiri, klass)
       @log.logger.debug('Get last articles.')
 
-      parser = klass.new(@application, @config)
+      parser = klass.new(@config)
       parser.parse(nokogiri)
     end
 
