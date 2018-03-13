@@ -3,7 +3,7 @@
 module TrySailBlogNotification
   class Cli < Thor
 
-    class_option 'log-level', desc: 'Set the logger level (fatal, error, warn, info, debug).', type: :string
+    class_option 'log-level', desc: 'Set the logger level.', type: :string, enum: %w(fatal error warn info debug)
 
     package_name TrySailBlogNotification::Application::NAME
 
