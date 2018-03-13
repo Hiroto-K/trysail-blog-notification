@@ -10,11 +10,10 @@ module TrySailBlogNotification::Command
     def initialize(options, args)
       super(options, args)
 
-      @application = app
-      @config = @application.config
-      @dump_file = @application.dump_file
-      @clients = @application.clients
-      @urls = @application.urls
+      @config = app.config
+      @dump_file = app.dump_file
+      @clients = app.clients
+      @urls = app.urls
     end
 
     # Start command.
