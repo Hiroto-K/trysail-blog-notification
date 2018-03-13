@@ -3,6 +3,8 @@
 module TrySailBlogNotification::Client
   class BaseClient
 
+    include TrySailBlogNotification::Util
+
     # Config hash.
     #
     # @return [Hash]
@@ -24,22 +26,6 @@ module TrySailBlogNotification::Client
       @title = status['title']
       @url = status['url']
       @last_update = status['last_update']
-    end
-
-    private
-
-    # Return Application instance.
-    #
-    # @return [TrySailBlogNotification::Application]
-    def app
-      TrySailBlogNotification::Application.app
-    end
-
-    # Return Logger instance.
-    #
-    # @return [Logger]
-    def logger
-      app.log.logger
     end
 
   end
