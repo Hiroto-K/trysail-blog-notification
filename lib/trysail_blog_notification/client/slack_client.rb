@@ -5,17 +5,16 @@ module TrySailBlogNotification::Client
 
     # Initialize application.
     #
-    # @param [TrySailBlogNotification::Application] app
     # @param [Hash] config
-    def initialize(app, config)
-      super(app, config)
+    def initialize(config)
+      super(config)
 
       Slack.configure do |c|
         c.token = @config['token']
       end
 
       @client = Slack::Web::Client.new
-      @client.logger = app.log.logger
+      @client.logger = logger
       @client.auth_test
     end
 
@@ -36,7 +35,7 @@ module TrySailBlogNotification::Client
 システム時刻   : #{@sys_date}
 EOS
 
-      @app.log.info(text)
+      logger.info(text)
       @client.chat_postMessage(channel: @config['channel'], text: text, as_user: true)
     end
 

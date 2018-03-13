@@ -5,10 +5,9 @@ module TrySailBlogNotification::Client
 
     # Initialize application.
     #
-    # @param [TrySailBlogNotification::Application] app
     # @param [Hash] config
-    def initialize(app, config)
-      super(app, config)
+    def initialize(config)
+      super(config)
 
       @client = Twitter::REST::Client.new(@config)
     end
@@ -26,7 +25,7 @@ module TrySailBlogNotification::Client
 #{@url}
 sys_date : #{@sys_date}
 EOS
-      @app.log.info(text)
+      logger.info(text)
       @client.update(text)
     end
 

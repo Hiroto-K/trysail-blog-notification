@@ -3,11 +3,6 @@
 module TrySailBlogNotification::Client
   class BaseClient
 
-    # Application instance.
-    #
-    # @return [TrySailBlogNotification::Application]
-    attr_reader :app
-
     # Config hash.
     #
     # @return [Hash]
@@ -15,10 +10,8 @@ module TrySailBlogNotification::Client
 
     # Initialize client.
     #
-    # @param [TrySailBlogNotification::Application] app Application instance.
     # @param [Hash] config Config hash.
-    def initialize(app, config)
-      @app = app
+    def initialize(config)
       @config = config
     end
 
@@ -31,6 +24,22 @@ module TrySailBlogNotification::Client
       @title = status['title']
       @url = status['url']
       @last_update = status['last_update']
+    end
+
+    private
+
+    # Return Application instance.
+    #
+    # @return [TrySailBlogNotification::Application]
+    def app
+      TrySailBlogNotification::Application.app
+    end
+
+    # Return Logger instance.
+    #
+    # @return [Logger]
+    def logger
+      app.log.logger
     end
 
   end
