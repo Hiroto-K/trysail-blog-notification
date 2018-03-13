@@ -3,6 +3,8 @@
 module TrySailBlogNotification::Parser
   class BaseParser
 
+    include TrySailBlogNotification::Util
+
     # Application instance.
     #
     # @return [TrySailBlogNotification::Application]
