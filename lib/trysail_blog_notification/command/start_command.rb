@@ -13,7 +13,6 @@ module TrySailBlogNotification::Command
       @application = app
       @config = @application.config
       @dump_file = @application.dump_file
-      @log = @application.log
       @clients = @application.clients
       @urls = @application.urls
     end
