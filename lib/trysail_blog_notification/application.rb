@@ -82,7 +82,7 @@ module TrySailBlogNotification
     # Load plugins
     def load_plugins
       @log.logger.debug('Load plugins')
-      @plugin.get_plugin_files.each do |file|
+      @plugin.plugin_files.each do |file|
         begin
           @log.logger.debug("Load plugin file : #{file}")
           require file
