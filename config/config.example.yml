@@ -22,11 +22,11 @@ clients :
 
 data :
   log :
-    file  : "/log/log.log"
+    file  : "log/log.log"
     level : :debug
 
   dump :
-    file : "/data/dump.json"
+    file : "data/dump.json"
 
 urls :
   雨宮天 :
