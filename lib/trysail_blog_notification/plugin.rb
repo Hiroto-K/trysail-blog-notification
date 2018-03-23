@@ -3,6 +3,8 @@
 module TrySailBlogNotification
   class Plugin
 
+    include TrySailBlogNotification::Util
+
     # Base dir path
     #
     # @return [String]
@@ -19,14 +21,8 @@ module TrySailBlogNotification
     #
     # @return [Array]
     def get_plugin_files
-      plugin_files = []
-      dirs = Dir.glob(File.join(@base_dir, '/plugin/*')).select {|d| File.directory?(d) }.sort
-      dirs.each do |dir|
-        base_name = File.basename(dir)
-        plugin_file = File.join(dir, "#{base_name}.rb")
-        plugin_files.push(plugin_file)
-      end
-      plugin_files
+      dirs = get_dirs
+      get_files(dirs)
     end
 
     # Load plugin files
@@ -36,6 +32,40 @@ module TrySailBlogNotification
       get_plugin_files.each do |file|
         require file
       end
+    end
+
+    private
+
+    # Get dirs.
+    #
+    # @return [Array]
+    def get_dirs
+      dirs = Dir.glob(app.base_path('/plugin/*'))
+      dirs.select! { |d|
+        File.directory?(d)
+      }
+      dirs.sort
+    end
+
+    # Get plugin files.
+    #
+    # @return [Array]
+    def get_files(dirs)
+      plugin_files = []
+
+      dirs.each do |dir|
+        base_name = File.basename(dir)
+        plugin_file = File.join(dir, "#{base_name}.rb")
+
+        unless File.exist?(plugin_file)
+          logger.warn("Plugin \"#{base_name}\" : file \"#{plugin_file}\" doe's not exist.")
+          next
+        end
+
+        plugin_files.push(plugin_file)
+      end
+
+      plugin_files
     end
 
   end
