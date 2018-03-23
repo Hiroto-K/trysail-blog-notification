@@ -20,6 +20,12 @@ module TrySailBlogNotification
       command.start
     end
 
+    desc 'clean', 'Clean log and data files.'
+    def clean
+      command = TrySailBlogNotification::Command::CleanCommand.new(options, args)
+      command.start
+    end
+
     no_commands do
 
       def invoke_command(command, *args)
