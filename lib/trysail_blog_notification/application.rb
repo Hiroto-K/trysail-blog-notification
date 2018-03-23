@@ -120,8 +120,8 @@ module TrySailBlogNotification
     # @param [Hash] config
     # @return [Hash]
     def set_file_config(config)
-      config[:data][:log][:file] = File.join(@base_dir, config[:data][:log][:file])
-      config[:data][:dump][:file] = File.join(@base_dir, config[:data][:dump][:file])
+      config[:data][:log][:file] = base_path(config[:data][:log][:file])
+      config[:data][:dump][:file] = base_path(config[:data][:dump][:file])
 
       config
     end
