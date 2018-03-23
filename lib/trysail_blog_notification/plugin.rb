@@ -25,6 +25,8 @@ module TrySailBlogNotification
       get_files(dirs)
     end
 
+    alias_method :plugin_files, :get_plugin_files
+
     # Load plugin files
     #
     # @return [Object]
