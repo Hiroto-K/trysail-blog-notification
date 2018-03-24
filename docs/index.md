@@ -4,6 +4,13 @@ TrySailのメンバーのブログの更新通知をTwitterやSlackで受け取�
 
 プラグインでの拡張により、TrySailのメンバーのブログ以外も受け取れます。
 
+## Install
+
+### Requirement
+
+- Ruby 2.4.0 以降
+- Git
+
 ## Plugins
 
 - [Hiroto-K/tbn-ari-ozawa-plugin](https://github.com/Hiroto-K/tbn-ari-ozawa-plugin)
