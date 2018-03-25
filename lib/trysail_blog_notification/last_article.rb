@@ -30,7 +30,7 @@ module TrySailBlogNotification
     # @param [String] title
     # @param [String] url
     # @param [String] last_update
-    def initialize(title, url, last_update)
+    def initialize(title:, url:, last_update:)
       @title = title
       set_url(url)
       @last_update = last_update
