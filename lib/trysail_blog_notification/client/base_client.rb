@@ -23,7 +23,10 @@ module TrySailBlogNotification::Client
     end
 
     # This method call in before "update" method call.
-    def before_update
+    #
+    # @param [String] name
+    # @param [TrySailBlogNotification::LastArticle] status
+    def before_update(name, status)
     end
 
     # Update.
