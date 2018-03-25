@@ -80,6 +80,7 @@ module TrySailBlogNotification
       @log.logger.debug("Call #{client.class}#.setup method")
       client.setup
 
+      @log.logger.debug("Register \"#{client.class}\" client.")
       @clients.push(client)
     end
 
