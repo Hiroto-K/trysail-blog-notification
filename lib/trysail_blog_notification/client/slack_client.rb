@@ -25,14 +25,16 @@ module TrySailBlogNotification::Client
     def update(name, status)
       super(name, status)
 
+      date = Time.now
+
       text = <<"EOS"
 #{name}のブログが更新されました。
 
-#{@title}
-#{@url}
+#{status.title}
+#{status.url}
 
-ブログ更新時刻 : #{@last_update}
-システム時刻   : #{@sys_date}
+ブログ更新時刻 : #{status.last_update}
+システム時刻   : #{date}
 EOS
 
       logger.info(text)

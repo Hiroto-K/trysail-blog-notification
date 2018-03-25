@@ -19,11 +19,13 @@ module TrySailBlogNotification::Client
     def update(name, status)
       super(name, status)
 
+      date = Time.now
+
       text = <<"EOS"
-【ブログ更新 #{@last_update}】
-#{name} : #{@title}
-#{@url}
-sys_date : #{@sys_date}
+【ブログ更新 #{status.title}】
+#{name} : #{status.title}
+#{status.url}
+date : #{date}
 EOS
       logger.info(text)
       @client.update(text)
