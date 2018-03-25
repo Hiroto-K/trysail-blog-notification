@@ -17,6 +17,15 @@ module TrySailBlogNotification::Client
       @config = config
     end
 
+    # Setup client class.
+    # This method call in after "initialize" method call.
+    def setup
+    end
+
+    # This method call in before "update" method call.
+    def before_update
+    end
+
     # Update.
     #
     # @param [String] name
