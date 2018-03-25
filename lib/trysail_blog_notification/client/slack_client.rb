@@ -23,8 +23,6 @@ module TrySailBlogNotification::Client
     # @param [String] name
     # @param [TrySailBlogNotification::LastArticle] status
     def update(name, status)
-      super(name, status)
-
       date = Time.now
 
       text = <<"EOS"
