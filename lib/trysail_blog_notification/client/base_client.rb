@@ -22,10 +22,6 @@ module TrySailBlogNotification::Client
     # @param [String] name
     # @param [TrySailBlogNotification::LastArticle] status
     def update(name, status)
-      @sys_date   = Time.now
-      @title = status['title']
-      @url = status['url']
-      @last_update = status['last_update']
     end
 
   end
