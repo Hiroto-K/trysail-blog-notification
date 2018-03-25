@@ -1,1 +1,7 @@
 theme: jekyll-theme-leap-day
+
+lang : ja-JP
+title: trysail-blog-notification
+description: TrySailのメンバーのブログの更新通知をTwitterやSlackで受け取るアプリ。
+show_downloads: true
+google_analytics: UA-73752623-2

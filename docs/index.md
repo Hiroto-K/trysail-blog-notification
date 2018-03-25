@@ -1,3 +1,8 @@
+---
+layout: default
+title: trysail-blog-notification
+---
+
 # trysail-blog-notification
 
 TrySailのメンバーのブログの更新通知をTwitterやSlackで受け取るアプリ。
@@ -15,7 +20,7 @@ TrySailのメンバーのブログの更新通知をTwitterやSlackで受け取�
 
 GitHubからソースコードを持ってきて``bundle install``で依存ライブラリをインストール。
 
-```bash
+```sh
 git clone git@github.com:Hiroto-K/trysail-blog-notification.git
 cd trysail-blog-notification
 bundle install
