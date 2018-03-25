@@ -40,17 +40,17 @@ It's not read yet.
 ```ruby
 module Hoge
   class FooClient < TrySailBlogNotification::Plugins::Client::BaseClient
-  
+
       def setup
         puts "setup"
       end
-  
+
       # @param [String] name
       # @param [TrySailBlogNotification::LastArticle] status
       def before_update(name, status)
         puts "before_update"
       end
-  
+
       # @param [String] name
       # @param [TrySailBlogNotification::LastArticle] status
       def update(name, status)
@@ -59,4 +59,16 @@ module Hoge
 
   end
 end
+```
+
+### Register client plugin
+
+``config/config.yml``ファイルの``clients``フィールドに追加します。
+
+```yaml
+clients :
+  client-uniq-name :
+    client : "Hoge::FooClient" # クラス名
+    config : # Clientクラスに渡される設定
+      key : value
 ```
