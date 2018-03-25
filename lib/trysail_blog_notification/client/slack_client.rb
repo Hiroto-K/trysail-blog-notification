@@ -3,14 +3,10 @@
 module TrySailBlogNotification::Client
   class SlackClient < BaseClient
 
-    # Initialize application.
-    #
-    # @param [Hash] config
-    def initialize(config)
-      super(config)
-
+    # Setup.
+    def setup
       Slack.configure do |c|
-        c.token = @config['token']
+        c.token = config['token']
       end
 
       @client = Slack::Web::Client.new
