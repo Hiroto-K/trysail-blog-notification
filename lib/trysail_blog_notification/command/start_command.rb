@@ -92,7 +92,7 @@ module TrySailBlogNotification::Command
         end
 
         new_state = current_states[name]
-        if new_state['title'] != old_state['title'] || new_state['url'] != old_state['url']
+        if new_state.title != old_state.title || new_state.url != old_state.url
           if options['no-notification']
             logger.info('Option "--no-notification" is enabled. No send the notification.')
           else
