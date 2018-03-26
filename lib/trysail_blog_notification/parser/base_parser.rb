@@ -5,16 +5,8 @@ module TrySailBlogNotification::Parser
 
     include TrySailBlogNotification::Util
 
-    # Config hash.
-    #
-    # @return [Hash]
-    attr_reader :config
-
     # Initialize parser.
-    #
-    # @param [Hash] config Config hash.
-    def initialize(config)
-      @config = config
+    def initialize
       @blog_host = 'https://ameblo.jp/'
     end
 
