@@ -137,6 +137,8 @@ module TrySailBlogNotification
     # @return [Hash]
     def set_urls_config(config)
       config[:urls].keys.each do |name|
+        next if config[:urls][name][:parser].nil?
+
         parser = config[:urls][name][:parser]
         config[:urls][name][:parser] = parser.constantize
       end

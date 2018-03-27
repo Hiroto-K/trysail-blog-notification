@@ -30,13 +30,10 @@ data :
 
 urls :
   雨宮天 :
-    url : "https://ameblo.jp/amamiyasorablog/"
-    parser : "TrySailBlogNotification::Parser::SoraAmamiya"
+    rss : "http://feedblog.ameba.jp/rss/ameblo/amamiyasorablog/rss20.xml"
 
   麻倉もも :
-    url : "https://ameblo.jp/asakuramomoblog/"
-    parser : "TrySailBlogNotification::Parser::MomoAsakura"
+    rss : "http://feedblog.ameba.jp/rss/ameblo/asakuramomoblog/rss20.xml"
 
   夏川椎菜 :
-    url : "https://ameblo.jp/natsukawashiinablog/"
-    parser : "TrySailBlogNotification::Parser::ShiinaNatsukawa"
+    rss : "http://feedblog.ameba.jp/rss/ameblo/natsukawashiinablog/rss20.xml"
