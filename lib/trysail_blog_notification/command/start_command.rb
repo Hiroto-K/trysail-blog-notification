@@ -25,22 +25,32 @@ module TrySailBlogNotification::Command
       @urls.each do |name, info|
         logger.debug("Run \"#{name}\"")
 
-        url = info['url']
-        parser_class = info['parser']
+        if info['rss_url']
+          http = http_request(info['rss_url'])
+          http.request
+          rss_content = http.html
+          rss_reader = TrySailBlogNotification::RssReader.new(rss_content)
 
-        logger.debug("Run \"#{name}\" : \"#{url}.\"")
+          last_article = rss_reader.last_article
 
-        logger.debug('Get response.')
+        else
+          url = info['url']
+          parser_class = info['parser']
 
-        http = http_request(url)
-        http.request
+          logger.debug("Run \"#{name}\" : \"#{url}.\"")
 
-        logger.debug(http.response)
-        raise "Response http code : '#{http.response.code}'." unless http.response.code == '200'
+          logger.debug('Get response.')
 
-        html = http.html
-        nokogiri = Nokogiri::HTML.parse(html)
-        last_article = get_last_article(nokogiri, parser_class)
+          http = http_request(url)
+          http.request
+
+          logger.debug(http.response)
+          raise "Response http code : '#{http.response.code}'." unless http.response.code == '200'
+
+          html = http.html
+          nokogiri = Nokogiri::HTML.parse(html)
+          last_article = get_last_article(nokogiri, parser_class)
+        end
 
         logger.debug(last_article)
 
@@ -59,7 +69,7 @@ module TrySailBlogNotification::Command
 
     private
 
-    # Send http request.
+    # Create http instance.
     #
     # @param [String] url
     # @return [String]
