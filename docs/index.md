@@ -7,7 +7,7 @@ title: trysail-blog-notification
 
 TrySailのメンバーのブログの更新通知をTwitterやSlackで受け取るアプリ。
 
-プラグインでの拡張により、TrySailのメンバーのブログ以外も受け取れます。
+RSSの追加やプラグインでの拡張により、TrySailのメンバーのブログ以外も受け取れます。
 
 ## Install
 
@@ -37,11 +37,11 @@ bundle install
 ## Plugins
 
 - [Hiroto-K/tbn-ari-ozawa-plugin](https://github.com/Hiroto-K/tbn-ari-ozawa-plugin)
-    - 小澤亜李さんのブログの通知を受け取るプラグイン。
+    - **非推奨。** 小澤亜李さんのブログの通知を受け取るプラグイン。
 - [Hiroto-K/tbn-miku-ito-plugin](https://github.com/Hiroto-K/tbn-miku-ito-plugin)
-    - 伊藤美来さんのブログの通知を受け取るプラグイン。
+    - **非推奨。** 伊藤美来さんのブログの通知を受け取るプラグイン。
 - [Hiroto-K/tbn-moe-toyota-plugin](https://github.com/Hiroto-K/tbn-moe-toyota-plugin)
-    - 豊田萌絵さんのブログの通知を受け取るプラグイン。
+    - **非推奨。** 豊田萌絵さんのブログの通知を受け取るプラグイン。
 
 ## License
 
