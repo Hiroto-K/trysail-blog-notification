@@ -25,8 +25,8 @@ module TrySailBlogNotification::Command
       @urls.each do |name, info|
         logger.debug("Run \"#{name}\"")
 
-        if info['rss_url']
-          http = http_request(info['rss_url'])
+        if info['rss']
+          http = http_request(info['rss'])
           http.request
           rss_content = http.html
           rss_reader = TrySailBlogNotification::RssReader.new(rss_content)
