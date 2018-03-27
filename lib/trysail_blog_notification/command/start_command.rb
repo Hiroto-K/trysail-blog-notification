@@ -23,6 +23,8 @@ module TrySailBlogNotification::Command
       current_states = {}
 
       @urls.each do |name, info|
+        logger.debug("Run \"#{name}\"")
+
         url = info['url']
         parser_class = info['parser']
 
