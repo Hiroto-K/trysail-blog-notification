@@ -30,7 +30,7 @@ module TrySailBlogNotification::Command
 
         logger.debug('Get response.')
 
-        http = TrySailBlogNotification::HTTP.new(url)
+        http = http_request(url)
         http.request
 
         logger.debug(http.response)
@@ -56,6 +56,14 @@ module TrySailBlogNotification::Command
     end
 
     private
+
+    # Send http request.
+    #
+    # @param [String] url
+    # @return [String]
+    def http_request(url)
+      TrySailBlogNotification::HTTP.new(url)
+    end
 
     # Get last article.
     #
