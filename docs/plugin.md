@@ -19,9 +19,35 @@ title: Plugin
 
 別途gemを利用する場合は``plugin/[plugin-name]/Gemfile``を作れば、trysail-blog-notificationの``Gemfile``より``eval_gemfile``で読み込みます。この際プラグイン側に``Gemfile.lock``は必要ではありません。
 
+## Add new blog
+
+デフォルトで設定されているブログ以外のブログも追加する場合。
+
+RSSが提供されている場合、``config/config.yml``の``urls``にRSSのurlを追加するだけです。
+```yaml
+urls :
+  雨宮天 :
+    rss : "http://feedblog.ameba.jp/rss/ameblo/amamiyasorablog/rss20.xml"
+
+  麻倉もも :
+    rss : "http://feedblog.ameba.jp/rss/ameblo/asakuramomoblog/rss20.xml"
+
+  夏川椎菜 :
+    rss : "http://feedblog.ameba.jp/rss/ameblo/natsukawashiinablog/rss20.xml"
+
+  # 例 https://ameblo.jp/ari-step/ を追加
+  小澤亜李 :
+    # rssのurlを指定
+    rss : "http://feedblog.ameba.jp/rss/ameblo/ari-step/rss20.xml"
+```
+
+RSSが提供されていない場合は以下方法のParserプラグインを作成します。
+
 ## Parser plugin
 
 ブログの内容をパースするプラグインの作成方法。
+
+通知するブログにRSSがある場合、上記の方法でRSSを追加するべきです。
 
 ``TrySailBlogNotification::Plugins::Parser::BaseParser``を継承したクラスを作成します。
 
