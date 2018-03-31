@@ -6,7 +6,7 @@ module TrySailBlogNotification::Client
     # Setup.
     def setup
       Slack.configure do |c|
-        c.token = config['token']
+        c.token = config[:token]
       end
 
       @client = Slack::Web::Client.new
