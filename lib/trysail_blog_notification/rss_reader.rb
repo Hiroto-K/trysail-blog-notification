@@ -27,7 +27,7 @@ module TrySailBlogNotification
         last_update: item.pubDate.to_s
       }
 
-      TrySailBlogNotification::LastArticle.new(**info)
+      TrySailBlogNotification::LastArticle.new(info)
     end
 
   end
