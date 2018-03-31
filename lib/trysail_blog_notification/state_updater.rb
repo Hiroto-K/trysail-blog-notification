@@ -73,7 +73,8 @@ module TrySailBlogNotification
       nokogiri = Nokogiri::HTML.parse(html)
 
       logger.debug('Get last articles.')
-      parser = parser_class.new
+      klass = parser_class.constantize
+      parser = klass.new
       last_article = parser.parse(nokogiri)
       raise "#{parser_class}#.parse method is not returned TrySailBlogNotification::LastArticle instance." if last_article.is_a?(TrySailBlogNotification::LastArticle)
 
