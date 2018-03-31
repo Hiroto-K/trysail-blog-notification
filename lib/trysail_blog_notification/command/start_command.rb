@@ -20,42 +20,10 @@ module TrySailBlogNotification::Command
     def start
       logger.debug("Call \"#{__method__}\" method.")
 
-      current_states = {}
+      updater = TrySailBlogNotification::StateUpdater.new(@urls)
+      updater.update
 
-      @urls.each do |name, info|
-        logger.debug("Run \"#{name}\"")
-
-        if info['rss']
-          http = http_request(info['rss'])
-          http.request
-          rss_content = http.html
-          rss_reader = TrySailBlogNotification::RssReader.new(rss_content)
-
-          last_article = rss_reader.last_article
-
-        else
-          url = info['url']
-          parser_class = info['parser']
-
-          logger.debug("Run \"#{name}\" : \"#{url}.\"")
-
-          logger.debug('Get response.')
-
-          http = http_request(url)
-          http.request
-
-          logger.debug(http.response)
-          raise "Response http code : '#{http.response.code}'." unless http.response.code == '200'
-
-          html = http.html
-          nokogiri = Nokogiri::HTML.parse(html)
-          last_article = get_last_article(nokogiri, parser_class)
-        end
-
-        logger.debug(last_article)
-
-        current_states[name] =last_article
-      end
+      current_states = updater.states
 
       logger.debug('current_states')
       logger.debug(current_states)
