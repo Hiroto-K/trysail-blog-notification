@@ -100,7 +100,6 @@ module TrySailBlogNotification
 
     # Run application.
     def run
-      @config = set_urls_config(@config)
       @urls = @config[:urls]
 
       add_clients
@@ -126,21 +125,6 @@ module TrySailBlogNotification
     def set_file_config(config)
       config[:data][:log][:file] = base_path(config[:data][:log][:file])
       config[:data][:dump][:file] = base_path(config[:data][:dump][:file])
-
-      config
-    end
-
-    # Set urls config.
-    #
-    # @param [Hash] config
-    # @return [Hash]
-    def set_urls_config(config)
-      config[:urls].keys.each do |name|
-        next if config[:urls][name][:parser].nil?
-
-        parser = config[:urls][name][:parser]
-        config[:urls][name][:parser] = parser.constantize
-      end
 
       config
     end
