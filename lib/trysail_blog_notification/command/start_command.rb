@@ -37,26 +37,6 @@ module TrySailBlogNotification::Command
 
     private
 
-    # Create http instance.
-    #
-    # @param [String] url
-    # @return [String]
-    def http_request(url)
-      TrySailBlogNotification::HTTP.new(url)
-    end
-
-    # Get last article.
-    #
-    # @param [Nokogiri::HTML::Document] nokogiri
-    # @param [TrySailBlogNotification::Parser::BaseParser] klass
-    # @return [TrySailBlogNotification::LastArticle]
-    def get_last_article(nokogiri, klass)
-      logger.debug('Get last articles.')
-
-      parser = klass.new
-      parser.parse(nokogiri)
-    end
-
     # Check updates.
     #
     # @param [Hash] current_states
