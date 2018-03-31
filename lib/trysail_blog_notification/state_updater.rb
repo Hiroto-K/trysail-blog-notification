@@ -58,7 +58,7 @@ module TrySailBlogNotification
     # Get last article by parser
     #
     # @param [String] url
-    # @param [Object] parser_class
+    # @param [String] parser_class
     # @return [TrySailBlogNotification::LastArticle]
     def get_by_parser(url, parser_class)
       logger.debug('Get response.')
