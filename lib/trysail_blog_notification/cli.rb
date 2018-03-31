@@ -21,6 +21,8 @@ module TrySailBlogNotification
     end
 
     desc 'clean', 'Clean log and data files.'
+    option 'verbose', desc: 'Show verbose', type: :boolean, default: true
+    option 'force', desc: 'Force remove', type: :boolean, default: false
     def clean
       command = TrySailBlogNotification::Command::CleanCommand.new(options, args)
       command.start
