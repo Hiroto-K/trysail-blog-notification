@@ -12,7 +12,8 @@ module TrySailBlogNotification::Command
       files << find_files(app.base_path('log/*'))
       files.flatten!
 
-      rm(files)
+      option = options.slice(:verbose, :force).symbolize_keys
+      rm(files, option)
     end
 
     private
@@ -28,9 +29,10 @@ module TrySailBlogNotification::Command
     # Delete files
     #
     # @param [Array] files
+    # @param [Hash] options
     # @return [Array]
-    def rm(files)
-      FileUtils.rm(files, verbose: true, force: false)
+    def rm(files, options)
+      FileUtils.rm(files, options)
     end
 
   end
