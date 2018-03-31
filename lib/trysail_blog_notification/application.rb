@@ -168,7 +168,8 @@ module TrySailBlogNotification
 
         @log.logger.debug("Register #{name}(\"#{client_class}\") client.")
 
-        add_client(client_class.new(config))
+        klass = client_class.constantize
+        add_client(klass.new(config))
       end
     end
 
