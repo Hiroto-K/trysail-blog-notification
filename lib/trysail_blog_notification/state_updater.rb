@@ -37,6 +37,14 @@ module TrySailBlogNotification
     # Create http instance.
     #
     # @param [String] url
+    # @return [TrySailBlogNotification::HTTP]
+    def create_http(url)
+      TrySailBlogNotification::HTTP.new(url)
+    end
+
+    # Create http instance.
+    #
+    # @param [String] url
     # @return [String]
     def http_request(url)
       TrySailBlogNotification::HTTP.new(url)
