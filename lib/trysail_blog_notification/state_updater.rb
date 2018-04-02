@@ -5,6 +5,9 @@ module TrySailBlogNotification
 
     include TrySailBlogNotification::Util
 
+    # States hash.
+    #
+    # @return [Hash]
     attr_reader :states
 
     # Initialize StateUpdater
