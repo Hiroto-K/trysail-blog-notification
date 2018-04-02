@@ -27,8 +27,6 @@ module TrySailBlogNotification
     # @return [String]
     attr_reader :body
 
-    alias_method :html, :body
-
     # Initialize HTTP class.
     #
     # @param [String] url Target url.

@@ -49,7 +49,7 @@ module TrySailBlogNotification
     def get_by_rss(rss_url)
       http = http_request(rss_url)
       http.request
-      rss_content = http.html
+      rss_content = http.body
       rss_reader = TrySailBlogNotification::RssReader.new(rss_content)
 
       rss_reader.last_article
@@ -69,7 +69,7 @@ module TrySailBlogNotification
       logger.debug(http.response)
       raise "Response http code : '#{http.response.code}'." unless http.response.code == '200'
 
-      html = http.html
+      html = http.body
       nokogiri = Nokogiri::HTML.parse(html)
 
       logger.debug('Get last articles.')
