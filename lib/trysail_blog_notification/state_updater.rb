@@ -45,9 +45,12 @@ module TrySailBlogNotification
     # Create http instance.
     #
     # @param [String] url
-    # @return [String]
+    # @return [TrySailBlogNotification::HTTP]
     def http_request(url)
-      TrySailBlogNotification::HTTP.new(url)
+      http = create_http(url)
+      http.request
+
+      http
     end
 
     # Get last article by rss
