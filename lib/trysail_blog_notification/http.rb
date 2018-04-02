@@ -12,63 +12,41 @@ module TrySailBlogNotification
     # @return [String]
     attr_reader :url
 
-    # Target url.
-    #
-    # @return [URI::HTTP|URI::HTTPS]
-    attr_reader :uri
-
     # Request.
     #
-    # @return [Net::HTTP::Get]
-    attr_reader :request
-
-    # Net::HTTP instance.
-    #
-    # @return [Net::HTTP]
-    attr_reader :http
+    # @return [Faraday::Connection]
+    attr_reader :faraday_connection
 
     # Response instance.
     #
-    # @return [Net::HTTPResponse]
+    # @return [Faraday::Response]
     attr_reader :response
 
-    # Html.
+    # Response body.
     #
     # @return [String]
-    attr_reader :html
+    attr_reader :body
+
+    alias_method :html, :body
 
     # Initialize HTTP class.
     #
     # @param [String] url Target url.
     def initialize(url)
       @url = url
-      @uri = URI.parse(URI.encode(@url))
-      @request = Net::HTTP::Get.new(@uri.path)
-      @http = Net::HTTP.new(@uri.host, @uri.port)
+      @faraday_connection = Faraday::Connection.new(url: @url) do |faraday|
+        faraday.adapter  Faraday.default_adapter
+      end
     end
 
     # Send request.
     #
-    # @return [Net::HTTPResponse]
+    # @return [Faraday::Response]
     def request
-      @response = get_response
-      @html = @response.body
+      @response = @faraday_connection.get
+      @body = @response.body
 
       @response
-    end
-
-    private
-
-    # Get response.
-    def get_response
-      if @uri.scheme == 'https'
-        @http.use_ssl = true
-        @http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-      end
-
-      @http.start do |h|
-        h.request(@request)
-      end
     end
 
   end
