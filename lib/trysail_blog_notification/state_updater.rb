@@ -40,9 +40,20 @@ module TrySailBlogNotification
     # Create http instance.
     #
     # @param [String] url
-    # @return [String]
-    def http_request(url)
+    # @return [TrySailBlogNotification::HTTP]
+    def create_http(url)
       TrySailBlogNotification::HTTP.new(url)
+    end
+
+    # Create http instance.
+    #
+    # @param [String] url
+    # @return [TrySailBlogNotification::HTTP]
+    def http_request(url)
+      http = create_http(url)
+      http.request
+
+      http
     end
 
     # Get last article by rss
@@ -51,8 +62,7 @@ module TrySailBlogNotification
     # @return [TrySailBlogNotification::LastArticle]
     def get_by_rss(rss_url)
       http = http_request(rss_url)
-      http.request
-      rss_content = http.html
+      rss_content = http.body
       rss_reader = TrySailBlogNotification::RssReader.new(rss_content)
 
       rss_reader.last_article
@@ -67,12 +77,7 @@ module TrySailBlogNotification
       logger.debug('Get response.')
 
       http = http_request(url)
-      http.request
-
-      logger.debug(http.response)
-      raise "Response http code : '#{http.response.code}'." unless http.response.code == '200'
-
-      html = http.html
+      html = http.body
       nokogiri = Nokogiri::HTML.parse(html)
 
       logger.debug('Get last articles.')
