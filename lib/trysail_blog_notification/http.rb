@@ -1,9 +1,5 @@
 # frozen_string_literal: true
 
-require 'net/http'
-require 'net/https'
-require 'uri'
-
 module TrySailBlogNotification
   class HTTP
 
