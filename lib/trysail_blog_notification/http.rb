@@ -43,5 +43,12 @@ module TrySailBlogNotification
       @response
     end
 
+    # Check request was success.
+    #
+    # @return [TrueClass|FalseClass]
+    def success?
+      @response.success?
+    end
+
   end
 end
