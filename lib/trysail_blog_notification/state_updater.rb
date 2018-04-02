@@ -50,6 +50,8 @@ module TrySailBlogNotification
     # @param [String] url
     # @return [TrySailBlogNotification::HTTP]
     def http_request(url)
+      logger.debug("Send http request : #{url}.")
+
       http = create_http(url)
       http.request
 
@@ -74,8 +76,6 @@ module TrySailBlogNotification
     # @param [String] parser_class
     # @return [TrySailBlogNotification::LastArticle]
     def get_by_parser(url, parser_class)
-      logger.debug('Get response.')
-
       http = http_request(url)
       html = http.body
       nokogiri = Nokogiri::HTML.parse(html)
