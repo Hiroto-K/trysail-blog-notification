@@ -13,6 +13,7 @@ before_script:
 script:
   - 'find . -type "f" -name "*.rb"  ! -path "*/vendor/*" -exec ruby -cw {} \;'
   - ruby test.rb
+  - bundle exec rspec
 
 notifications:
   email: false
