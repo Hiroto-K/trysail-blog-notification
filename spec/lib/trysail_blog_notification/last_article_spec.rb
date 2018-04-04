@@ -10,66 +10,66 @@ describe TrySailBlogNotification::LastArticle do
     url: url,
     last_update: last_update,
   }}
-  let(:last_article) { TrySailBlogNotification::LastArticle.new(default_argument) }
 
   describe '#to_h' do
 
-    let(:hash) { last_article.to_h }
+    let(:last_article) { TrySailBlogNotification::LastArticle.new(default_argument) }
 
-    context 'return hash' do
-      it { expect(hash).to(be_a(Hash)) }
+    it 'return hash' do
+      expect(last_article.to_h).to(be_a(Hash))
     end
 
-    context 'eq title' do
-      it { expect(hash[:title]).to(eql(title)) }
+    it 'eq title' do
+      expect(last_article.to_h[:title]).to(eql(title))
     end
 
-    context 'eq url' do
-      it { expect(hash[:url]).to(eql(url)) }
+    it 'eq url' do
+      expect(last_article.to_h[:url]).to(eql(url))
     end
 
-    context 'eq last_update' do
-      it { expect(hash[:last_update]).to(eql(last_update)) }
+    it 'eq last_update' do
+      expect(last_article.to_h[:last_update]).to(eql(last_update))
     end
   end
 
   describe '#[]' do
 
-    describe 'access with String' do
-      context 'access title' do
-        it { expect(last_article['title']).to(eql(title)) }
+    let(:last_article) { TrySailBlogNotification::LastArticle.new(default_argument) }
+
+    context 'access with String' do
+      it 'access title' do
+        expect(last_article['title']).to(eql(title))
       end
 
-      context 'access url' do
-        it { expect(last_article['url']).to(eql(url)) }
+      it 'access url' do
+        expect(last_article['url']).to(eql(url))
       end
 
-      context 'access last_update' do
-        it { expect(last_article['last_update']).to(eql(last_update)) }
+      it 'access last_update' do
+        expect(last_article['last_update']).to(eql(last_update))
       end
 
-      context 'access nothing attr' do
-        it { expect(last_article['example']).to(be_nil) }
+      it 'access nothing attr' do
+        expect(last_article['example']).to(be_nil)
       end
     end
 
-    describe 'access with Symbol' do
-      context 'access title' do
-        it { expect(last_article[:title]).to(eql(title)) }
+    context 'access with Symbol' do
+      it 'access title' do
+        expect(last_article[:title]).to(eql(title))
       end
 
-      context 'access url' do
-        it { expect(last_article[:url]).to(eql(url)) }
+      it 'access url' do
+        expect(last_article[:url]).to(eql(url))
       end
 
-      context 'access last_update' do
-        it { expect(last_article[:last_update]).to(eql(last_update)) }
+      it 'access last_update' do
+        expect(last_article[:last_update]).to(eql(last_update))
       end
 
-      context 'access nothing attr' do
-        it { expect(last_article[:example]).to(be_nil) }
+      it 'access nothing attr' do
+        expect(last_article[:example]).to(be_nil)
       end
-
     end
 
   end
