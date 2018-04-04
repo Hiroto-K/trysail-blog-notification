@@ -4,7 +4,7 @@ require 'trysail_blog_notification/rss_reader'
 
 describe TrySailBlogNotification::RssReader do
 
-  let(:rss_content) { File.read(File.expand_path(File.join(__dir__, '/../../fixtures/files/rss.rss'))) }
+  let(:rss_content) { File.read(File.join(__dir__, '/../../fixtures/files/rss.rss')) }
   let(:reader) { TrySailBlogNotification::RssReader.new(rss_content) }
 
   describe '#initialize' do
