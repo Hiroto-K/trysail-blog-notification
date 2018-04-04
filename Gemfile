@@ -10,6 +10,7 @@ gem 'slack-ruby-client', '~>0.8'
 
 group :test do
   gem 'test-unit', '~>3.2', require: %w(test/unit)
+  gem 'rspec', '~>3.7'
 end
 
 group :plugin do
