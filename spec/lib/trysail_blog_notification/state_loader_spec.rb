@@ -1,4 +1,3 @@
-require 'spec_helper'
 require 'trysail_blog_notification/last_article'
 require 'trysail_blog_notification/state_loader'
 
