@@ -34,6 +34,7 @@ module TrySailBlogNotification::Client
     # @param [String] name
     # @param [TrySailBlogNotification::LastArticle] status
     def update(name, status)
+      raise NotImplementedError, "You must implement #{self.class}##{__method__}"
     end
 
   end

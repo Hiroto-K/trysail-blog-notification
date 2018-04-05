@@ -26,6 +26,7 @@ module TrySailBlogNotification::Command
 
     # Start command.
     def start
+      raise NotImplementedError, "You must implement #{self.class}##{__method__}"
     end
 
   end
