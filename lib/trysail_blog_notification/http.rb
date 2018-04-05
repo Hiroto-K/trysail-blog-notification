@@ -29,7 +29,7 @@ module TrySailBlogNotification
     def initialize(url)
       @url = url
       @faraday_connection = Faraday::Connection.new(url: @url) do |faraday|
-        faraday.adapter  Faraday.default_adapter
+        faraday.adapter Faraday.default_adapter
       end
     end
 
