@@ -9,17 +9,17 @@ describe TrySailBlogNotification::StateLoader do
 
   describe '#initialize' do
     it 'Instance of TrySailBlogNotification::StateLoader' do
-      expect(state_loader).to(be_a(TrySailBlogNotification::StateLoader))
+      expect(state_loader).to be_a TrySailBlogNotification::StateLoader
     end
   end
 
   describe '#to_json' do
     it 'return String' do
-      expect(state_loader.to_json).to(be_a(String))
+      expect(state_loader.to_json).to be_a String
     end
 
     it 'eql json' do
-      expect(state_loader.to_json).to(eql(state_content))
+      expect(state_loader.to_json).to eq state_content
     end
   end
 
@@ -28,13 +28,13 @@ describe TrySailBlogNotification::StateLoader do
     let(:hash) { state_loader.to_h }
 
     it 'return Hash' do
-      expect(hash).to(be_a(Hash))
+      expect(hash).to be_a Hash
     end
 
     it 'have keys' do
-      expect(hash).to(have_key('Name1'))
-      expect(hash).to(have_key('Name2'))
-      expect(hash).to(have_key('Name3'))
+      expect(hash).to have_key 'Name1'
+      expect(hash).to have_key 'Name2'
+      expect(hash).to have_key 'Name3'
     end
   end
 
@@ -43,31 +43,31 @@ describe TrySailBlogNotification::StateLoader do
     let(:states) { state_loader.states }
 
     it 'return Hash' do
-      expect(states).to(be_a(Hash))
+      expect(states).to be_a Hash
     end
 
     it 'have keys' do
-      expect(states).to(have_key('Name1'))
-      expect(states).to(have_key('Name2'))
-      expect(states).to(have_key('Name3'))
+      expect(states).to have_key 'Name1'
+      expect(states).to have_key 'Name2'
+      expect(states).to have_key 'Name3'
     end
 
     it 'have TrySailBlogNotification::LastArticle' do
-      expect(states['Name1']).to(be_a(TrySailBlogNotification::LastArticle))
-      expect(states['Name2']).to(be_a(TrySailBlogNotification::LastArticle))
-      expect(states['Name3']).to(be_a(TrySailBlogNotification::LastArticle))
+      expect(states['Name1']).to be_a TrySailBlogNotification::LastArticle
+      expect(states['Name2']).to be_a TrySailBlogNotification::LastArticle
+      expect(states['Name3']).to be_a TrySailBlogNotification::LastArticle
     end
 
     it 'eql title' do
-      expect(states['Name1'].title).to(eql('hoge'))
+      expect(states['Name1'].title).to eq 'hoge'
     end
 
     it 'eql url' do
-      expect(states['Name1'].url).to(eql('https://tsbn.test/hoge'))
+      expect(states['Name1'].url).to eq 'https://tsbn.test/hoge'
     end
 
     it 'eql last_update' do
-      expect(states['Name1'].last_update).to(eql('Sun, 01 Apr 2018 22:07:28 +0900'))
+      expect(states['Name1'].last_update).to eq 'Sun, 01 Apr 2018 22:07:28 +0900'
     end
   end
 

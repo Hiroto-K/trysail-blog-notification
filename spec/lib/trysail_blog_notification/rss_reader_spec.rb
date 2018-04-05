@@ -8,11 +8,11 @@ describe TrySailBlogNotification::RssReader do
 
   describe '#initialize' do
     it 'Instance of TrySailBlogNotification::RssReader' do
-      expect(reader).to(be_a(TrySailBlogNotification::RssReader))
+      expect(reader).to be_a TrySailBlogNotification::RssReader
     end
 
     it 'Has RSS::Rss' do
-      expect(reader.rss).to(be_a(RSS::Rss))
+      expect(reader.rss).to be_a RSS::Rss
     end
   end
 
@@ -20,22 +20,22 @@ describe TrySailBlogNotification::RssReader do
 
     it 'return TrySailBlogNotification::LastArticle' do
       last_article = reader.last_article
-      expect(last_article).to(be_a(TrySailBlogNotification::LastArticle))
+      expect(last_article).to be_a TrySailBlogNotification::LastArticle
     end
 
     it 'eql title' do
       last_article = reader.last_article
-      expect(last_article.title).to(eql('Test title 1'))
+      expect(last_article.title).to eq 'Test title 1'
     end
 
     it 'eql url' do
       last_article = reader.last_article
-      expect(last_article.url).to(eql('https://tsbn.test/test-title-1'))
+      expect(last_article.url).to eq 'https://tsbn.test/test-title-1'
     end
 
     it 'eql last_update' do
       last_article = reader.last_article
-      expect(last_article.last_update).to(eql('Sun, 01 Apr 2018 21:57:17 +0900'))
+      expect(last_article.last_update).to eq 'Sun, 01 Apr 2018 21:57:17 +0900'
     end
   end
 
