@@ -32,7 +32,7 @@ module TrySailBlogNotification::Client
 EOS
 
       logger.info(text)
-      @client.chat_postMessage(channel: config['channel'], text: text, as_user: true)
+      @client.chat_postMessage(channel: config[:channel], text: text, as_user: true)
     end
 
   end
