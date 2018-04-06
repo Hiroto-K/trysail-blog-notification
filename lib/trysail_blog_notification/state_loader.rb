@@ -58,8 +58,8 @@ module TrySailBlogNotification
       @states = {}
 
       @raw_states.each do |name, state|
-        state = state.transform_keys(&:to_sym)
-        @states[name] = TrySailBlogNotification::LastArticle.new(state)
+        symbol_state = state.transform_keys(&:to_sym)
+        @states[name] = TrySailBlogNotification::LastArticle.new(symbol_state)
       end
     end
 
