@@ -89,11 +89,13 @@ module TrySailBlogNotification::Command
 
       @clients.each do |client|
         begin
-          logger.debug("Call \"update\" method of \"#{client.class}\".")
+          logger.debug("Call #{client.class}#before_update")
           client.before_update(name, state)
+
+          logger.debug("Call #{client.class}#update")
           client.update(name, state)
         rescue Exception => e
-          logger.error("Raised exception in #{client.class}#.update")
+          logger.error("Raised exception in #{client.class}#update")
           logger.error(e)
         end
       end
