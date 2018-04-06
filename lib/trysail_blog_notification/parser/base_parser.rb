@@ -15,6 +15,7 @@ module TrySailBlogNotification::Parser
     # @param [Nokogiri::HTML::Document] nokogiri
     # @return [TrySailBlogNotification::LastArticle]
     def parse(nokogiri)
+      raise NotImplementedError, "You must implement #{self.class}##{__method__}"
     end
 
     private
