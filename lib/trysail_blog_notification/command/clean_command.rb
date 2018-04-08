@@ -29,10 +29,10 @@ module TrySailBlogNotification::Command
     # Delete files
     #
     # @param [Array] files
-    # @param [Hash] options
+    # @param [Hash] option
     # @return [Array]
-    def rm(files, options)
-      FileUtils.rm(files, options)
+    def rm(files, option)
+      FileUtils.rm(files, option)
     end
 
   end
