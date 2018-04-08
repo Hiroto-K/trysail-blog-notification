@@ -12,7 +12,7 @@ module TrySailBlogNotification::Command
       files << find_files(app.base_path('log/*'))
       files.flatten!
 
-      option = options.slice(:verbose, :force).symbolize_keys
+      option = options.slice(:verbose, :force, :noop).symbolize_keys
       rm(files, option)
     end
 
