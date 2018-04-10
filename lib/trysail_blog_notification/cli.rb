@@ -38,6 +38,14 @@ module TrySailBlogNotification
         super(command, *args)
       end
 
+      # Call command class.
+      #
+      # @param [TrySailBlogNotification::Command::BaseCommand]
+      def call_command(klass)
+        command = klass.new(options, args)
+        command.start
+      end
+
     end
 
   end
