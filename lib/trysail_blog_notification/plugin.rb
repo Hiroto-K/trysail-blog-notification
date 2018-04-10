@@ -70,5 +70,12 @@ module TrySailBlogNotification
       plugin_files
     end
 
+    # Get the path to the base.
+    #
+    # @return [String]
+    def base_path(path = '')
+      File.join(@base_dir, path)
+    end
+
   end
 end
