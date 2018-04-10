@@ -7,6 +7,23 @@ module TrySailBlogNotification
 
     package_name TrySailBlogNotification::Application::NAME
 
+    no_commands do
+      def invoke_command(command, *args)
+        app = TrySailBlogNotification::Application.app
+        app.log.level = options['log-level'] unless options['log-level'].nil?
+
+        super(command, *args)
+      end
+
+      # Call command class.
+      #
+      # @param [TrySailBlogNotification::Command::BaseCommand]
+      def call_command(klass)
+        command = klass.new(options, args)
+        command.start
+      end
+    end
+
     desc 'start', 'Run trysail-blog-notification.'
     option 'no-notification', desc: 'No send the notification.', type: :boolean, default: false
     def start
@@ -24,25 +41,6 @@ module TrySailBlogNotification
     option 'noop', desc: 'Dry run', type: :boolean, default: false
     def clean
       call_command(TrySailBlogNotification::Command::CleanCommand)
-    end
-
-    no_commands do
-
-      def invoke_command(command, *args)
-        app = TrySailBlogNotification::Application.app
-        app.log.level = options['log-level'] unless options['log-level'].nil?
-
-        super(command, *args)
-      end
-
-      # Call command class.
-      #
-      # @param [TrySailBlogNotification::Command::BaseCommand]
-      def call_command(klass)
-        command = klass.new(options, args)
-        command.start
-      end
-
     end
 
   end
