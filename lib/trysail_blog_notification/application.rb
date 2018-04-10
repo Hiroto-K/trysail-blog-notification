@@ -86,6 +86,8 @@ module TrySailBlogNotification
 
     # Load plugins
     def load_plugins
+      @plugin ||= TrySailBlogNotification::Plugin.new(@base_dir)
+
       @log.logger.debug('Load plugins')
       @plugin.plugin_files.each do |file|
         begin
