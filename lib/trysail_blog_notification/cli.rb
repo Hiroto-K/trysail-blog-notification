@@ -10,14 +10,12 @@ module TrySailBlogNotification
     desc 'start', 'Run trysail-blog-notification.'
     option 'no-notification', desc: 'No send the notification.', type: :boolean, default: false
     def start
-      command = TrySailBlogNotification::Command::StartCommand.new(options, args)
-      command.start
+      call_command(TrySailBlogNotification::Command::StartCommand)
     end
 
     desc 'console', 'Start trysail-blog-notification console'
     def console
-      command = TrySailBlogNotification::Command::ConsoleCommand.new(options, args)
-      command.start
+      call_command(TrySailBlogNotification::Command::ConsoleCommand)
     end
 
     desc 'clean', 'Clean log and data files.'
@@ -25,8 +23,7 @@ module TrySailBlogNotification
     option 'force', desc: 'Force remove', type: :boolean, default: false
     option 'noop', desc: 'Dry run', type: :boolean, default: false
     def clean
-      command = TrySailBlogNotification::Command::CleanCommand.new(options, args)
-      command.start
+      call_command(TrySailBlogNotification::Command::CleanCommand)
     end
 
     no_commands do
