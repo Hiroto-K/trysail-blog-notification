@@ -60,8 +60,6 @@ module TrySailBlogNotification
       @log.logger.info('Started application.')
 
       @clients = []
-
-      @plugin = TrySailBlogNotification::Plugin.new(@base_dir)
     end
 
     # Get application instance
