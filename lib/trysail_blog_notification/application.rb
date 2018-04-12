@@ -57,7 +57,7 @@ module TrySailBlogNotification
       log_level = @config[:data][:log][:level]
       @log = TrySailBlogNotification::Log.new(log_file, log_level)
 
-      @log.logger.info('Started application.')
+      logger.info('Started application.')
 
       @clients = []
 
@@ -77,23 +77,23 @@ module TrySailBlogNotification
     def add_client(client)
       raise "Client is not instance of 'TrySailBlogNotification::Client::BaseClient'." unless client.is_a?(TrySailBlogNotification::Client::BaseClient)
 
-      @log.logger.debug("Call #{client.class}#.setup method")
+      logger.debug("Call #{client.class}#.setup method")
       client.setup
 
-      @log.logger.debug("Register \"#{client.class}\" client.")
+      logger.debug("Register \"#{client.class}\" client.")
       @clients.push(client)
     end
 
     # Load plugins
     def load_plugins
-      @log.logger.debug('Load plugins')
+      logger.debug('Load plugins')
       @plugin.plugin_files.each do |file|
         begin
-          @log.logger.debug("Load plugin file : #{file}")
+          logger.debug("Load plugin file : #{file}")
           require file
         rescue RuntimeError => e
-          @log.logger.error("Error in load plugin : #{file}")
-          @log.logger.error(e)
+          logger.error("Error in load plugin : #{file}")
+          logger.error(e)
         end
       end
     end
@@ -143,7 +143,7 @@ module TrySailBlogNotification
         client_class = options[:client]
         config = options[:config]
 
-        @log.logger.debug("Register #{name}(\"#{client_class}\") client.")
+        logger.debug("Register #{name}(\"#{client_class}\") client.")
 
         klass = client_class.constantize
         add_client(klass.new(config))
