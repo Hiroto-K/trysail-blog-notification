@@ -116,6 +116,13 @@ module TrySailBlogNotification
       File.join(@base_dir, path)
     end
 
+    # Return Logger instance.
+    #
+    # @return [Logger]
+    def logger
+      log.logger
+    end
+
     private
 
     # Set file config. Expand file path.
