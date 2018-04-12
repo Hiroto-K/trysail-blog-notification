@@ -77,7 +77,7 @@ module TrySailBlogNotification
     def add_client(client)
       raise "Client is not instance of 'TrySailBlogNotification::Client::BaseClient'." unless client.is_a?(TrySailBlogNotification::Client::BaseClient)
 
-      logger.debug("Call #{client.class}#.setup method")
+      logger.debug("Call #{client.class}#setup method")
       client.setup
 
       logger.debug("Register \"#{client.class}\" client.")
