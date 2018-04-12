@@ -120,7 +120,7 @@ module TrySailBlogNotification
     #
     # @return [Logger]
     def logger
-      log.logger
+      @log.logger
     end
 
     private
