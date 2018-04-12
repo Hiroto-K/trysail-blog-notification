@@ -106,7 +106,7 @@ module TrySailBlogNotification
 
       TrySailBlogNotification::Cli.start(ARGV)
     rescue RuntimeError => e
-      @log.logger.error(e)
+      logger.error(e)
     end
 
     # Get the path to the base.
