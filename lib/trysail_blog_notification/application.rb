@@ -60,6 +60,8 @@ module TrySailBlogNotification
       @log.logger.info('Started application.')
 
       @clients = []
+
+      @plugin = TrySailBlogNotification::Plugin.new(@base_dir)
     end
 
     # Get application instance
@@ -84,8 +86,6 @@ module TrySailBlogNotification
 
     # Load plugins
     def load_plugins
-      @plugin ||= TrySailBlogNotification::Plugin.new(@base_dir)
-
       @log.logger.debug('Load plugins')
       @plugin.plugin_files.each do |file|
         begin
