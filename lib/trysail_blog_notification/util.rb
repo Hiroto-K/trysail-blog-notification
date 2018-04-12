@@ -12,7 +12,7 @@ module TrySailBlogNotification
     #
     # @return [Logger]
     def logger
-      app.log.logger
+      app.logger
     end
 
   end
