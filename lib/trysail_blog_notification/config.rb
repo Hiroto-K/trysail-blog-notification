@@ -36,6 +36,7 @@ module TrySailBlogNotification
         return false unless config.key?(segment)
         config = config[segment]
       end
+
       true
     end
 
@@ -63,6 +64,7 @@ module TrySailBlogNotification
         return default unless config.key?(segment)
         config = config[segment]
       end
+
       config
     end
 
