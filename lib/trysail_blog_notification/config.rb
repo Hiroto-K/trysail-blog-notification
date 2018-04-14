@@ -12,5 +12,13 @@ module TrySailBlogNotification
       @raw_config = config
     end
 
+    # Get config
+    #
+    # @param [Symbol|String|NilClass] key
+    # @param [Object] default
+    # @return [Object]
+    def get(key = nil, default = nil)
+    end
+
   end
 end
