@@ -18,6 +18,7 @@ module TrySailBlogNotification
     # @param [Object] default
     # @return [Object]
     def get(key = nil, default = nil)
+      return raw_config if key.nil?
     end
 
   end
