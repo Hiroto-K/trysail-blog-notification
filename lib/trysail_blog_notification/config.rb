@@ -23,6 +23,22 @@ module TrySailBlogNotification
       get_by_symbol(key, default)
     end
 
+    # Checks whether a config exists
+    #
+    # @param [String|Symbol] key
+    # @return [TrueClass|FalseClass]
+    def has?(key)
+      return raw_config.key?(key) unless key.is_a?(String)
+
+      config = raw_config
+      key.split('.').each do |segment|
+        return false unless config.is_a?(Hash)
+        return false unless config.key?(segment)
+        config = config[segment]
+      end
+      true
+    end
+
     private
 
     # Get key by symbol
