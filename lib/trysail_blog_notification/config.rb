@@ -20,7 +20,7 @@ module TrySailBlogNotification
     def get(key = nil, default = nil)
       return raw_config if key.nil?
       return get_by_string(key, default) if key.is_a?(String)
-      return get_by_symbol(key, default) if key.is_a?(Symbol)
+      get_by_symbol(key, default)
     end
 
     private
