@@ -20,6 +20,7 @@ module TrySailBlogNotification
     def get(key = nil, default = nil)
       return raw_config if key.nil?
       return get_by_symbol(key, default) if key.is_a?(Symbol)
+      return get_by_string(key, default) if key.is_a?(String)
     end
 
     private
@@ -32,6 +33,21 @@ module TrySailBlogNotification
     def get_by_symbol(key, default)
       return default unless raw_config.key?(key)
       raw_config[key]
+    end
+
+    # Get key by String
+    #
+    # @param [String] key
+    # @param [Object] default
+    # @return [Object]
+    def get_by_string(key, default)
+      config = raw_config
+      key.split('.').each do |segment|
+        return default unless config.is_a?(Hash)
+        return default unless config.key?(segment)
+        config = config[segment]
+      end
+      config
     end
 
   end
