@@ -5,7 +5,8 @@ module TrySailBlogNotification::Client
 
     # Setup.
     def setup
-      @client = Twitter::REST::Client.new(config)
+      twitter_config = config.slice(:consumer_key, :consumer_secret, :access_token, :access_token_secret)
+      @client = Twitter::REST::Client.new(twitter_config)
     end
 
     # Update.
