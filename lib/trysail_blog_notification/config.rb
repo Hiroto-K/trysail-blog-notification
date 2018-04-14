@@ -14,13 +14,13 @@ module TrySailBlogNotification
 
     # Get config
     #
-    # @param [Symbol|String|NilClass] key
+    # @param [String|Symbol|NilClass] key
     # @param [Object] default
     # @return [Object]
     def get(key = nil, default = nil)
       return raw_config if key.nil?
-      return get_by_symbol(key, default) if key.is_a?(Symbol)
       return get_by_string(key, default) if key.is_a?(String)
+      return get_by_symbol(key, default) if key.is_a?(Symbol)
     end
 
     private
