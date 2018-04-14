@@ -153,4 +153,30 @@ describe TrySailBlogNotification::Config do
     end
   end
 
+  describe '#[]' do
+    let(:config) { TrySailBlogNotification::Config.new(default_config) }
+
+    context 'access by symbol' do
+      it 'access data return eq value' do
+        expect(config[:data]).to eq default_config[:data]
+      end
+    end
+
+    context 'access by string' do
+      it 'access data return eq value' do
+        expect(config['data']).to eq default_config[:data]
+      end
+    end
+
+    context 'access to not exists key' do
+      it 'access not exists key by symbol return eq value' do
+        expect(config[:not_exists]).to eq nil
+      end
+
+      it 'access not exists key by string return eq value' do
+        expect(config['not_exists']).to eq nil
+      end
+    end
+  end
+
 end
