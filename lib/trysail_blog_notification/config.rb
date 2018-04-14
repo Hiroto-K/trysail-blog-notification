@@ -9,7 +9,7 @@ module TrySailBlogNotification
     #
     # @param [Hash] config
     def initialize(config = {})
-      @raw_config = config
+      @raw_config = config.with_indifferent_access
     end
 
     # Get config

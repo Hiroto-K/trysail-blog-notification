@@ -33,7 +33,7 @@ describe TrySailBlogNotification::Config do
           rss: 'http://feedblog.ameba.jp/rss/ameblo/natsukawashiinablog/rss20.xml',
         },
       },
-    }
+    }.with_indifferent_access
   }
 
   describe '#initialize' do
