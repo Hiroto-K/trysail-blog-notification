@@ -11,7 +11,7 @@ module TrySailBlogNotification::Client
 
       @client = Slack::Web::Client.new
       @client.logger = logger
-      # @client.auth_test
+      @client.auth_test
     end
 
     # Update.
