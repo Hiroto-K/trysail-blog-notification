@@ -52,9 +52,9 @@ module TrySailBlogNotification
       @base_dir = base_dir
       @config = TrySailBlogNotification::Config.new(config)
 
-      @dump_file = @config[:data][:dump][:file]
-      log_file = @config[:data][:log][:file]
-      log_level = @config[:data][:log][:level]
+      @dump_file = base_path(@config.get('data.dump.file'))
+      log_file = base_path(@config.get('data.log.file'))
+      log_level = @config.get('data.log.level')
       @log = TrySailBlogNotification::Log.new(log_file, log_level)
 
       logger.info('Started application.')
@@ -100,7 +100,7 @@ module TrySailBlogNotification
 
     # Run application.
     def run
-      @urls = @config[:urls]
+      @urls = @config.get(:urls)
 
       add_clients
 
@@ -138,8 +138,7 @@ module TrySailBlogNotification
 
     # Add clients.
     def add_clients
-      @config[:clients].each do |name, options|
-
+      @config.get(:clients).each do |name, options|
         client_class = options[:client]
         config = options[:config]
 
