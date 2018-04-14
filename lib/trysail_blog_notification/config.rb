@@ -43,6 +43,14 @@ module TrySailBlogNotification
       true
     end
 
+    # Access to key
+    #
+    # @param [String|Symbol|Object] key
+    # @return [Object]
+    def [](key)
+      raw_config[key]
+    end
+
     private
 
     # Get key by Symbol
