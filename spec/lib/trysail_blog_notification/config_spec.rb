@@ -51,6 +51,13 @@ describe TrySailBlogNotification::Config do
   describe '#get' do
     let(:config) { TrySailBlogNotification::Config.new(default_config) }
 
+    context 'no key' do
+      it 'return raw config' do
+        expect(config.get).to be_a Hash
+        expect(config.get).to eq default_config
+      end
+    end
+
     context 'by symbol' do
       it 'get clients return class is Hash' do
         expect(config.get(:clients)).to be_a Hash
@@ -94,6 +101,12 @@ describe TrySailBlogNotification::Config do
 
       it 'get not exists key return nil' do
         expect(config.get('data.not.exists')).to eq nil
+      end
+    end
+
+    context 'set default value' do
+      it 'check default value' do
+        expect(config.get('not.exists', 'default_value')).to eq 'default_value'
       end
     end
   end
