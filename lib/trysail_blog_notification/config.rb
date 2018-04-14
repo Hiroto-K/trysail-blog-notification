@@ -3,6 +3,9 @@
 module TrySailBlogNotification
   class Config
 
+    # Config
+    #
+    # @return [Hash]
     attr_reader :raw_config
 
     # Initialize TrySailBlogNotification::Config
