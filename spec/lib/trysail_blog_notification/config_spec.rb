@@ -98,44 +98,44 @@ describe TrySailBlogNotification::Config do
     end
   end
 
-  describe '#has' do
+  describe '#has?' do
     let(:config) { TrySailBlogNotification::Config.new(default_config) }
 
     context 'by symbol' do
       it 'clients return true' do
-        expect(config.has(:clients)).to be_truthy
+        expect(config.has?(:clients)).to be_truthy
       end
 
       it 'not exists key return false' do
-        expect(config.get(:not_exists)).to be_falsey
+        expect(config.has?(:not_exists)).to be_falsey
       end
     end
 
     context 'by string' do
       it 'clients return true' do
-        expect(config.get('clients')).to be_truthy
+        expect(config.has?('clients')).to be_truthy
       end
 
       it 'not exists key return false' do
-        expect(config.get('not_exists')).to be_falsey
+        expect(config.has?('not_exists')).to be_falsey
       end
     end
 
     context 'by string dot' do
       it 'clients.slack return true' do
-        expect(config.get('clients.slack')).to be_truthy
+        expect(config.has?('clients.slack')).to be_truthy
       end
 
       it 'data.log.file return true' do
-        expect(config.get('data.log.file')).to be_truthy
+        expect(config.has?('data.log.file')).to be_truthy
       end
 
       it 'not exists key return false' do
-        expect(config.get('not.exists')).to be_falsey
+        expect(config.has?('not.exists')).to be_falsey
       end
 
       it 'not exists key return false' do
-        expect(config.get('data.not.exists')).to be_falsey
+        expect(config.has?('data.not.exists')).to be_falsey
       end
     end
   end
