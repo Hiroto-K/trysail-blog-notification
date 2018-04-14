@@ -42,7 +42,7 @@ module TrySailBlogNotification
 
     private
 
-    # Get key by symbol
+    # Get key by Symbol
     #
     # @param [Symbol] key
     # @param [Object] default
