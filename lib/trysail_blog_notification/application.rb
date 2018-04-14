@@ -125,17 +125,6 @@ module TrySailBlogNotification
 
     private
 
-    # Set file config. Expand file path.
-    #
-    # @param [Hash] config
-    # @return [Hash]
-    def set_file_config(config)
-      config[:data][:log][:file] = base_path(config[:data][:log][:file])
-      config[:data][:dump][:file] = base_path(config[:data][:dump][:file])
-
-      config
-    end
-
     # Add clients.
     def add_clients
       @config.get(:clients).each do |name, options|
