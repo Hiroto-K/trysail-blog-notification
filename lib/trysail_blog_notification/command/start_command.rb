@@ -95,7 +95,7 @@ module TrySailBlogNotification::Command
           logger.debug("Call #{client.class}#update")
           client.update(name, state)
         rescue Exception => e
-          logger.error("Raised exception in #{client.class}#update")
+          logger.error("Raised exception in #{client.class}")
           logger.error(e)
         end
       end
