@@ -15,7 +15,7 @@ module TrySailBlogNotification
 
     # Config
     #
-    # @return [Hash]
+    # @return [TrySailBlogNotification::Config]
     attr_reader :config
 
     # Dump file path.
@@ -50,7 +50,7 @@ module TrySailBlogNotification
     def initialize(base_dir, config)
       @@app = self
       @base_dir = base_dir
-      @config = set_file_config(config.with_indifferent_access)
+      @config = TrySailBlogNotification::Config.new(config)
 
       @dump_file = @config[:data][:dump][:file]
       log_file = @config[:data][:log][:file]
