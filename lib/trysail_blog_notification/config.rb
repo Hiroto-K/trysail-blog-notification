@@ -1,4 +1,6 @@
 # frozen_string_literal: true
 
-class Config
+module TrySailBlogNotification
+  class Config
+  end
 end
