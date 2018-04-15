@@ -11,7 +11,6 @@ before_script:
   - bundle install --path vendor/bundler --jobs 4
 
 script:
-  - 'find . -type "f" -name "*.rb"  ! -path "*/vendor/*" -exec ruby -cw {} \;'
   - bundle exec rspec
 
 notifications:
