@@ -23,7 +23,8 @@ module TrySailBlogNotification
     def get(key = nil, default = nil)
       return raw_config if key.nil?
       return get_by_string(key, default) if key.is_a?(String)
-      get_by_symbol(key, default)
+      return default unless raw_config.key?(key)
+      raw_config[key]
     end
 
     # Checks whether a config exists
@@ -52,16 +53,6 @@ module TrySailBlogNotification
     end
 
     private
-
-    # Get key by Symbol
-    #
-    # @param [Symbol] key
-    # @param [Object] default
-    # @return [Object]
-    def get_by_symbol(key, default)
-      return default unless raw_config.key?(key)
-      raw_config[key]
-    end
 
     # Get key by String
     #
