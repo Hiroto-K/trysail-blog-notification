@@ -15,7 +15,7 @@ module TrySailBlogNotification
 
     # Config
     #
-    # @return [Hash]
+    # @return [TrySailBlogNotification::Config]
     attr_reader :config
 
     # Dump file path.
@@ -50,11 +50,11 @@ module TrySailBlogNotification
     def initialize(base_dir, config)
       @@app = self
       @base_dir = base_dir
-      @config = set_file_config(config.with_indifferent_access)
+      @config = TrySailBlogNotification::Config.new(config)
 
-      @dump_file = @config[:data][:dump][:file]
-      log_file = @config[:data][:log][:file]
-      log_level = @config[:data][:log][:level]
+      @dump_file = base_path(@config.get('data.dump.file'))
+      log_file = base_path(@config.get('data.log.file'))
+      log_level = @config.get('data.log.level')
       @log = TrySailBlogNotification::Log.new(log_file, log_level)
 
       logger.info('Started application.')
@@ -100,7 +100,7 @@ module TrySailBlogNotification
 
     # Run application.
     def run
-      @urls = @config[:urls]
+      @urls = @config.get(:urls)
 
       add_clients
 
@@ -125,21 +125,9 @@ module TrySailBlogNotification
 
     private
 
-    # Set file config. Expand file path.
-    #
-    # @param [Hash] config
-    # @return [Hash]
-    def set_file_config(config)
-      config[:data][:log][:file] = base_path(config[:data][:log][:file])
-      config[:data][:dump][:file] = base_path(config[:data][:dump][:file])
-
-      config
-    end
-
     # Add clients.
     def add_clients
-      @config[:clients].each do |name, options|
-
+      @config.get(:clients).each do |name, options|
         client_class = options[:client]
         config = options[:config]
 
