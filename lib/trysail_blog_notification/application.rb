@@ -56,6 +56,7 @@ module TrySailBlogNotification
 
       logger.info('Started application.')
 
+      @dump_file = base_path(@config.get('data.dump.file'))
       @clients = []
 
       @plugin = TrySailBlogNotification::Plugin.new(@base_dir)
@@ -129,7 +130,6 @@ module TrySailBlogNotification
 
     # Setup logger
     def setup_logger
-      @dump_file = base_path(@config.get('data.dump.file'))
       log_file = base_path(@config.get('data.log.file'))
       log_level = @config.get('data.log.level')
       @log = TrySailBlogNotification::Log.new(log_file, log_level)
