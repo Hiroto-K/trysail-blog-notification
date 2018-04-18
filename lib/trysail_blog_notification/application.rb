@@ -97,12 +97,12 @@ module TrySailBlogNotification
     end
 
     # Run application.
-    def run
+    def run(args = ARGV)
       @urls = @config.get(:urls)
 
       add_clients
 
-      TrySailBlogNotification::Cli.start(ARGV)
+      TrySailBlogNotification::Cli.start(args)
     rescue RuntimeError => e
       logger.error(e)
     end
