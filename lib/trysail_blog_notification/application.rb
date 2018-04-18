@@ -50,13 +50,12 @@ module TrySailBlogNotification
     def initialize(base_dir, config)
       @@app = self
       @base_dir = base_dir
+      @clients = []
 
       setup_config(config)
       setup_logger
 
       logger.info('Started application.')
-
-      @clients = []
 
       setup_dump_file
       setup_plugin
