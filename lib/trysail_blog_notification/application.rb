@@ -59,7 +59,7 @@ module TrySailBlogNotification
       @dump_file = base_path(@config.get('data.dump.file'))
       @clients = []
 
-      @plugin = TrySailBlogNotification::Plugin.new(@base_dir)
+      setup_plugin
     end
 
     # Get application instance
@@ -133,6 +133,11 @@ module TrySailBlogNotification
       log_file = base_path(@config.get('data.log.file'))
       log_level = @config.get('data.log.level')
       @log = TrySailBlogNotification::Log.new(log_file, log_level)
+    end
+
+    # Setup plugin
+    def setup_plugin
+      @plugin = TrySailBlogNotification::Plugin.new(@base_dir)
     end
 
     # Add clients.
