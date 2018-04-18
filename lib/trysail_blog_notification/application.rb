@@ -50,12 +50,9 @@ module TrySailBlogNotification
     def initialize(base_dir, config)
       @@app = self
       @base_dir = base_dir
-      @config = TrySailBlogNotification::Config.new(config)
 
-      @dump_file = base_path(@config.get('data.dump.file'))
-      log_file = base_path(@config.get('data.log.file'))
-      log_level = @config.get('data.log.level')
-      @log = TrySailBlogNotification::Log.new(log_file, log_level)
+      setup_config(config)
+      setup_logger
 
       logger.info('Started application.')
 
@@ -124,6 +121,19 @@ module TrySailBlogNotification
     end
 
     private
+
+    # Setup config
+    def setup_config(config)
+      @config = TrySailBlogNotification::Config.new(config)
+    end
+
+    # Setup logger
+    def setup_logger
+      @dump_file = base_path(@config.get('data.dump.file'))
+      log_file = base_path(@config.get('data.log.file'))
+      log_level = @config.get('data.log.level')
+      @log = TrySailBlogNotification::Log.new(log_file, log_level)
+    end
 
     # Add clients.
     def add_clients
