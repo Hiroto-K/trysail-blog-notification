@@ -20,18 +20,16 @@ module TrySailBlogNotification
     # Get plugin files
     #
     # @return [Array]
-    def get_plugin_files
+    def plugin_files
       dirs = get_dirs
       get_files(dirs)
     end
-
-    alias_method :plugin_files, :get_plugin_files
 
     # Load plugin files
     #
     # @return [Object]
     def load_plugins
-      get_plugin_files.each do |file|
+      plugin_files.each do |file|
         require file
       end
     end
