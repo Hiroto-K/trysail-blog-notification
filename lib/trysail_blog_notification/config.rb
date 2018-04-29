@@ -3,6 +3,9 @@
 module TrySailBlogNotification
   class Config
 
+    # Key delimiter.
+    DELIMITER = '.'
+
     # Config
     #
     # @return [Hash]
