@@ -38,7 +38,8 @@ module TrySailBlogNotification
       return raw_config.key?(key) unless key.is_a?(String)
 
       config = raw_config
-      key.split('.').each do |segment|
+      keys = split(key)
+      keys.each do |segment|
         return false unless config.is_a?(Hash)
         return false unless config.key?(segment)
         config = config[segment]
@@ -57,6 +58,14 @@ module TrySailBlogNotification
 
     private
 
+    # Split key
+    #
+    # @return [String]
+    # @return [Array]
+    def split(key)
+      key.split(DELIMITER)
+    end
+
     # Get key by String
     #
     # @param [String] key
@@ -64,7 +73,8 @@ module TrySailBlogNotification
     # @return [Object]
     def get_by_string(key, default)
       config = raw_config
-      key.split('.').each do |segment|
+      keys = split(key)
+      keys.each do |segment|
         return default unless config.is_a?(Hash)
         return default unless config.key?(segment)
         config = config[segment]
