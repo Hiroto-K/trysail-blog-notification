@@ -52,13 +52,13 @@ module TrySailBlogNotification::Command
 
       old_states.each do |name, old_state|
         logger.debug("Check diff of \"#{name}\".")
+        new_state = current_states[name]
 
-        if current_states[name].nil?
-          logger.info("current_states[#{name}] is nil. Skip check diff.")
+        if new_state.is_a?(TrySailBlogNotification::LastArticle)
+          logger.info("current_states[#{name}] a is unsuitable value. Skip check diff.")
           next
         end
 
-        new_state = current_states[name]
         unless eql_article?(old_state, new_state)
           if options['no-notification']
             logger.info('Option "--no-notification" is enabled. No send the notification.')
