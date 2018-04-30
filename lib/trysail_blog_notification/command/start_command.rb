@@ -62,10 +62,10 @@ module TrySailBlogNotification::Command
         unless eql_article?(old_state, new_state)
           if options['no-notification']
             logger.info('Option "--no-notification" is enabled. No send the notification.')
-          else
-            logger.debug("Call \"run_notification\".")
-            run_notification(name, new_state)
+            return
           end
+
+          run_notification(name, new_state)
         end
       end
     end
