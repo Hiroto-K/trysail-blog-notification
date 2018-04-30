@@ -54,7 +54,7 @@ module TrySailBlogNotification::Command
         logger.debug("Check diff of \"#{name}\".")
         new_state = current_states[name]
 
-        if new_state.is_a?(TrySailBlogNotification::LastArticle)
+        unless new_state.is_a?(TrySailBlogNotification::LastArticle)
           logger.info("current_states[#{name}] a is unsuitable value. Skip check diff.")
           next
         end
