@@ -48,7 +48,7 @@ module TrySailBlogNotification::Command
         return
       end
 
-      old_states = get_old_states
+      old_states = load_old_states
 
       old_states.each do |name, old_state|
         logger.debug("Check diff of \"#{name}\".")
@@ -73,7 +73,7 @@ module TrySailBlogNotification::Command
     # Get old state.
     #
     # @return [Hash]
-    def get_old_states
+    def load_old_states
       logger.debug("Open dump file : \"#{@dump_file}\".")
       loader = TrySailBlogNotification::StateLoader.new(@dump_file)
       loader.states
