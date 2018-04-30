@@ -40,8 +40,7 @@ module TrySailBlogNotification
       config = raw_config
       keys = split(key)
       keys.each do |segment|
-        return false unless config.is_a?(Hash)
-        return false unless config.key?(segment)
+        return false unless config.is_a?(Hash) && config.key?(segment)
         config = config[segment]
       end
 
@@ -75,8 +74,7 @@ module TrySailBlogNotification
       config = raw_config
       keys = split(key)
       keys.each do |segment|
-        return default unless config.is_a?(Hash)
-        return default unless config.key?(segment)
+        return default unless config.is_a?(Hash) && config.key?(segment)
         config = config[segment]
       end
 
