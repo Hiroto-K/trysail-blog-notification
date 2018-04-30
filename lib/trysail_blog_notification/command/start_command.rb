@@ -42,7 +42,7 @@ module TrySailBlogNotification::Command
     def check_diff(current_states)
       logger.debug('Check diff.')
 
-      unless File.exists?(@dump_file)
+      unless dump_file_exists?
         logger.debug("File \"#{@dump_file}\" is not exits.")
         logger.debug('Skip check.')
         return
@@ -68,6 +68,13 @@ module TrySailBlogNotification::Command
           run_notification(name, new_state)
         end
       end
+    end
+
+    # Check dump file exists.
+    #
+    # @return [TrueClass|FalseClass]
+    def dump_file_exists?
+      File.exists?(@dump_file)
     end
 
     # Get old state.
