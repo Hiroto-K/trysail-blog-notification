@@ -59,7 +59,7 @@ module TrySailBlogNotification::Command
         end
 
         new_state = current_states[name]
-        if new_state.title != old_state.title || new_state.url != old_state.url
+        unless eql_article?(old_state, new_state)
           if options['no-notification']
             logger.info('Option "--no-notification" is enabled. No send the notification.')
           else
@@ -77,6 +77,15 @@ module TrySailBlogNotification::Command
       logger.debug("Open dump file : \"#{@dump_file}\".")
       loader = TrySailBlogNotification::StateLoader.new(@dump_file)
       loader.states
+    end
+
+    # Check eql article.
+    #
+    # @param [TrySailBlogNotification::LastArticle] old_article
+    # @param [TrySailBlogNotification::LastArticle] new_article
+    # @return [TrueClass|FalseClass]
+    def eql_article?(old_article, new_article)
+      old_article.title == new_article.title || old_article.url == new_article.url
     end
 
     # Check updates.
