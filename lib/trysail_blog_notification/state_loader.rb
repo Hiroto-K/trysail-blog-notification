@@ -15,19 +15,19 @@ module TrySailBlogNotification
     # @return [String]
     attr_reader :json
 
-    # Raw states
+    # Raw states.
     #
     # @return [Hash]
     attr_reader :raw_states
 
-    # States
+    # States.
     #
     # @return [Hash]
     attr_reader :states
 
     # Initialize StateLoader.
     #
-    # @param [String] file JSON file path.
+    # @param file [String] JSON file path.
     def initialize(file)
       @file = file
       load_states
