@@ -12,7 +12,7 @@ module TrySailBlogNotification::Parser
 
     # Start parse.
     #
-    # @param [Nokogiri::HTML::Document] nokogiri
+    # @param nokogiri [Nokogiri::HTML::Document]
     # @return [TrySailBlogNotification::LastArticle]
     def parse(nokogiri)
       raise NotImplementedError, "You must implement #{self.class}##{__method__}"
@@ -22,8 +22,8 @@ module TrySailBlogNotification::Parser
 
     # Build url from path
     #
-    # @param [String] host
-    # @param [String] path
+    # @param host [String]
+    # @param path [String]
     # @return [String]
     def build_url(host: @blog_host, path:)
       URI.join(host, path).to_s
