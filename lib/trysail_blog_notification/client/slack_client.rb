@@ -16,25 +16,25 @@ module TrySailBlogNotification::Client
     # Before update.
     #
     # @param name [String]
-    # @param status [TrySailBlogNotification::LastArticle]
-    def before_update(name, status)
+    # @param article [TrySailBlogNotification::LastArticle]
+    def before_update(name, article)
       @client.auth_test
     end
 
     # Update.
     #
     # @param name [String]
-    # @param status [TrySailBlogNotification::LastArticle]
-    def update(name, status)
+    # @param article [TrySailBlogNotification::LastArticle]
+    def update(name, article)
       date = Time.now
 
       text = <<"EOS"
 #{name}のブログが更新されました。
 
-#{status.title}
-#{status.url}
+#{article.title}
+#{article.url}
 
-ブログ更新時刻 : #{status.last_update}
+ブログ更新時刻 : #{article.last_update}
 システム時刻   : #{date}
 EOS
 

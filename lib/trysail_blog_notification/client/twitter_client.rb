@@ -12,14 +12,14 @@ module TrySailBlogNotification::Client
     # Update.
     #
     # @param name [String]
-    # @param status [TrySailBlogNotification::LastArticle]
-    def update(name, status)
+    # @param article [TrySailBlogNotification::LastArticle]
+    def update(name, article)
       date = Time.now
 
       text = <<"EOS"
-【ブログ更新 #{status.title}】
-#{name} : #{status.title}
-#{status.url}
+【ブログ更新 #{article.title}】
+#{name} : #{article.title}
+#{article.url}
 date : #{date}
 EOS
       logger.info(text)

@@ -25,15 +25,15 @@ module TrySailBlogNotification::Client
     # This method call in before "update" method call.
     #
     # @param name [String] Blog name.
-    # @param status [TrySailBlogNotification::LastArticle] Blog state.
-    def before_update(name, status)
+    # @param article [TrySailBlogNotification::LastArticle] Blog state.
+    def before_update(name, article)
     end
 
     # Update.
     #
     # @param name [String] Blog name.
-    # @param status [TrySailBlogNotification::LastArticle] Blog state.
-    def update(name, status)
+    # @param article [TrySailBlogNotification::LastArticle] Blog state.
+    def update(name, article)
       raise NotImplementedError, "You must implement #{self.class}##{__method__}"
     end
 
