@@ -25,7 +25,7 @@ module TrySailBlogNotification
 
     # Initialize HTTP class.
     #
-    # @param [String] url Target url.
+    # @param url [String] Target url.
     def initialize(url)
       @url = url
       @faraday_connection = Faraday::Connection.new(url: @url) do |faraday|
@@ -45,7 +45,7 @@ module TrySailBlogNotification
 
     # Check request was success.
     #
-    # @return [TrueClass|FalseClass]
+    # @return [true, false]
     def success?
       @response.success?
     end
