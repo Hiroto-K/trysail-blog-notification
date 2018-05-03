@@ -29,5 +29,13 @@ module TrySailBlogNotification::Parser
       URI.join(host, path).to_s
     end
 
+    # Build last article.
+    #
+    # @param params [Hash]
+    # @return [TrySailBlogNotification::LastArticle]
+    def create_last_article(*params)
+      TrySailBlogNotification::LastArticle.new(params)
+    end
+
   end
 end
