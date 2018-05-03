@@ -27,9 +27,9 @@ module TrySailBlogNotification
 
     # Initialize LastArticle.
     #
-    # @param [String] title
-    # @param [String] url
-    # @param [String] last_update
+    # @param title [String] Article title.
+    # @param url [String] Article url.
+    # @param last_update [String] Article update at.
     def initialize(title:, url:, last_update:)
       @title = title
       set_url(url)
@@ -51,7 +51,7 @@ module TrySailBlogNotification
 
     # Get hash object
     #
-    # @param [Object] key
+    # @param key [String, Symbol]
     # @return [Object]
     def [](key)
       case key
@@ -70,7 +70,7 @@ module TrySailBlogNotification
 
     # Set url
     #
-    # @param [String] url
+    # @param url [String]
     def set_url(url)
       @uri = URI.parse(url)
       @url = @uri.to_s
