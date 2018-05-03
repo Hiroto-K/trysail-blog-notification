@@ -22,14 +22,14 @@ module TrySailBlogNotification
 
     # Initialize dumper.
     #
-    # @param [String] file Dump file path.
+    # @param file [String] Dump file path.
     def initialize(file)
       @file = file
     end
 
     # Dump to file.
     #
-    # @param [Hash] states Current states.
+    # @param states [Hash] Current states.
     def dump(states)
       @states = states
       @json_states = JSON.pretty_generate(@states)
