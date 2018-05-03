@@ -59,7 +59,7 @@ module TrySailBlogNotification
     # Split key
     #
     # @param [String] key
-    # @return [Array]
+    # @return [Array<String>]
     def split_key(key)
       key.split(DELIMITER)
     end
