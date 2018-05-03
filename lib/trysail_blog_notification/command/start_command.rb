@@ -5,8 +5,8 @@ module TrySailBlogNotification::Command
 
     # Initialize StartCommand
     #
-    # @param [Hash] options
-    # @param [Array] args
+    # @param options [Hash]
+    # @param args [Array]
     def initialize(options, args)
       super(options, args)
 
@@ -38,7 +38,7 @@ module TrySailBlogNotification::Command
 
     # Check updates.
     #
-    # @param [Hash] current_states
+    # @param current_states [Hash]
     def check_diff(current_states)
       logger.debug('Check diff.')
 
@@ -72,7 +72,7 @@ module TrySailBlogNotification::Command
 
     # Check dump file exists.
     #
-    # @return [TrueClass|FalseClass]
+    # @return [true, false]
     def dump_file_exists?
       File.exists?(@dump_file)
     end
@@ -88,17 +88,17 @@ module TrySailBlogNotification::Command
 
     # Check eql article.
     #
-    # @param [TrySailBlogNotification::LastArticle] old_article
-    # @param [TrySailBlogNotification::LastArticle] new_article
-    # @return [TrueClass|FalseClass]
+    # @param old_article [TrySailBlogNotification::LastArticle]
+    # @param new_article [TrySailBlogNotification::LastArticle]
+    # @return [true, false]
     def eql_article?(old_article, new_article)
       old_article.title == new_article.title || old_article.url == new_article.url
     end
 
-    # Check updates.
+    # Run notification.
     #
-    # @param [String] name
-    # @param [TrySailBlogNotification::LastArticle] state
+    # @param name [String]
+    # @param state [TrySailBlogNotification::LastArticle]
     def run_notification(name, state)
       logger.debug("Run notification of \"#{name}\".")
 
@@ -118,7 +118,7 @@ module TrySailBlogNotification::Command
 
     # Write to dump file.
     #
-    # @param [Hash] states
+    # @param states [Hash]
     def dump_to_file(states)
       hashed_states = states.map { |name, last_article|
         [name, last_article.to_h]

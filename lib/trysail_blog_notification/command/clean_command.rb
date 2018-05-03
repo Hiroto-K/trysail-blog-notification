@@ -20,17 +20,20 @@ module TrySailBlogNotification::Command
 
     # Find files.
     #
-    # @param [Array] pattern
-    # @return [Array]
+    # @param pattern [Array]
+    # @return [Array<String>]
     def find_files(pattern)
       Dir.glob(pattern)
     end
 
     # Delete files
     #
-    # @param [Array] files
-    # @param [Hash] option
-    # @return [Array]
+    # @param files [Array<String>]
+    # @param option [Hash]
+    # @option option [true, false] :force
+    # @option option [true, false] :noop
+    # @option option [true, false] :verbose
+    # @return [Array<String>]
     def rm(files, option)
       FileUtils.rm(files, option)
     end
