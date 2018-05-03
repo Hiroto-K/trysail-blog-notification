@@ -12,7 +12,7 @@ module TrySailBlogNotification
 
     # Initialize StateUpdater
     #
-    # @param [Hash] urls
+    # @param urls [Hash]
     def initialize(urls)
       @urls = urls
       @states = {}
@@ -41,7 +41,7 @@ module TrySailBlogNotification
 
     # Create http instance.
     #
-    # @param [String] url
+    # @param url [String]
     # @return [TrySailBlogNotification::HTTP]
     def create_http(url)
       TrySailBlogNotification::HTTP.new(url)
@@ -49,7 +49,7 @@ module TrySailBlogNotification
 
     # Create http instance.
     #
-    # @param [String] url
+    # @param url [String]
     # @return [TrySailBlogNotification::HTTP]
     def http_request(url)
       logger.debug("Send http request : #{url}.")
@@ -62,7 +62,7 @@ module TrySailBlogNotification
 
     # Get last article by rss
     #
-    # @param [String] rss_url
+    # @param rss_url [String]
     # @return [TrySailBlogNotification::LastArticle]
     def get_by_rss(rss_url)
       http = http_request(rss_url)
@@ -74,8 +74,8 @@ module TrySailBlogNotification
 
     # Get last article by parser
     #
-    # @param [String] url
-    # @param [String] parser_class
+    # @param url [String]
+    # @param parser_class [String]
     # @return [TrySailBlogNotification::LastArticle]
     def get_by_parser(url, parser_class)
       http = http_request(url)
