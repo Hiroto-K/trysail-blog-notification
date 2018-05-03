@@ -3,14 +3,14 @@ require 'rss'
 module TrySailBlogNotification
   class RssReader
 
-    # Rss
+    # Rss.
     #
     # @return [RSS::Rss]
     attr_reader :rss
 
-    # Initialize TrySailBlogNotification::RssReader
+    # Initialize TrySailBlogNotification::RssReader.
     #
-    # @param [String] rss_content
+    # @param rss_content [String]
     def initialize(rss_content)
       @rss = RSS::Parser::parse(rss_content)
     end
