@@ -24,6 +24,7 @@ title: Plugin
 デフォルトで設定されているブログ以外のブログも追加する場合。
 
 RSSが提供されている場合、``config/config.yml``の``urls``にRSSのurlを追加するだけです。
+
 ```yaml
 urls :
   雨宮天 :
@@ -53,11 +54,11 @@ RSSが提供されていない場合は以下方法のParserプラグインを�
 
 ```ruby
 module Hoge
-  class FooParser < TrySailBlogNotification::Plugins::Parser::BaseParser
+  class FooParser < TrySailBlogNotification::Parser::BaseParser
 
     # パースを行うメソッド。返り値は必ず TrySailBlogNotification::LastArticle のインスタンスである必要があります。
     # 
-    # @param [Nokogiri::HTML::Document] nokogiri
+    # @param nokogiri [Nokogiri::HTML::Document]
     # @return [TrySailBlogNotification::LastArticle]
     def parse(nokogiri)
       title = get_title
@@ -86,33 +87,30 @@ urls :
 
 通知を送るクライアントのプラグインの作成方法。
 
-``TrySailBlogNotification::Plugins::Client::BaseClient``を継承したクラスを作成します。
-
-メソッドの使い方と実装が必須かどうか
-
-|メソッド名|呼ばれるタイミング|使い方|実装が必須か|
-|:--:|:--:|:--:|:--:|
-|``setup``|クライアントの登録時|クラスの初期化||
-|``before_update``|``update``メソッドを呼ぶ前|通知の送信の準備||
-|``update``|通知を送る時|実際に通知を送る| :red_circle: |
+``TrySailBlogNotification::Client::BaseClient``を継承したクラスを作成します。
 
 ```ruby
 module Hoge
-  class FooClient < TrySailBlogNotification::Plugins::Client::BaseClient
+  class FooClient < TrySailBlogNotification::Client::BaseClient
 
+      # クライアントの初期化時に呼ばれます。
       def setup
         puts "setup"
       end
 
-      # @param [String] name
-      # @param [TrySailBlogNotification::LastArticle] status
-      def before_update(name, status)
+      # updateメソッドを呼ぶ前に呼ばれます。
+      #
+      # @param name [String]
+      # @param article [TrySailBlogNotification::LastArticle]
+      def before_update(name, article)
         puts "before_update"
       end
 
-      # @param [String] name
-      # @param [TrySailBlogNotification::LastArticle] status
-      def update(name, status)
+      # 通知を送信するメソッド。実装が必須。
+      # 
+      # @param name [String]
+      # @param article [TrySailBlogNotification::LastArticle]
+      def update(name, article)
         puts "update"
       end
 
