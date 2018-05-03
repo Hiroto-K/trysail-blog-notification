@@ -18,7 +18,7 @@ module TrySailBlogNotification::Parser
       url = get_url(title_object)
       last_update = get_last_update(last_article)
 
-      TrySailBlogNotification::LastArticle.new(title: title, url: url, last_update: last_update)
+      create_last_article(title: title, url: url, last_update: last_update)
     end
 
     private
