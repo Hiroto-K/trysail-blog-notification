@@ -11,8 +11,8 @@ module TrySailBlogNotification::Client
 
     # Update.
     #
-    # @param [String] name
-    # @param [TrySailBlogNotification::LastArticle] status
+    # @param name [String]
+    # @param status [TrySailBlogNotification::LastArticle]
     def update(name, status)
       date = Time.now
 

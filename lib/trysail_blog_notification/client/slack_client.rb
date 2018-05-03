@@ -14,14 +14,17 @@ module TrySailBlogNotification::Client
     end
 
     # Before update.
+    #
+    # @param name [String]
+    # @param status [TrySailBlogNotification::LastArticle]
     def before_update(name, status)
       @client.auth_test
     end
 
     # Update.
     #
-    # @param [String] name
-    # @param [TrySailBlogNotification::LastArticle] status
+    # @param name [String]
+    # @param status [TrySailBlogNotification::LastArticle]
     def update(name, status)
       date = Time.now
 

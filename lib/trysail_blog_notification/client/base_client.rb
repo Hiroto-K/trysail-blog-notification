@@ -12,7 +12,7 @@ module TrySailBlogNotification::Client
 
     # Initialize client.
     #
-    # @param [Hash] config Config hash.
+    # @param config [Hash] Config hash.
     def initialize(config)
       @config = config
     end
@@ -24,15 +24,15 @@ module TrySailBlogNotification::Client
 
     # This method call in before "update" method call.
     #
-    # @param [String] name
-    # @param [TrySailBlogNotification::LastArticle] status
+    # @param name [String] Blog name.
+    # @param status [TrySailBlogNotification::LastArticle] Blog state.
     def before_update(name, status)
     end
 
     # Update.
     #
-    # @param [String] name
-    # @param [TrySailBlogNotification::LastArticle] status
+    # @param name [String] Blog name.
+    # @param status [TrySailBlogNotification::LastArticle] Blog state.
     def update(name, status)
       raise NotImplementedError, "You must implement #{self.class}##{__method__}"
     end
