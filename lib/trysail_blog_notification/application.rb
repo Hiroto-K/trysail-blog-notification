@@ -30,7 +30,7 @@ module TrySailBlogNotification
 
     # Client instances.
     #
-    # @return [Array]
+    # @return [Array<TrySailBlogNotification::Client::BaseClient>]
     attr_reader :clients
 
     # Target urls
@@ -45,8 +45,8 @@ module TrySailBlogNotification
 
     # Initialize application.
     #
-    # @param [String] base_dir
-    # @param [Hash] config
+    # @param base_dir [String]
+    # @param config [Hash]
     def initialize(base_dir, config)
       @@app = self
       @base_dir = base_dir
@@ -70,7 +70,7 @@ module TrySailBlogNotification
 
     # Add client.
     #
-    # @param [TrySailBlogNotification::Client::BaseClient] client
+    # @param client [TrySailBlogNotification::Client::BaseClient]
     def add_client(client)
       raise "Client is not instance of 'TrySailBlogNotification::Client::BaseClient'." unless client.is_a?(TrySailBlogNotification::Client::BaseClient)
 
@@ -108,6 +108,7 @@ module TrySailBlogNotification
 
     # Get the path to the base.
     #
+    # @param path [String]
     # @return [String]
     def base_path(path = '')
       File.join(@base_dir, path)
