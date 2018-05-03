@@ -5,27 +5,27 @@ module TrySailBlogNotification
 
     include TrySailBlogNotification::Util
 
-    # Base dir path
+    # Base dir path.
     #
     # @return [String]
     attr_reader :base_dir
 
-    # Initialize Plugin
+    # Initialize Plugin.
     #
-    # @param [String] base_dir Base dir path
+    # @param base_dir [String] Base dir path
     def initialize(base_dir)
       @base_dir = base_dir
     end
 
-    # Get plugin files
+    # Get plugin files.
     #
-    # @return [Array]
+    # @return [Array<String>]
     def plugin_files
       dirs = get_dirs
       get_files(dirs)
     end
 
-    # Load plugin files
+    # Load plugin files.
     #
     # @return [Object]
     def load_plugins
@@ -38,7 +38,7 @@ module TrySailBlogNotification
 
     # Get dirs.
     #
-    # @return [Array]
+    # @return [Array<String>]
     def get_dirs
       dirs = Dir.glob(base_path('/plugin/*'))
       dirs.select! { |d|
@@ -49,7 +49,7 @@ module TrySailBlogNotification
 
     # Get plugin files.
     #
-    # @return [Array]
+    # @return [Array<String>]
     def get_files(dirs)
       plugin_files = []
 
@@ -70,6 +70,7 @@ module TrySailBlogNotification
 
     # Get the path to the base.
     #
+    # @param path [String]
     # @return [String]
     def base_path(path = '')
       File.join(@base_dir, path)
