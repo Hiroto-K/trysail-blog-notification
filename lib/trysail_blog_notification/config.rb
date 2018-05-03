@@ -6,22 +6,22 @@ module TrySailBlogNotification
     # Key delimiter.
     DELIMITER = '.'
 
-    # Config
+    # Raw config.
     #
     # @return [Hash]
     attr_reader :raw_config
 
-    # Initialize TrySailBlogNotification::Config
+    # Initialize TrySailBlogNotification::Config.
     #
-    # @param [Hash] config
+    # @param config [Hash]
     def initialize(config = {})
       @raw_config = config.with_indifferent_access
     end
 
     # Get config
     #
-    # @param [String|Symbol|NilClass] key
-    # @param [Object] default
+    # @param key [String, Symbol, NilClass]
+    # @param default [Object]
     # @return [Object]
     def get(key = nil, default = nil)
       return raw_config if key.nil?
@@ -32,8 +32,8 @@ module TrySailBlogNotification
 
     # Checks whether a config exists
     #
-    # @param [String|Symbol] key
-    # @return [TrueClass|FalseClass]
+    # @param key [String, Symbol]
+    # @return [true, false]
     def has?(key)
       return raw_config.key?(key) unless key.is_a?(String)
 
@@ -48,7 +48,7 @@ module TrySailBlogNotification
 
     # Access to key
     #
-    # @param [String|Symbol|Object] key
+    # @param key [String, Symbol, Object]
     # @return [Object]
     def [](key)
       raw_config[key]
@@ -56,18 +56,18 @@ module TrySailBlogNotification
 
     private
 
-    # Split key
+    # Split key.
     #
-    # @param [String] key
+    # @param key [String]
     # @return [Array<String>]
     def split_key(key)
       key.split(DELIMITER)
     end
 
-    # Get key by String
+    # Get key by String.
     #
-    # @param [String] key
-    # @param [Object] default
+    # @param key [String]
+    # @param default [Object]
     # @return [Object]
     def get_by_string(key, default)
       config = raw_config
