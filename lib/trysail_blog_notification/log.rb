@@ -25,8 +25,8 @@ module TrySailBlogNotification
 
     # Initialize Log class instance.
     #
-    # @param [String] file Log file path.
-    # @param [Symbol|String] level Logger level.
+    # @param file [String] Log file path.
+    # @param level [Symbol, String] Logger level.
     def initialize(file, level)
       @file = file
       create_log_file
@@ -42,7 +42,7 @@ module TrySailBlogNotification
 
     # Set logger level
     #
-    # @param [String|Symbol] level
+    # @param level [Symbol, String]
     # @return [Object]
     def level=(level)
       level_value = get_level_value(level)
@@ -52,8 +52,8 @@ module TrySailBlogNotification
 
     # Send missing method.
     #
-    # @param [String] name Method name.
-    # @param [Array] args Method arguments.
+    # @param name [Symbol] Method name.
+    # @param args [Array] Method arguments.
     # @return [Object]
     def method_missing(name, *args)
       @logger.send(name, *args)
@@ -70,7 +70,7 @@ module TrySailBlogNotification
 
     # Get logger level value.
     #
-    # @param [Symbol|String] value
+    # @param value [Symbol, String]
     # @return [Object]
     def get_level_value(value)
       map = {
