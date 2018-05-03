@@ -20,6 +20,7 @@ module TrySailBlogNotification
       # @param klass [Class] Sub class of TrySailBlogNotification::Command::BaseCommand.
       def call_command(klass)
         command = klass.new(options, args)
+        command.setup
         command.start
       end
     end
