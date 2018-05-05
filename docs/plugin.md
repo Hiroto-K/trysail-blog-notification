@@ -50,7 +50,7 @@ RSSが提供されていない場合は以下方法のParserプラグインを�
 
 通知するブログにRSSがある場合、上記の方法でRSSを追加するべきです。
 
-``TrySailBlogNotification::Plugins::Parser::BaseParser``を継承したクラスを作成します。
+``TrySailBlogNotification::Parser::BaseParser``を継承したクラスを作成します。
 
 ```ruby
 module Hoge
