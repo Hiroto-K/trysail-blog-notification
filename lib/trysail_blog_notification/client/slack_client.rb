@@ -26,7 +26,9 @@ module TrySailBlogNotification::Client
     # @param name [String]
     # @param article [TrySailBlogNotification::LastArticle]
     def update(name, article)
-      date = Time.now
+      format = '%Y-%m-%d %T %:z'
+      system_date = Time.now.strftime(format)
+      article_last_update = Time.parse(article.last_update).strftime(format)
 
       text = <<"EOS"
 #{name}のブログが更新されました。
@@ -34,8 +36,8 @@ module TrySailBlogNotification::Client
 #{article.title}
 #{article.url}
 
-ブログ更新時刻 : #{article.last_update}
-システム時刻   : #{date}
+ブログ更新時刻 : #{article_last_update}
+システム時刻   : #{system_date}
 EOS
 
       logger.info(text)
