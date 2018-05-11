@@ -29,12 +29,12 @@ module TrySailBlogNotification
     #
     # @param title [String] Article title.
     # @param url [String] Article url.
-    # @param last_update [String] Article update at.
+    # @param last_update [Time, String] Article update at.
     def initialize(title:, url:, last_update:)
       @title = title
       set_url(url)
 
-      last_update = Time.parse(last_update) if last_update.is_a?(String)
+      last_update = Time.parse(last_update.to_s) unless last_update.is_a?(Time)
       @last_update = last_update
     end
 
