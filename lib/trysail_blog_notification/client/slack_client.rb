@@ -28,7 +28,7 @@ module TrySailBlogNotification::Client
     def update(name, article)
       format = '%Y-%m-%d %T %:z'
       system_date = Time.now.strftime(format)
-      article_last_update = Time.parse(article.last_update).strftime(format)
+      article_last_update = article.last_update.strftime(format)
 
       text = <<"EOS"
 #{name}のブログが更新されました。
