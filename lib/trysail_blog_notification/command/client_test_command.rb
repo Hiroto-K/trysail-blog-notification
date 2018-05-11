@@ -16,9 +16,16 @@ module TrySailBlogNotification::Command
     # @param name [String]
     # @return [Array]
     def find_client(name)
-      clients = app.config.get(:client)
+      clients = get_clients
       raise "Client '#{name}' not found." if clients[name].nil?
       clients[name]
+    end
+
+    # Get clients.
+    #
+    # @return [Hash]
+    def get_clients
+      app.config.get(:client)
     end
 
   end
