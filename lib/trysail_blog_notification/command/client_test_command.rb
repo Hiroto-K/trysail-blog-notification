@@ -5,8 +5,14 @@ module TrySailBlogNotification::Command
 
     # Start command.
     def start
-      name = args[:name]
-      client = find_client(name)
+      client_name = args[:name]
+      client_attr = find_client(client_name)
+      client_class = client_attr[:client]
+      client_config = client_attr[:config]
+      client = initialize_client(client_class, client_config)
+
+
+      test_client(client, test_name, test_data)
     end
 
     private
@@ -19,6 +25,33 @@ module TrySailBlogNotification::Command
       clients = get_clients
       raise "Client '#{name}' not found." if clients[name].nil?
       clients[name]
+    end
+
+    # Initialize client
+    #
+    # @param client_class [String]
+    # @param client_config [Hash]
+    # @return [TrySailBlogNotification::Client::BaseClient]
+    def initialize_client(client_class, client_config)
+      klass = client_class.constantize
+      klass.new(client_config)
+    end
+
+    # Test client
+    #
+    # @param client [TrySailBlogNotification::Client::BaseClient]
+    # @param test_name [String]
+    # @param test_state [TrySailBlogNotification::LastArticle]
+    def test_client(client, test_name, test_state)
+      class_name = client.class
+      logger.info("Call #{class_name}#setup")
+      client.setup
+
+      logger.info("Call #{class_name}#before_update")
+      client.before_update(test_name, test_state)
+
+      logger.info("Call #{class_name}#update")
+      client.update(test_name, test_state)
     end
 
     # Get clients.
