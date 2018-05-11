@@ -64,6 +64,8 @@ module TrySailBlogNotification::Command
     # @param test_state [TrySailBlogNotification::LastArticle]
     def test_client(client, test_name, test_state)
       class_name = client.class
+
+      logger.info("client : #{class_name}, name : #{test_name}, state : #{test_state.inspect}")
       logger.info("Call #{class_name}#setup")
       client.setup
 
