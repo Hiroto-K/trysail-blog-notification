@@ -24,7 +24,7 @@ module TrySailBlogNotification
       info = {
         title: item.title,
         url: item.link,
-        last_update: item.pubDate.to_s
+        last_update: item.pubDate
       }
 
       TrySailBlogNotification::LastArticle.new(info)
