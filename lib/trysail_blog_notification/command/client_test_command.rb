@@ -14,7 +14,6 @@ module TrySailBlogNotification::Command
       test_name = build_test_name
       test_data = build_test_data
 
-      binding.pry
       test_client(client, test_name, test_data)
     end
 
