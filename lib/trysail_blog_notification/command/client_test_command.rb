@@ -5,7 +5,7 @@ module TrySailBlogNotification::Command
 
     # Start command.
     def start
-      client_name = args[:name]
+      client_name = options["client-name"]
       client_attr = find_client(client_name)
       client_class = client_attr[:client]
       client_config = client_attr[:config]
@@ -14,6 +14,7 @@ module TrySailBlogNotification::Command
       test_name = build_test_name
       test_data = build_test_data
 
+      binding.pry
       test_client(client, test_name, test_data)
     end
 
@@ -33,16 +34,16 @@ module TrySailBlogNotification::Command
     #
     # @return [String]
     def build_test_name
-      options[:name] || 'Test-name'
+      options["test-name"] || 'Test-name'
     end
 
     # Build test data
     #
     # @return [TrySailBlogNotification::LastArticle]
     def build_test_data
-      title = options[:title] || 'Test title'
-      url = options[:url] || 'https://example.com/'
-      last_update = options[:last_update] || Time.now.to_s
+      title = options['title'] || 'Test title'
+      url = options['url'] || 'https://example.com/'
+      last_update = options['last-update'] || Time.now.to_s
 
       TrySailBlogNotification::LastArticle.new(title: title, url: url, last_update: last_update)
     end
