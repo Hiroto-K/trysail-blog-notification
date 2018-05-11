@@ -11,6 +11,25 @@ describe TrySailBlogNotification::LastArticle do
     last_update: last_update,
   }}
 
+  describe "#initialize" do
+
+    let(:last_article) {
+      TrySailBlogNotification::LastArticle.new(
+        {
+          title: title,
+          url: url,
+          last_update: '2018-01-01 00:00:00 +0900',
+        })
+    }
+
+    context 'last_update pass String' do
+      it 'parsed time' do
+        expect(last_article.last_update).to be_a Time
+        expect(last_article.last_update.to_s).to eq '2018-01-01 00:00:00 +0900'
+      end
+    end
+  end
+
   describe '#to_h' do
 
     let(:last_article) { TrySailBlogNotification::LastArticle.new(default_argument) }
