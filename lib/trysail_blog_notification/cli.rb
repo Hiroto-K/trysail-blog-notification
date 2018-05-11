@@ -45,9 +45,11 @@ module TrySailBlogNotification
     end
 
     desc 'client:test', 'Test client class.'
+    argument 'name', desc: 'Client name', required: true, type: :string
     def client_test
       call_command(TrySailBlogNotification::Command::ClientTestCommand)
     end
+    map 'client:test' => 'client_test'
 
   end
 end
