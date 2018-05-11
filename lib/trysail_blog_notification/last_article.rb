@@ -22,7 +22,7 @@ module TrySailBlogNotification
 
     # Return last update
     #
-    # @return [String]
+    # @return [Time]
     attr_reader :last_update
 
     # Initialize LastArticle.
@@ -33,6 +33,8 @@ module TrySailBlogNotification
     def initialize(title:, url:, last_update:)
       @title = title
       set_url(url)
+
+      last_update = Time.parse(last_update) if last_update.is_a?(String)
       @last_update = last_update
     end
 
