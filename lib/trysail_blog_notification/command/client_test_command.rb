@@ -79,7 +79,7 @@ module TrySailBlogNotification::Command
     #
     # @return [Hash]
     def get_clients
-      app.config.get(:client)
+      app.config.get(:clients)
     end
 
   end
