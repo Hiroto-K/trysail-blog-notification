@@ -11,6 +11,8 @@ module TrySailBlogNotification::Command
       client_config = client_attr[:config]
       client = initialize_client(client_class, client_config)
 
+      test_name = build_test_name
+      test_data = build_test_data
 
       test_client(client, test_name, test_data)
     end
@@ -25,6 +27,24 @@ module TrySailBlogNotification::Command
       clients = get_clients
       raise "Client '#{name}' not found." if clients[name].nil?
       clients[name]
+    end
+
+    # Build test name
+    #
+    # @return [String]
+    def build_test_name
+      options[:name] || 'Test-name'
+    end
+
+    # Build test data
+    #
+    # @return [TrySailBlogNotification::LastArticle]
+    def build_test_data
+      title = options[:title] || 'Test title'
+      url = options[:url] || 'https://example.com/'
+      last_update = options[:last_update] || Time.now.to_s
+
+      TrySailBlogNotification::LastArticle.new(title: title, url: url, last_update: last_update)
     end
 
     # Initialize client
