@@ -4,7 +4,7 @@ describe TrySailBlogNotification::LastArticle do
 
   let(:title) { 'Test title' }
   let(:url) { 'https://hiroto-k.net/' }
-  let(:last_update) { '2018-02-08' }
+  let(:last_update) { Time.parse('2018-02-08') }
   let(:default_argument) {{
     title: title,
     url: url,
