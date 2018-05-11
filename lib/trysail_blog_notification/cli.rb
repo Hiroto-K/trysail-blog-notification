@@ -44,5 +44,10 @@ module TrySailBlogNotification
       call_command(TrySailBlogNotification::Command::CleanCommand)
     end
 
+    desc 'client:test', 'Test client class.'
+    def client_test
+      call_command(TrySailBlogNotification::Command::ClientTestCommand)
+    end
+
   end
 end
