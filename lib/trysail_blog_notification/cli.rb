@@ -44,5 +44,16 @@ module TrySailBlogNotification
       call_command(TrySailBlogNotification::Command::CleanCommand)
     end
 
+    desc 'client:test', 'Test client class.'
+    option 'client-name', desc: 'Client name', required: true, type: :string
+    option 'test-name', desc: 'Test data name', type: :string
+    option 'title', desc: 'Test data of title', type: :string
+    option 'url', desc: 'Test data of url', type: :string
+    option 'last-update', desc: 'Test data of last updated', type: :string
+    def client_test
+      call_command(TrySailBlogNotification::Command::ClientTestCommand)
+    end
+    map 'client:test' => 'client_test'
+
   end
 end
