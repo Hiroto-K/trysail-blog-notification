@@ -8,6 +8,8 @@ gem 'nokogiri', '~>1.8'
 gem 'twitter', '~>6.1'
 gem 'slack-ruby-client', '~>0.8'
 
+gem 'rubocop', require: false
+
 group :test do
   gem 'rspec', '~>3.7'
 end
