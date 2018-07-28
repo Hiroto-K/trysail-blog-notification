@@ -8,14 +8,6 @@
 
 # Offense count: 3
 # Cop supports --auto-correct.
-# Configuration parameters: Include, TreatCommentsAsGroupSeparators.
-# Include: **/*.gemfile, **/Gemfile, **/gems.rb
-Bundler/OrderedGems:
-  Exclude:
-    - 'Gemfile'
-
-# Offense count: 3
-# Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, IndentOneStep, IndentationWidth.
 # SupportedStyles: case, end
 Layout/CaseIndentation:
