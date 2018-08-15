@@ -21,7 +21,7 @@ RSSの追加やプラグインでの拡張により、TrySailのメンバーの�
 GitHubからソースコードを持ってきて``bundle install``で依存ライブラリをインストール。
 
 ```sh
-git clone git@github.com:Hiroto-K/trysail-blog-notification.git
+git clone git@github.com:hiroto-k/trysail-blog-notification.git
 cd trysail-blog-notification
 bundle install
 ```
@@ -36,13 +36,13 @@ bundle install
 
 ## Plugins
 
-- [Hiroto-K/tbn-ari-ozawa-plugin](https://github.com/Hiroto-K/tbn-ari-ozawa-plugin)
+- [hiroto-k/tbn-ari-ozawa-plugin](https://github.com/hiroto-k/tbn-ari-ozawa-plugin)
     - **非推奨。** 小澤亜李さんのブログの通知を受け取るプラグイン。
-- [Hiroto-K/tbn-miku-ito-plugin](https://github.com/Hiroto-K/tbn-miku-ito-plugin)
+- [hiroto-k/tbn-miku-ito-plugin](https://github.com/hiroto-k/tbn-miku-ito-plugin)
     - **非推奨。** 伊藤美来さんのブログの通知を受け取るプラグイン。
-- [Hiroto-K/tbn-moe-toyota-plugin](https://github.com/Hiroto-K/tbn-moe-toyota-plugin)
+- [hiroto-k/tbn-moe-toyota-plugin](https://github.com/hiroto-k/tbn-moe-toyota-plugin)
     - **非推奨。** 豊田萌絵さんのブログの通知を受け取るプラグイン。
 
 ## License
 
-[MIT License](https://github.com/Hiroto-K/trysail-blog-notification/blob/master/LICENSE "MIT License")
+[MIT License](https://github.com/hiroto-k/trysail-blog-notification/blob/master/LICENSE "MIT License")
