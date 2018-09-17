@@ -4,15 +4,16 @@ describe TrySailBlogNotification::LastArticle do
   let(:title) { 'Test title' }
   let(:url) { 'https://example.com/' }
   let(:last_update) { Time.parse('2018-01-01 00:00:00 +0900') }
-  let(:default_argument) {
+  let(:default_argument) do
     {
       title: title,
       url: url,
       last_update: last_update,
-    }}
+    }
+  end
 
   describe "#initialize" do
-    let(:last_article) {
+    let(:last_article) do
       TrySailBlogNotification::LastArticle.new(
         {
           title: title,
@@ -20,7 +21,7 @@ describe TrySailBlogNotification::LastArticle do
           last_update: '2018-01-01 00:00:00 +0900',
         }
       )
-    }
+    end
 
     context 'last_update pass String' do
       it 'parsed time' do

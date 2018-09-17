@@ -41,9 +41,9 @@ module TrySailBlogNotification
     # @return [Array<String>]
     def get_dirs
       dirs = Dir.glob(base_path('/plugin/*'))
-      dirs.select! { |d|
+      dirs.select! do |d|
         File.directory?(d)
-      }
+      end
       dirs.sort
     end
 

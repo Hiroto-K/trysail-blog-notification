@@ -116,9 +116,9 @@ module TrySailBlogNotification
       #
       # @param states [Hash]
       def dump_to_file(states)
-        hashed_states = states.map { |name, last_article|
+        hashed_states = states.map do |name, last_article|
           [name, last_article.to_h]
-        }.to_h
+        end.to_h
 
         logger.debug('Write to dump file.')
         dumper = TrySailBlogNotification::StateDumper.new(@dump_file)
