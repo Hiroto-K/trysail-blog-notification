@@ -77,6 +77,5 @@ module TrySailBlogNotification
       @uri = URI.parse(url)
       @url = @uri.to_s
     end
-
   end
 end

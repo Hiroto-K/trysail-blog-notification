@@ -49,6 +49,5 @@ module TrySailBlogNotification
     def success?
       @response.success?
     end
-
   end
 end

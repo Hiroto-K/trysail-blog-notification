@@ -83,7 +83,6 @@ module TrySailBlogNotification
       def get_clients
         app.config.get(:clients)
       end
-
     end
   end
 end

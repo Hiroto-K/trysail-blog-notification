@@ -54,6 +54,5 @@ module TrySailBlogNotification
       call_command(TrySailBlogNotification::Command::ClientTestCommand)
     end
     map 'client:test' => 'client_test'
-
   end
 end

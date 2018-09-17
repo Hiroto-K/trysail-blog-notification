@@ -37,7 +37,6 @@ module TrySailBlogNotification
       def update(name, article)
         raise NotImplementedError, "You must implement #{self.class}##{__method__}"
       end
-
     end
   end
 end

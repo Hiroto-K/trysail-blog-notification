@@ -75,6 +75,5 @@ module TrySailBlogNotification
     def base_path(path = '')
       File.join(@base_dir, path)
     end
-
   end
 end

@@ -78,6 +78,5 @@ module TrySailBlogNotification
 
       config
     end
-
   end
 end

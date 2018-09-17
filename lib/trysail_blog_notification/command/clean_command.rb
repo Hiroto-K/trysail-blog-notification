@@ -38,7 +38,6 @@ module TrySailBlogNotification
       def rm(files, option)
         FileUtils.rm(files, option)
       end
-
     end
   end
 end

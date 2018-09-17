@@ -36,6 +36,5 @@ module TrySailBlogNotification::Parser
     def create_last_article(*params)
       TrySailBlogNotification::LastArticle.new(params)
     end
-
   end
 end

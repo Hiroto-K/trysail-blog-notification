@@ -26,7 +26,6 @@ EOS
         logger.info(text)
         @client.update(text)
       end
-
     end
   end
 end

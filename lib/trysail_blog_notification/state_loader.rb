@@ -62,6 +62,5 @@ module TrySailBlogNotification
         @states[name] = TrySailBlogNotification::LastArticle.new(symbol_state)
       end
     end
-
   end
 end

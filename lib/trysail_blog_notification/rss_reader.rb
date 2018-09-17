@@ -29,6 +29,5 @@ module TrySailBlogNotification
 
       TrySailBlogNotification::LastArticle.new(info)
     end
-
   end
 end

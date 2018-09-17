@@ -37,6 +37,5 @@ module TrySailBlogNotification
         f.write(@json_states)
       end
     end
-
   end
 end

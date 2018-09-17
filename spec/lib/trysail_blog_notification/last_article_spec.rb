@@ -1,7 +1,6 @@
 require 'trysail_blog_notification/last_article'
 
 describe TrySailBlogNotification::LastArticle do
-
   let(:title) { 'Test title' }
   let(:url) { 'https://example.com/' }
   let(:last_update) { Time.parse('2018-01-01 00:00:00 +0900') }
@@ -12,7 +11,6 @@ describe TrySailBlogNotification::LastArticle do
   }}
 
   describe "#initialize" do
-
     let(:last_article) {
       TrySailBlogNotification::LastArticle.new(
         {
@@ -31,7 +29,6 @@ describe TrySailBlogNotification::LastArticle do
   end
 
   describe '#to_h' do
-
     let(:last_article) { TrySailBlogNotification::LastArticle.new(default_argument) }
 
     it 'return hash' do
@@ -52,7 +49,6 @@ describe TrySailBlogNotification::LastArticle do
   end
 
   describe '#[]' do
-
     let(:last_article) { TrySailBlogNotification::LastArticle.new(default_argument) }
 
     context 'access with String' do
@@ -90,7 +86,5 @@ describe TrySailBlogNotification::LastArticle do
         expect(last_article[:example]).to be_nil
       end
     end
-
   end
-
 end

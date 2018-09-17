@@ -33,7 +33,6 @@ module TrySailBlogNotification
       def start
         raise NotImplementedError, "You must implement #{self.class}##{__method__}"
       end
-
     end
   end
 end

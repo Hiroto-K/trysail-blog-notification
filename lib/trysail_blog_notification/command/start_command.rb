@@ -126,7 +126,6 @@ module TrySailBlogNotification
         logger.debug('Run write.')
         dumper.dump(hashed_states)
       end
-
     end
   end
 end

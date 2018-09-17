@@ -2,7 +2,6 @@ require 'trysail_blog_notification/last_article'
 require 'trysail_blog_notification/state_loader'
 
 describe TrySailBlogNotification::StateLoader do
-
   let(:state_file) { File.join(__dir__, '/../../fixtures/files/dump.json') }
   let(:state_content) { File.read(state_file) }
   let(:state_loader) { TrySailBlogNotification::StateLoader.new(state_file) }
@@ -24,7 +23,6 @@ describe TrySailBlogNotification::StateLoader do
   end
 
   describe '#to_h' do
-
     let(:hash) { state_loader.to_h }
 
     it 'return Hash' do
@@ -39,7 +37,6 @@ describe TrySailBlogNotification::StateLoader do
   end
 
   describe '#states' do
-
     let(:states) { state_loader.states }
 
     it 'return Hash' do
@@ -70,5 +67,4 @@ describe TrySailBlogNotification::StateLoader do
       expect(states['Name1'].last_update).to eq 'Sun, 01 Apr 2018 22:07:28 +0900'
     end
   end
-
 end

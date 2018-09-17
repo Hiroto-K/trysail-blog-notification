@@ -44,7 +44,6 @@ EOS
         logger.info(text)
         @client.chat_postMessage(channel: config[:channel], text: text, as_user: true)
       end
-
     end
   end
 end

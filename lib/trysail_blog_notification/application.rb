@@ -157,6 +157,5 @@ module TrySailBlogNotification
         add_client(klass.new(config))
       end
     end
-
   end
 end

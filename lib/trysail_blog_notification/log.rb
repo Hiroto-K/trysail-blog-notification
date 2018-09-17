@@ -84,6 +84,5 @@ module TrySailBlogNotification
       raise RuntimeError, "Logger level '#{value}' does not exist." unless map.has_key?(value)
       map[value]
     end
-
   end
 end

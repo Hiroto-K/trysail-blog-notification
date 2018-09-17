@@ -8,7 +8,6 @@ module TrySailBlogNotification
       def start
         Pry.start
       end
-
     end
   end
 end

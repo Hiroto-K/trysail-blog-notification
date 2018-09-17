@@ -90,6 +90,5 @@ module TrySailBlogNotification
 
       last_article
     end
-
   end
 end

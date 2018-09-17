@@ -63,6 +63,5 @@ module TrySailBlogNotification::Parser
     def get_last_update(article)
       article.xpath('.//span[@class="articleTime"]//time').first.content
     end
-
   end
 end
