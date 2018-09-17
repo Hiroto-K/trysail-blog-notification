@@ -176,26 +176,6 @@ Style/BracesAroundHashParameters:
   Exclude:
     - 'spec/lib/trysail_blog_notification/last_article_spec.rb'
 
-# Offense count: 13
-# Cop supports --auto-correct.
-# Configuration parameters: AutoCorrect, EnforcedStyle.
-# SupportedStyles: nested, compact
-Style/ClassAndModuleChildren:
-  Exclude:
-    - 'lib/trysail_blog_notification/client/base_client.rb'
-    - 'lib/trysail_blog_notification/client/slack_client.rb'
-    - 'lib/trysail_blog_notification/client/twitter_client.rb'
-    - 'lib/trysail_blog_notification/command/base_command.rb'
-    - 'lib/trysail_blog_notification/command/clean_command.rb'
-    - 'lib/trysail_blog_notification/command/client_test_command.rb'
-    - 'lib/trysail_blog_notification/command/console_command.rb'
-    - 'lib/trysail_blog_notification/command/start_command.rb'
-    - 'lib/trysail_blog_notification/parser/base_parser.rb'
-    - 'lib/trysail_blog_notification/parser/momo_asakura.rb'
-    - 'lib/trysail_blog_notification/parser/shiina_natsukawa.rb'
-    - 'lib/trysail_blog_notification/parser/sora_amamiya.rb'
-    - 'lib/trysail_blog_notification/parser/try_sail_parser.rb'
-
 # Offense count: 1
 Style/ClassVars:
   Exclude:

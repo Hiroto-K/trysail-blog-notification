@@ -7,3 +7,6 @@ AllCops:
     - 'log/**/*'
     - 'plugin/**/*'
     - 'vendor/**/*'
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: nested
