@@ -71,12 +71,6 @@ Naming/HeredocDelimiterNaming:
     - 'lib/trysail_blog_notification/client/slack_client.rb'
     - 'lib/trysail_blog_notification/client/twitter_client.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/BlockComments:
-  Exclude:
-    - 'spec/spec_helper.rb'
-
 # Offense count: 4
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, ProceduralMethods, FunctionalMethods, IgnoredMethods.

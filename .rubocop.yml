@@ -14,5 +14,8 @@ Layout/EmptyLinesAroundClassBody:
 Layout/EmptyLinesAroundModuleBody:
   EnforcedStyle: empty_lines_except_namespace
 
+Style/BlockComments:
+  Enabled: false
+
 Style/ClassAndModuleChildren:
   EnforcedStyle: nested
