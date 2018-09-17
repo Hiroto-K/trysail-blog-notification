@@ -57,3 +57,6 @@ Style/EmptyMethod:
 
 Style/Documentation:
   Enabled: false
+
+Style/MissingRespondToMissing:
+  Enabled: false

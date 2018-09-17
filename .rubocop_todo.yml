@@ -101,11 +101,6 @@ Style/MethodMissingSuper:
   Exclude:
     - 'lib/trysail_blog_notification/log.rb'
 
-# Offense count: 1
-Style/MissingRespondToMissing:
-  Exclude:
-    - 'lib/trysail_blog_notification/log.rb'
-
 # Offense count: 2
 # Cop supports --auto-correct.
 Style/MutableConstant:
