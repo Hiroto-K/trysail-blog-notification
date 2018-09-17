@@ -14,16 +14,6 @@ Layout/CaseIndentation:
   Exclude:
     - 'lib/trysail_blog_notification/last_article.rb'
 
-# Offense count: 13
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: empty_lines, no_empty_lines
-Layout/EmptyLinesAroundBlockBody:
-  Exclude:
-    - 'spec/lib/trysail_blog_notification/last_article_spec.rb'
-    - 'spec/lib/trysail_blog_notification/rss_reader_spec.rb'
-    - 'spec/lib/trysail_blog_notification/state_loader_spec.rb'
-
 # Offense count: 42
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
