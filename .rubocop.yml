@@ -66,3 +66,7 @@ Style/MethodMissingSuper:
 
 Style/PercentLiteralDelimiters:
   Enabled: false
+
+Style/ClassVars:
+  Exclude:
+  - 'lib/trysail_blog_notification/application.rb'
