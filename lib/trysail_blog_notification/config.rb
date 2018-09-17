@@ -4,7 +4,7 @@ module TrySailBlogNotification
   class Config
 
     # Key delimiter.
-    DELIMITER = '.'
+    DELIMITER = '.'.freeze
 
     # Raw config.
     #

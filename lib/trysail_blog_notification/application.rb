@@ -6,7 +6,7 @@ module TrySailBlogNotification
   class Application
 
     # Application name.
-    NAME = 'trysail-blog-notification'
+    NAME = 'trysail-blog-notification'.freeze
 
     # Base dir
     #
