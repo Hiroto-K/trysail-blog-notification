@@ -118,14 +118,6 @@ Style/RedundantException:
   Exclude:
     - 'lib/trysail_blog_notification/log.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: IgnoredMethods.
-# IgnoredMethods: respond_to, define_method
-Style/SymbolProc:
-  Exclude:
-    - 'lib/trysail_blog_notification/state_loader.rb'
-
 # Offense count: 26
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https

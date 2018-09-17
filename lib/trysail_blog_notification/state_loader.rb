@@ -51,9 +51,7 @@ module TrySailBlogNotification
 
     # Load data
     def load_states
-      @json = File.open(@file, 'r') do |f|
-        f.read
-      end
+      @json = File.open(@file, 'r', &:read)
       @raw_states = JSON.parse(@json)
       @states = {}
 
