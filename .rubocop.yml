@@ -48,3 +48,6 @@ Style/TrailingCommaInHashLiteral:
 
 Style/StringLiterals:
   EnforcedStyle: single_quotes
+
+Style/HashSyntax:
+  EnforcedStyle: no_mixed_keys
