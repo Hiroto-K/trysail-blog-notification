@@ -49,7 +49,7 @@ module TrySailBlogNotification
       }
     end
 
-    alias_method :to_hash, :to_h
+    alias to_hash to_h
 
     # Get hash object
     #

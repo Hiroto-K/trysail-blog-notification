@@ -73,14 +73,6 @@ Naming/HeredocDelimiterNaming:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: prefer_alias, prefer_alias_method
-Style/Alias:
-  Exclude:
-    - 'lib/trysail_blog_notification/last_article.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
 Style/BlockComments:
   Exclude:
     - 'spec/spec_helper.rb'
