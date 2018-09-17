@@ -8,30 +8,30 @@ describe TrySailBlogNotification::Config do
           client: 'TrySailBlogNotification::Client::SlackClient',
           config: {
             token: 'test-token',
-            channel: 'test-channel'
-          }
-        }
+            channel: 'test-channel',
+          },
+        },
       },
       data: {
         log: {
           file: 'log/log.log',
-          level: 'debug'
+          level: 'debug',
         },
         dump: {
-          file: 'data/dump.json'
-        }
+          file: 'data/dump.json',
+        },
       },
       urls: {
         '雨宮天': {
-          rss: 'http://feedblog.ameba.jp/rss/ameblo/amamiyasorablog/rss20.xml'
+          rss: 'http://feedblog.ameba.jp/rss/ameblo/amamiyasorablog/rss20.xml',
         },
         '麻倉もも': {
-          rss: 'http://feedblog.ameba.jp/rss/ameblo/asakuramomoblog/rss20.xml'
+          rss: 'http://feedblog.ameba.jp/rss/ameblo/asakuramomoblog/rss20.xml',
         },
         '夏川椎菜': {
-          rss: 'http://feedblog.ameba.jp/rss/ameblo/natsukawashiinablog/rss20.xml'
-        }
-      }
+          rss: 'http://feedblog.ameba.jp/rss/ameblo/natsukawashiinablog/rss20.xml',
+        },
+      },
     }.with_indifferent_access
   end
 
