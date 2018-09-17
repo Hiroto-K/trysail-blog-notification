@@ -54,3 +54,6 @@ Style/HashSyntax:
 
 Style/EmptyMethod:
   EnforcedStyle: expanded
+
+Style/Documentation:
+  Enabled: false
