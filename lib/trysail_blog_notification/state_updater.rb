@@ -33,7 +33,7 @@ module TrySailBlogNotification
 
         logger.debug(last_article)
 
-        @states[name] =last_article
+        @states[name] = last_article
       end
     end
 
