@@ -11,5 +11,8 @@ AllCops:
 Layout/EmptyLinesAroundClassBody:
   EnforcedStyle: beginning_only
 
+Layout/EmptyLinesAroundModuleBody:
+  EnforcedStyle: empty_lines_except_namespace
+
 Style/ClassAndModuleChildren:
   EnforcedStyle: nested
