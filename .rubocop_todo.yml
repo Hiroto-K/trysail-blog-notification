@@ -191,16 +191,6 @@ Style/SymbolProc:
   Exclude:
     - 'lib/trysail_blog_notification/state_loader.rb'
 
-# Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleForMultiline.
-# SupportedStylesForMultiline: comma, consistent_comma, no_comma
-Style/TrailingCommaInHashLiteral:
-  Exclude:
-    - 'lib/trysail_blog_notification/last_article.rb'
-    - 'lib/trysail_blog_notification/log.rb'
-    - 'spec/lib/trysail_blog_notification/last_article_spec.rb'
-
 # Offense count: 26
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https

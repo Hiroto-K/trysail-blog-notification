@@ -42,3 +42,6 @@ Style/BlockDelimiters:
     - lambda
     - proc
     - it
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
