@@ -63,3 +63,6 @@ Style/MissingRespondToMissing:
 
 Style/MethodMissingSuper:
   Enabled: false
+
+Style/PercentLiteralDelimiters:
+  Enabled: false

@@ -104,14 +104,6 @@ Style/Next:
   Exclude:
     - 'lib/trysail_blog_notification/command/start_command.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: PreferredDelimiters.
-Style/PercentLiteralDelimiters:
-  Exclude:
-    - 'Gemfile'
-    - 'lib/trysail_blog_notification/cli.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
