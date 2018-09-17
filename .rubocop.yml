@@ -45,3 +45,6 @@ Style/BlockDelimiters:
 
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes

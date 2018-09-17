@@ -172,17 +172,6 @@ Style/RedundantException:
   Exclude:
     - 'lib/trysail_blog_notification/log.rb'
 
-# Offense count: 5
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
-# SupportedStyles: single_quotes, double_quotes
-Style/StringLiterals:
-  Exclude:
-    - 'Gemfile'
-    - 'lib/trysail_blog_notification/command/client_test_command.rb'
-    - 'lib/trysail_blog_notification/state_updater.rb'
-    - 'spec/lib/trysail_blog_notification/last_article_spec.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: IgnoredMethods.
