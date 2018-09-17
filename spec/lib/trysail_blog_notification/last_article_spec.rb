@@ -15,11 +15,9 @@ describe TrySailBlogNotification::LastArticle do
   describe '#initialize' do
     let(:last_article) do
       TrySailBlogNotification::LastArticle.new(
-        {
-          title: title,
-          url: url,
-          last_update: '2018-01-01 00:00:00 +0900',
-        }
+        title: title,
+        url: url,
+        last_update: '2018-01-01 00:00:00 +0900'
       )
     end
 
