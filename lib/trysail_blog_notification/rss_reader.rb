@@ -12,7 +12,7 @@ module TrySailBlogNotification
     #
     # @param rss_content [String]
     def initialize(rss_content)
-      @rss = RSS::Parser::parse(rss_content)
+      @rss = RSS::Parser.parse(rss_content)
     end
 
     # Get last article.

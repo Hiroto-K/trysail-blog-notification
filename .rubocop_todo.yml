@@ -73,12 +73,6 @@ Naming/HeredocDelimiterNaming:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Style/ColonMethodCall:
-  Exclude:
-    - 'lib/trysail_blog_notification/rss_reader.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: empty, nil, both
 Style/EmptyElse:
