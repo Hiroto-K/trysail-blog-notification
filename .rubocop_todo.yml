@@ -17,15 +17,6 @@ Layout/IndentHeredoc:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBraces, SpaceBeforeBlockParameters.
-# SupportedStyles: space, no_space
-# SupportedStylesForEmptyBraces: space, no_space
-Layout/SpaceInsideBlockBraces:
-  Exclude:
-    - 'spec/lib/trysail_blog_notification/last_article_spec.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
 Lint/DeprecatedClassMethods:
   Exclude:
     - 'lib/trysail_blog_notification/command/start_command.rb'
