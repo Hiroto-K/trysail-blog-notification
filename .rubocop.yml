@@ -60,3 +60,6 @@ Style/Documentation:
 
 Style/MissingRespondToMissing:
   Enabled: false
+
+Style/MethodMissingSuper:
+  Enabled: false
