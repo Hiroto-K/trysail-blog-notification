@@ -63,8 +63,6 @@ module TrySailBlogNotification
         @url
       when 'last_update', :last_update
         @last_update
-      else
-        nil
       end
     end
 
