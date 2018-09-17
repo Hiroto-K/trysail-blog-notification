@@ -51,3 +51,6 @@ Style/StringLiterals:
 
 Style/HashSyntax:
   EnforcedStyle: no_mixed_keys
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded

@@ -100,15 +100,6 @@ Style/EmptyElse:
   Exclude:
     - 'lib/trysail_blog_notification/last_article.rb'
 
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: compact, expanded
-Style/EmptyMethod:
-  Exclude:
-    - 'lib/trysail_blog_notification/client/base_client.rb'
-    - 'lib/trysail_blog_notification/command/base_command.rb'
-
 # Offense count: 1
 Style/MethodMissingSuper:
   Exclude:
