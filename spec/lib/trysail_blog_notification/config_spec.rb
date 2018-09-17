@@ -1,8 +1,7 @@
 require 'trysail_blog_notification/config'
 
 describe TrySailBlogNotification::Config do
-
-  let(:default_config) {
+  let(:default_config) do
     {
       clients: {
         slack: {
@@ -10,8 +9,8 @@ describe TrySailBlogNotification::Config do
           config: {
             token: 'test-token',
             channel: 'test-channel'
-          },
-        },
+          }
+        }
       },
       data: {
         log: {
@@ -19,22 +18,22 @@ describe TrySailBlogNotification::Config do
           level: 'debug'
         },
         dump: {
-          file: 'data/dump.json',
-        },
+          file: 'data/dump.json'
+        }
       },
       urls: {
         '雨宮天': {
-          rss: 'http://feedblog.ameba.jp/rss/ameblo/amamiyasorablog/rss20.xml',
+          rss: 'http://feedblog.ameba.jp/rss/ameblo/amamiyasorablog/rss20.xml'
         },
         '麻倉もも': {
-          rss: 'http://feedblog.ameba.jp/rss/ameblo/asakuramomoblog/rss20.xml',
+          rss: 'http://feedblog.ameba.jp/rss/ameblo/asakuramomoblog/rss20.xml'
         },
         '夏川椎菜': {
-          rss: 'http://feedblog.ameba.jp/rss/ameblo/natsukawashiinablog/rss20.xml',
-        },
-      },
+          rss: 'http://feedblog.ameba.jp/rss/ameblo/natsukawashiinablog/rss20.xml'
+        }
+      }
     }.with_indifferent_access
-  }
+  end
 
   describe '#initialize' do
     let(:config) { TrySailBlogNotification::Config.new(default_config) }
@@ -178,5 +177,4 @@ describe TrySailBlogNotification::Config do
       end
     end
   end
-
 end
