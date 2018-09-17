@@ -84,12 +84,6 @@ Style/ColonMethodCall:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Style/Dir:
-  Exclude:
-    - 'app.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: empty, nil, both
 Style/EmptyElse:
