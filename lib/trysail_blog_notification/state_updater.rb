@@ -24,7 +24,7 @@ module TrySailBlogNotification
         logger.debug("Run \"#{name}\"")
 
         if info['rss']
-          logger.debug("Use rss.")
+          logger.debug('Use rss.')
           last_article = get_by_rss(info['rss'])
         else
           logger.debug("Use parser : #{info['parser']}")

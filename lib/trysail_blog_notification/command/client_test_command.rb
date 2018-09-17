@@ -6,7 +6,7 @@ module TrySailBlogNotification
 
       # Start command.
       def start
-        client_name = options["client-name"]
+        client_name = options['client-name']
         client_attr = find_client(client_name)
         client_class = client_attr[:client]
         client_config = client_attr[:config]
@@ -34,7 +34,7 @@ module TrySailBlogNotification
       #
       # @return [String]
       def build_test_name
-        options["test-name"] || 'Test-name'
+        options['test-name'] || 'Test-name'
       end
 
       # Build test data

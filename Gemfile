@@ -17,7 +17,7 @@ group :test do
 end
 
 group :plugin do
-  Dir.glob(File.join(File.dirname(__FILE__), "/plugin/*/Gemfile")).sort.each do |path|
+  Dir.glob(File.join(File.dirname(__FILE__), '/plugin/*/Gemfile')).sort.each do |path|
     eval_gemfile path
   end
 end

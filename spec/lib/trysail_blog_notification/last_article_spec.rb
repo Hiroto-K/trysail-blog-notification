@@ -12,7 +12,7 @@ describe TrySailBlogNotification::LastArticle do
     }
   end
 
-  describe "#initialize" do
+  describe '#initialize' do
     let(:last_article) do
       TrySailBlogNotification::LastArticle.new(
         {
