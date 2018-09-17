@@ -2,7 +2,9 @@
 
 require File.join(File.dirname(__FILE__), '/try_sail_parser.rb')
 
-module TrySailBlogNotification::Parser
-  class SoraAmamiya < TrySailParser
+module TrySailBlogNotification
+  module Parser
+    class SoraAmamiya < TrySailParser
+    end
   end
 end
