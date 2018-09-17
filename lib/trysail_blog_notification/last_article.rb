@@ -57,14 +57,14 @@ module TrySailBlogNotification
     # @return [Object]
     def [](key)
       case key
-        when 'title', :title
-          @title
-        when 'url', :url
-          @url
-        when 'last_update', :last_update
-          @last_update
-        else
-          nil
+      when 'title', :title
+        @title
+      when 'url', :url
+        @url
+      when 'last_update', :last_update
+        @last_update
+      else
+        nil
       end
     end
 
