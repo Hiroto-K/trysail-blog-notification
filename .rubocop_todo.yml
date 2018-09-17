@@ -96,13 +96,6 @@ Style/EmptyElse:
   Exclude:
     - 'lib/trysail_blog_notification/last_article.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/MutableConstant:
-  Exclude:
-    - 'lib/trysail_blog_notification/application.rb'
-    - 'lib/trysail_blog_notification/config.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, MinBodyLength.
