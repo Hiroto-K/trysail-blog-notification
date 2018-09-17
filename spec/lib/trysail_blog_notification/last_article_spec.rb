@@ -17,7 +17,8 @@ describe TrySailBlogNotification::LastArticle do
           title: title,
           url: url,
           last_update: '2018-01-01 00:00:00 +0900',
-        })
+        }
+      )
     }
 
     context 'last_update pass String' do
