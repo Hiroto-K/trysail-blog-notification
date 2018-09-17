@@ -4,11 +4,12 @@ describe TrySailBlogNotification::LastArticle do
   let(:title) { 'Test title' }
   let(:url) { 'https://example.com/' }
   let(:last_update) { Time.parse('2018-01-01 00:00:00 +0900') }
-  let(:default_argument) {{
-    title: title,
-    url: url,
-    last_update: last_update,
-  }}
+  let(:default_argument) {
+    {
+      title: title,
+      url: url,
+      last_update: last_update,
+    }}
 
   describe "#initialize" do
     let(:last_article) {
