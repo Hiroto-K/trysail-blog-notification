@@ -17,56 +17,56 @@ Layout/EmptyLinesAroundModuleBody:
 Style/BlockComments:
   Enabled: false
 
-Style/ClassAndModuleChildren:
-  EnforcedStyle: nested
-
 Style/BlockDelimiters:
   EnforcedStyle: line_count_based
   ProceduralMethods:
-    - benchmark
-    - bm
-    - bmbm
-    - create
-    - each_with_object
-    - measure
-    - new
-    - realtime
-    - tap
-    - with_object
+  - benchmark
+  - bm
+  - bmbm
+  - create
+  - each_with_object
+  - measure
+  - new
+  - realtime
+  - tap
+  - with_object
   FunctionalMethods:
-    - let
-    - let!
-    - subject
-    - watch
+  - let
+  - let!
+  - subject
+  - watch
   IgnoredMethods:
-    - lambda
-    - proc
-    - it
+  - lambda
+  - proc
+  - it
 
-Style/TrailingCommaInHashLiteral:
-  EnforcedStyleForMultiline: comma
+Style/ClassAndModuleChildren:
+  EnforcedStyle: nested
 
-Style/StringLiterals:
-  EnforcedStyle: single_quotes
+Style/ClassVars:
+  Exclude:
+    - 'lib/trysail_blog_notification/application.rb'
 
-Style/HashSyntax:
-  EnforcedStyle: no_mixed_keys
+Style/Documentation:
+  Enabled: false
 
 Style/EmptyMethod:
   EnforcedStyle: expanded
 
-Style/Documentation:
+Style/HashSyntax:
+  EnforcedStyle: no_mixed_keys
+
+Style/MethodMissingSuper:
   Enabled: false
 
 Style/MissingRespondToMissing:
   Enabled: false
 
-Style/MethodMissingSuper:
-  Enabled: false
-
 Style/PercentLiteralDelimiters:
   Enabled: false
 
-Style/ClassVars:
-  Exclude:
-  - 'lib/trysail_blog_notification/application.rb'
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
