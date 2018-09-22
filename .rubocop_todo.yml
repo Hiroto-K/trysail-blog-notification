@@ -71,14 +71,6 @@ Naming/HeredocDelimiterNaming:
     - 'lib/trysail_blog_notification/client/slack_client.rb'
     - 'lib/trysail_blog_notification/client/twitter_client.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: short, verbose
-Style/PreferredHashMethods:
-  Exclude:
-    - 'lib/trysail_blog_notification/log.rb'
-
 # Offense count: 26
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
