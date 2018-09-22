@@ -47,7 +47,6 @@ module TrySailBlogNotification
     def level=(level)
       level_value = get_level_value(level)
       @logger.level = level_value
-      level_value
     end
 
     # Send missing method.

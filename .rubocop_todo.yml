@@ -35,12 +35,6 @@ Lint/UnusedMethodArgument:
     - 'lib/trysail_blog_notification/client/slack_client.rb'
     - 'lib/trysail_blog_notification/parser/base_parser.rb'
 
-# Offense count: 1
-# Configuration parameters: CheckForMethodsWithNoSideEffects.
-Lint/Void:
-  Exclude:
-    - 'lib/trysail_blog_notification/log.rb'
-
 # Offense count: 3
 Metrics/AbcSize:
   Max: 22
