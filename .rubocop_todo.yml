@@ -79,12 +79,6 @@ Style/PreferredHashMethods:
   Exclude:
     - 'lib/trysail_blog_notification/log.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/RedundantException:
-  Exclude:
-    - 'lib/trysail_blog_notification/log.rb'
-
 # Offense count: 26
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
