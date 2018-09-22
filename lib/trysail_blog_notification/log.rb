@@ -81,7 +81,7 @@ module TrySailBlogNotification
         debug: Logger::DEBUG,
       }
       value = value.to_sym
-      raise "Logger level '#{value}' does not exist." unless map.has_key?(value)
+      raise "Logger level '#{value}' does not exist." unless map.key?(value)
       map[value]
     end
   end
