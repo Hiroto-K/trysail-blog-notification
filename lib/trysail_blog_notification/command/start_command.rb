@@ -104,7 +104,7 @@ module TrySailBlogNotification
 
             logger.debug("Call #{client.class}#update")
             client.update(name, state)
-          rescue Exception => e
+          rescue StandardError => e
             logger.error("Raised exception in #{client.class}")
             logger.error(e)
           end

@@ -7,11 +7,6 @@
 # versions of RuboCop, may require this file to be generated again.
 
 
-# Offense count: 1
-Lint/RescueException:
-  Exclude:
-    - 'lib/trysail_blog_notification/command/start_command.rb'
-
 # Offense count: 3
 Metrics/AbcSize:
   Max: 22
