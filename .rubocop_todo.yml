@@ -6,15 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: auto_detection, squiggly, active_support, powerpack, unindent
-Layout/IndentHeredoc:
-  Exclude:
-    - 'lib/trysail_blog_notification/client/slack_client.rb'
-    - 'lib/trysail_blog_notification/client/twitter_client.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 Lint/DeprecatedClassMethods:

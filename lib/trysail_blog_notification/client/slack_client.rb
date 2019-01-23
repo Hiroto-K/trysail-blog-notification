@@ -32,13 +32,13 @@ module TrySailBlogNotification
         article_last_update = article.last_update.strftime(format)
 
         text = <<"EOS"
-#{name}のブログが更新されました。
+          #{name}のブログが更新されました。
 
-#{article.title}
-        #{article.url}
+          #{article.title}
+                  #{article.url}
 
-ブログ更新時刻 : #{article_last_update}
-システム時刻   : #{system_date}
+          ブログ更新時刻 : #{article_last_update}
+          システム時刻   : #{system_date}
 EOS
 
         logger.info(text)

@@ -8,6 +8,9 @@ AllCops:
     - 'plugin/**/*'
     - 'vendor/**/*'
 
+Layout/IndentHeredoc:
+  EnforcedStyle: squiggly
+
 Layout/EmptyLinesAroundClassBody:
   EnforcedStyle: beginning_only
 

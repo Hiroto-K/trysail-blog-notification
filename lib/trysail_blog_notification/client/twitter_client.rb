@@ -18,10 +18,10 @@ module TrySailBlogNotification
         date = Time.now
 
         text = <<"EOS"
-【ブログ更新 #{article.title}】
-#{name} : #{article.title}
-        #{article.url}
-date : #{date}
+          【ブログ更新 #{article.title}】
+          #{name} : #{article.title}
+          #{article.url}
+          date : #{date}
 EOS
         logger.info(text)
         @client.update(text)
