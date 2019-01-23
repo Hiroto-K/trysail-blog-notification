@@ -69,7 +69,7 @@ module TrySailBlogNotification
       #
       # @return [true, false]
       def dump_file_exists?
-        File.exists?(@dump_file)
+        File.exist?(@dump_file)
       end
 
       # Get old state.
