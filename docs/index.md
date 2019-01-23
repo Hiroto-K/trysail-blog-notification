@@ -34,15 +34,6 @@ bundle install
 
 ``ruby app.rb start``で実行。初回はデータを取得して書き込みのみ。2回目以降は前回取得のデータと比較して、更新があった場合のみ通知を送ります。
 
-## Plugins
-
-- [hiroto-k/tbn-ari-ozawa-plugin](https://github.com/hiroto-k/tbn-ari-ozawa-plugin)
-    - **非推奨。** 小澤亜李さんのブログの通知を受け取るプラグイン。
-- [hiroto-k/tbn-miku-ito-plugin](https://github.com/hiroto-k/tbn-miku-ito-plugin)
-    - **非推奨。** 伊藤美来さんのブログの通知を受け取るプラグイン。
-- [hiroto-k/tbn-moe-toyota-plugin](https://github.com/hiroto-k/tbn-moe-toyota-plugin)
-    - **非推奨。** 豊田萌絵さんのブログの通知を受け取るプラグイン。
-
 ## License
 
 [MIT License](https://github.com/hiroto-k/trysail-blog-notification/blob/master/LICENSE "MIT License")
