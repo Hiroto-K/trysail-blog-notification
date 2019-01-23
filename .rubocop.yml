@@ -8,6 +8,9 @@ AllCops:
     - 'plugin/**/*'
     - 'vendor/**/*'
 
+Lint/UnusedMethodArgument:
+  Enabled: false
+
 Layout/IndentHeredoc:
   EnforcedStyle: squiggly
 

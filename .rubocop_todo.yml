@@ -12,15 +12,6 @@ Lint/RescueException:
   Exclude:
     - 'lib/trysail_blog_notification/command/start_command.rb'
 
-# Offense count: 5
-# Cop supports --auto-correct.
-# Configuration parameters: AllowUnusedKeywordArguments, IgnoreEmptyMethods.
-Lint/UnusedMethodArgument:
-  Exclude:
-    - 'lib/trysail_blog_notification/client/base_client.rb'
-    - 'lib/trysail_blog_notification/client/slack_client.rb'
-    - 'lib/trysail_blog_notification/parser/base_parser.rb'
-
 # Offense count: 3
 Metrics/AbcSize:
   Max: 22
