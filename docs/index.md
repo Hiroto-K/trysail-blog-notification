@@ -1,13 +1,11 @@
 ---
 layout: default
-title: trysail-blog-notification
+title: blog-notification
 ---
 
-# trysail-blog-notification
+# blog-notification
 
-TrySailのメンバーのブログの更新通知をTwitterやSlackで受け取るアプリ。
-
-RSSの追加やプラグインでの拡張により、TrySailのメンバーのブログ以外も受け取れます。
+ブログの更新通知をTwitterやSlackで受け取るアプリ。
 
 ## Install
 
@@ -20,9 +18,9 @@ RSSの追加やプラグインでの拡張により、TrySailのメンバーの�
 
 GitHubからソースコードを持ってきて``bundle install``で依存ライブラリをインストール。
 
-```sh
-git clone git@github.com:hiroto-k/trysail-blog-notification.git
-cd trysail-blog-notification
+```bash
+git clone git@github.com:hiroto-k/blog-notification.git
+cd blog-notification
 bundle install
 ```
 
@@ -36,4 +34,4 @@ bundle install
 
 ## License
 
-[MIT License](https://github.com/hiroto-k/trysail-blog-notification/blob/master/LICENSE "MIT License")
+[MIT License](https://github.com/hiroto-k/blog-notification/blob/master/LICENSE "MIT License")

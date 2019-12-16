@@ -3,7 +3,7 @@ layout: default
 title: Plugin
 ---
 
-# trysail-blog-notification plugin
+# blog-notification plugin
 
 ここではプラグインの作成方法を説明します。
 
@@ -57,7 +57,7 @@ module Hoge
   class FooParser < TrySailBlogNotification::Parser::BaseParser
 
     # パースを行うメソッド。返り値は必ず TrySailBlogNotification::LastArticle のインスタンスである必要があります。
-    # 
+    #
     # @param nokogiri [Nokogiri::HTML::Document]
     # @return [TrySailBlogNotification::LastArticle]
     def parse(nokogiri)
@@ -107,7 +107,7 @@ module Hoge
       end
 
       # 通知を送信するメソッド。実装が必須。
-      # 
+      #
       # @param name [String]
       # @param article [TrySailBlogNotification::LastArticle]
       def update(name, article)
