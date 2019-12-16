@@ -42,47 +42,6 @@ urls :
     rss : "http://feedblog.ameba.jp/rss/ameblo/ari-step/rss20.xml"
 ```
 
-RSSが提供されていない場合は以下方法のParserプラグインを作成します。
-
-## Parser plugin
-
-ブログの内容をパースするプラグインの作成方法。
-
-通知するブログにRSSがある場合、上記の方法でRSSを追加するべきです。
-
-``TrySailBlogNotification::Parser::BaseParser``を継承したクラスを作成します。
-
-```ruby
-module Hoge
-  class FooParser < TrySailBlogNotification::Parser::BaseParser
-
-    # パースを行うメソッド。返り値は必ず TrySailBlogNotification::LastArticle のインスタンスである必要があります。
-    #
-    # @param nokogiri [Nokogiri::HTML::Document]
-    # @return [TrySailBlogNotification::LastArticle]
-    def parse(nokogiri)
-      title = get_title
-      url = get_url
-      last_update = get_last_update
-
-      TrySailBlogNotification::LastArticle.new(title: title, url: url, last_update: last_update)
-    end
-
-  end
-end
-```
-
-### Register parser plugin
-
-``config/config.yml``ファイルの``urls``フィールドに追加します。
-
-```yaml
-urls :
-  Foo : # URLとパーサー名に付ける名前。他の名前とは被せる事が出来ません。
-    url : "https://example.com/" # アクセスするURL
-    parser : "Hoge::FooParser" # クラス名
-```
-
 ## Client plugin
 
 通知を送るクライアントのプラグインの作成方法。
