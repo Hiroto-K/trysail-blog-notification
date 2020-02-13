@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    image: blog-notification-app
+    tty: true
+    command: ruby /app/app.rb start
+    volumes:
+      - .:/app:cached
