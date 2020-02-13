@@ -4,4 +4,4 @@
 
 ## License
 
-[MIT License](https://github.com/hiroto-k/blog-notification/blob/master/LICENSE "MIT License")
+[MIT License](https://github.com/hiroxto/blog-notification/blob/master/LICENSE "MIT License")
