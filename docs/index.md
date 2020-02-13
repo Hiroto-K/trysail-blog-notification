@@ -19,7 +19,7 @@ title: blog-notification
 GitHubからソースコードを持ってきて``bundle install``で依存ライブラリをインストール。
 
 ```bash
-git clone git@github.com:hiroto-k/blog-notification.git
+git clone git@github.com:hiroxto/blog-notification.git
 cd blog-notification
 bundle install
 ```
@@ -34,4 +34,4 @@ bundle install
 
 ## License
 
-[MIT License](https://github.com/hiroto-k/blog-notification/blob/master/LICENSE "MIT License")
+[MIT License](https://github.com/hiroxto/blog-notification/blob/master/LICENSE "MIT License")
