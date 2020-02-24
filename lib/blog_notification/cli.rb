@@ -25,13 +25,13 @@ module BlogNotification
       end
     end
 
-    desc 'start', 'Run trysail-blog-notification.'
+    desc 'start', 'Run blog-notification.'
     option 'no-notification', desc: 'No send the notification.', type: :boolean, default: false
     def start
       call_command(BlogNotification::Command::StartCommand)
     end
 
-    desc 'console', 'Start trysail-blog-notification console'
+    desc 'console', 'Start blog-notification console'
     def console
       call_command(BlogNotification::Command::ConsoleCommand)
     end

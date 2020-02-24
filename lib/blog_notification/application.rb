@@ -6,7 +6,7 @@ module BlogNotification
   class Application
 
     # Application name.
-    NAME = 'trysail-blog-notification'
+    NAME = 'blog-notification'
 
     # Base dir
     #

@@ -17,7 +17,7 @@ title: Plugin
 
 ### Gemfile
 
-別途gemを利用する場合は``plugin/[plugin-name]/Gemfile``を作れば、trysail-blog-notificationの``Gemfile``より``eval_gemfile``で読み込みます。この際プラグイン側に``Gemfile.lock``は必要ではありません。
+別途gemを利用する場合は``plugin/[plugin-name]/Gemfile``を作れば、blog-notificationの``Gemfile``より``eval_gemfile``で読み込みます。この際プラグイン側に``Gemfile.lock``は必要ではありません。
 
 ## Add new blog
 
