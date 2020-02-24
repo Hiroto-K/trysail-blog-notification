@@ -1,15 +1,15 @@
 require 'trysail_blog_notification/last_article'
 require 'trysail_blog_notification/state_loader'
 
-describe TrySailBlogNotification::StateLoader do
+describe BlogNotification::StateLoader do
 
   let(:state_file) { File.join(__dir__, '/../../fixtures/files/dump.json') }
   let(:state_content) { File.read(state_file) }
-  let(:state_loader) { TrySailBlogNotification::StateLoader.new(state_file) }
+  let(:state_loader) { BlogNotification::StateLoader.new(state_file) }
 
   describe '#initialize' do
-    it 'Instance of TrySailBlogNotification::StateLoader' do
-      expect(state_loader).to be_a TrySailBlogNotification::StateLoader
+    it 'Instance of BlogNotification::StateLoader' do
+      expect(state_loader).to be_a BlogNotification::StateLoader
     end
   end
 
@@ -52,10 +52,10 @@ describe TrySailBlogNotification::StateLoader do
       expect(states).to have_key 'Name3'
     end
 
-    it 'have TrySailBlogNotification::LastArticle' do
-      expect(states['Name1']).to be_a TrySailBlogNotification::LastArticle
-      expect(states['Name2']).to be_a TrySailBlogNotification::LastArticle
-      expect(states['Name3']).to be_a TrySailBlogNotification::LastArticle
+    it 'have BlogNotification::LastArticle' do
+      expect(states['Name1']).to be_a BlogNotification::LastArticle
+      expect(states['Name2']).to be_a BlogNotification::LastArticle
+      expect(states['Name3']).to be_a BlogNotification::LastArticle
     end
 
     it 'eql title' do

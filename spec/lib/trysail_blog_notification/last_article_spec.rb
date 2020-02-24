@@ -1,6 +1,6 @@
 require 'trysail_blog_notification/last_article'
 
-describe TrySailBlogNotification::LastArticle do
+describe BlogNotification::LastArticle do
 
   let(:title) { 'Test title' }
   let(:url) { 'https://example.com/' }
@@ -14,7 +14,7 @@ describe TrySailBlogNotification::LastArticle do
   describe "#initialize" do
 
     let(:last_article) {
-      TrySailBlogNotification::LastArticle.new(
+      BlogNotification::LastArticle.new(
         {
           title: title,
           url: url,
@@ -32,7 +32,7 @@ describe TrySailBlogNotification::LastArticle do
 
   describe '#to_h' do
 
-    let(:last_article) { TrySailBlogNotification::LastArticle.new(default_argument) }
+    let(:last_article) { BlogNotification::LastArticle.new(default_argument) }
 
     it 'return hash' do
       expect(last_article.to_h).to be_a Hash
@@ -53,7 +53,7 @@ describe TrySailBlogNotification::LastArticle do
 
   describe '#[]' do
 
-    let(:last_article) { TrySailBlogNotification::LastArticle.new(default_argument) }
+    let(:last_article) { BlogNotification::LastArticle.new(default_argument) }
 
     context 'access with String' do
       it 'access title' do

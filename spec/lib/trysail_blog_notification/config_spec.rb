@@ -1,12 +1,12 @@
 require 'trysail_blog_notification/config'
 
-describe TrySailBlogNotification::Config do
+describe BlogNotification::Config do
 
   let(:default_config) {
     {
       clients: {
         slack: {
-          client: 'TrySailBlogNotification::Client::SlackClient',
+          client: 'BlogNotification::Client::SlackClient',
           config: {
             token: 'test-token',
             channel: 'test-channel'
@@ -37,10 +37,10 @@ describe TrySailBlogNotification::Config do
   }
 
   describe '#initialize' do
-    let(:config) { TrySailBlogNotification::Config.new(default_config) }
+    let(:config) { BlogNotification::Config.new(default_config) }
 
-    it 'instance of TrySailBlogNotification::Config' do
-      expect(config).to be_a(TrySailBlogNotification::Config)
+    it 'instance of BlogNotification::Config' do
+      expect(config).to be_a(BlogNotification::Config)
     end
 
     it 'has raw config' do
@@ -49,7 +49,7 @@ describe TrySailBlogNotification::Config do
   end
 
   describe '#get' do
-    let(:config) { TrySailBlogNotification::Config.new(default_config) }
+    let(:config) { BlogNotification::Config.new(default_config) }
 
     context 'no key' do
       it 'return raw config' do
@@ -112,7 +112,7 @@ describe TrySailBlogNotification::Config do
   end
 
   describe '#has?' do
-    let(:config) { TrySailBlogNotification::Config.new(default_config) }
+    let(:config) { BlogNotification::Config.new(default_config) }
 
     context 'by symbol' do
       it 'clients return true' do
@@ -154,7 +154,7 @@ describe TrySailBlogNotification::Config do
   end
 
   describe '#[]' do
-    let(:config) { TrySailBlogNotification::Config.new(default_config) }
+    let(:config) { BlogNotification::Config.new(default_config) }
 
     context 'access by symbol' do
       it 'access data return eq value' do
