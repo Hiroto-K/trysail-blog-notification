@@ -2,13 +2,10 @@ require 'blog_notification/last_article'
 
 describe BlogNotification::LastArticle do
 
-  let(:title) { 'Test title' }
-  let(:url) { 'https://example.com/' }
-  let(:last_update) { Time.parse('2018-01-01 00:00:00 +0900') }
   let(:default_argument) {{
-    title: title,
-    url: url,
-    last_update: last_update,
+    title: 'Test title',
+    url: 'https://example.com/',
+    last_update: Time.parse('2018-01-01 00:00:00 +0900'),
   }}
 
   describe "#initialize" do
@@ -16,8 +13,8 @@ describe BlogNotification::LastArticle do
     let(:last_article) {
       BlogNotification::LastArticle.new(
           **{
-          title: title,
-          url: url,
+          title: 'Test title',
+          url: 'https://example.com/',
           last_update: '2018-01-01 00:00:00 +0900',
         })
     }
@@ -39,15 +36,15 @@ describe BlogNotification::LastArticle do
     end
 
     it 'eq title' do
-      expect(last_article.to_h[:title]).to eq title
+      expect(last_article.to_h[:title]).to eq 'Test title'
     end
 
     it 'eq url' do
-      expect(last_article.to_h[:url]).to eq url
+      expect(last_article.to_h[:url]).to eq 'https://example.com/'
     end
 
     it 'eq last_update' do
-      expect(last_article.to_h[:last_update]).to eq last_update
+      expect(last_article.to_h[:last_update].to_s).to eq '2018-01-01 00:00:00 +0900'
     end
   end
 
@@ -57,15 +54,15 @@ describe BlogNotification::LastArticle do
 
     context 'access with String' do
       it 'access title' do
-        expect(last_article['title']).to eq title
+        expect(last_article['title']).to eq 'Test title'
       end
 
       it 'access url' do
-        expect(last_article['url']).to eq url
+        expect(last_article['url']).to eq 'https://example.com/'
       end
 
       it 'access last_update' do
-        expect(last_article['last_update']).to eq last_update
+        expect(last_article['last_update'].to_s).to eq '2018-01-01 00:00:00 +0900'
       end
 
       it 'access nothing attr' do
@@ -75,15 +72,15 @@ describe BlogNotification::LastArticle do
 
     context 'access with Symbol' do
       it 'access title' do
-        expect(last_article[:title]).to eq title
+        expect(last_article[:title]).to eq 'Test title'
       end
 
       it 'access url' do
-        expect(last_article[:url]).to eq url
+        expect(last_article[:url]).to eq 'https://example.com/'
       end
 
       it 'access last_update' do
-        expect(last_article[:last_update]).to eq last_update
+        expect(last_article[:last_update].to_s).to eq '2018-01-01 00:00:00 +0900'
       end
 
       it 'access nothing attr' do
