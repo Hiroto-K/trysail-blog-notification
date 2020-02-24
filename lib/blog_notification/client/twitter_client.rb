@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TrySailBlogNotification::Client
+module BlogNotification::Client
   class TwitterClient < BaseClient
 
     # Setup.
@@ -12,7 +12,7 @@ module TrySailBlogNotification::Client
     # Update.
     #
     # @param name [String]
-    # @param article [TrySailBlogNotification::LastArticle]
+    # @param article [BlogNotification::LastArticle]
     def update(name, article)
       date = Time.now
 

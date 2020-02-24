@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TrySailBlogNotification::Command
+module BlogNotification::Command
   class StartCommand < BaseCommand
 
     # Set up command class.
@@ -14,7 +14,7 @@ module TrySailBlogNotification::Command
     def start
       logger.debug("Call \"#{__method__}\" method.")
 
-      updater = TrySailBlogNotification::StateUpdater.new(@urls)
+      updater = BlogNotification::StateUpdater.new(@urls)
       updater.update
 
       current_states = updater.states
@@ -49,7 +49,7 @@ module TrySailBlogNotification::Command
         logger.debug("Check diff of \"#{name}\".")
         new_state = current_states[name]
 
-        unless new_state.is_a?(TrySailBlogNotification::LastArticle)
+        unless new_state.is_a?(BlogNotification::LastArticle)
           logger.info("current_states[#{name}] a is unsuitable value. Skip check diff.")
           next
         end
@@ -77,14 +77,14 @@ module TrySailBlogNotification::Command
     # @return [Hash]
     def load_old_states
       logger.debug("Open dump file : \"#{@dump_file}\".")
-      loader = TrySailBlogNotification::StateLoader.new(@dump_file)
+      loader = BlogNotification::StateLoader.new(@dump_file)
       loader.states
     end
 
     # Check eql article.
     #
-    # @param old_article [TrySailBlogNotification::LastArticle]
-    # @param new_article [TrySailBlogNotification::LastArticle]
+    # @param old_article [BlogNotification::LastArticle]
+    # @param new_article [BlogNotification::LastArticle]
     # @return [true, false]
     def eql_article?(old_article, new_article)
       old_article.title == new_article.title || old_article.url == new_article.url
@@ -93,7 +93,7 @@ module TrySailBlogNotification::Command
     # Run notification.
     #
     # @param name [String]
-    # @param state [TrySailBlogNotification::LastArticle]
+    # @param state [BlogNotification::LastArticle]
     def run_notification(name, state)
       logger.debug("Run notification of \"#{name}\".")
 
@@ -120,7 +120,7 @@ module TrySailBlogNotification::Command
       }.to_h
 
       logger.debug('Write to dump file.')
-      dumper = TrySailBlogNotification::StateDumper.new(@dump_file)
+      dumper = BlogNotification::StateDumper.new(@dump_file)
 
       logger.debug('Run write.')
       dumper.dump(hashed_states)

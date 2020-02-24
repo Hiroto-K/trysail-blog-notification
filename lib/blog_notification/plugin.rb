@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module TrySailBlogNotification
+module BlogNotification
   class Plugin
 
-    include TrySailBlogNotification::Util
+    include BlogNotification::Util
 
     # Base dir path.
     #

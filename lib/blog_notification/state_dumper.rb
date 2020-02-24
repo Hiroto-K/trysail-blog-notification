@@ -2,7 +2,7 @@
 
 require 'json'
 
-module TrySailBlogNotification
+module BlogNotification
   class StateDumper
 
     # Dump file path.

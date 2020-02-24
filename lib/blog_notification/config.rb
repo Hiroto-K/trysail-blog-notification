@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TrySailBlogNotification
+module BlogNotification
   class Config
 
     # Key delimiter.
@@ -11,7 +11,7 @@ module TrySailBlogNotification
     # @return [Hash]
     attr_reader :raw_config
 
-    # Initialize TrySailBlogNotification::Config.
+    # Initialize BlogNotification::Config.
     #
     # @param config [Hash]
     def initialize(config = {})

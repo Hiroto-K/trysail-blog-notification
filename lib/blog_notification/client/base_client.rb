@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module TrySailBlogNotification::Client
+module BlogNotification::Client
   class BaseClient
 
-    include TrySailBlogNotification::Util
+    include BlogNotification::Util
 
     # Config hash.
     #
@@ -25,14 +25,14 @@ module TrySailBlogNotification::Client
     # This method call in before "update" method call.
     #
     # @param name [String] Blog name.
-    # @param article [TrySailBlogNotification::LastArticle] Blog state.
+    # @param article [BlogNotification::LastArticle] Blog state.
     def before_update(name, article)
     end
 
     # Update.
     #
     # @param name [String] Blog name.
-    # @param article [TrySailBlogNotification::LastArticle] Blog state.
+    # @param article [BlogNotification::LastArticle] Blog state.
     def update(name, article)
       raise NotImplementedError, "You must implement #{self.class}##{__method__}"
     end

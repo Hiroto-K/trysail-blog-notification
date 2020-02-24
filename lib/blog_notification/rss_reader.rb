@@ -1,6 +1,6 @@
 require 'rss'
 
-module TrySailBlogNotification
+module BlogNotification
   class RssReader
 
     # Rss.
@@ -8,7 +8,7 @@ module TrySailBlogNotification
     # @return [RSS::Rss]
     attr_reader :rss
 
-    # Initialize TrySailBlogNotification::RssReader.
+    # Initialize BlogNotification::RssReader.
     #
     # @param rss_content [String]
     def initialize(rss_content)
@@ -17,7 +17,7 @@ module TrySailBlogNotification
 
     # Get last article.
     #
-    # @return [TrySailBlogNotification::LastArticle]
+    # @return [BlogNotification::LastArticle]
     def last_article
       item = @rss.items.first
 
@@ -27,7 +27,7 @@ module TrySailBlogNotification
         last_update: item.pubDate
       }
 
-      TrySailBlogNotification::LastArticle.new(**info)
+      BlogNotification::LastArticle.new(**info)
     end
 
   end

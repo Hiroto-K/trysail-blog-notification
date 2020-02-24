@@ -2,7 +2,7 @@
 
 require 'fileutils'
 
-module TrySailBlogNotification
+module BlogNotification
   class Application
 
     # Application name.
@@ -15,7 +15,7 @@ module TrySailBlogNotification
 
     # Config
     #
-    # @return [TrySailBlogNotification::Config]
+    # @return [BlogNotification::Config]
     attr_reader :config
 
     # Dump file path.
@@ -25,12 +25,12 @@ module TrySailBlogNotification
 
     # Logger
     #
-    # @return [TrySailBlogNotification::Log]
+    # @return [BlogNotification::Log]
     attr_reader :log
 
     # Client instances.
     #
-    # @return [Array<TrySailBlogNotification::Client::BaseClient>]
+    # @return [Array<BlogNotification::Client::BaseClient>]
     attr_reader :clients
 
     # Target urls
@@ -40,7 +40,7 @@ module TrySailBlogNotification
 
     # Plugin
     #
-    # @return [TrySailBlogNotification::Plugin]
+    # @return [BlogNotification::Plugin]
     attr_reader :plugin
 
     # Initialize application.
@@ -63,16 +63,16 @@ module TrySailBlogNotification
 
     # Get application instance
     #
-    # @return [TrySailBlogNotification::Application]
+    # @return [BlogNotification::Application]
     def self.app
       @@app
     end
 
     # Add client.
     #
-    # @param client [TrySailBlogNotification::Client::BaseClient]
+    # @param client [BlogNotification::Client::BaseClient]
     def add_client(client)
-      raise "Client is not instance of 'TrySailBlogNotification::Client::BaseClient'." unless client.is_a?(TrySailBlogNotification::Client::BaseClient)
+      raise "Client is not instance of 'BlogNotification::Client::BaseClient'." unless client.is_a?(BlogNotification::Client::BaseClient)
 
       logger.debug("Call #{client.class}#setup method")
       client.setup
@@ -101,7 +101,7 @@ module TrySailBlogNotification
 
       add_clients
 
-      TrySailBlogNotification::Cli.start(args)
+      BlogNotification::Cli.start(args)
     rescue RuntimeError => e
       logger.error(e)
     end
@@ -125,14 +125,14 @@ module TrySailBlogNotification
 
     # Setup config
     def setup_config(config)
-      @config = TrySailBlogNotification::Config.new(config)
+      @config = BlogNotification::Config.new(config)
     end
 
     # Setup logger
     def setup_logger
       log_file = base_path(@config.get('data.log.file'))
       log_level = @config.get('data.log.level')
-      @log = TrySailBlogNotification::Log.new(log_file, log_level)
+      @log = BlogNotification::Log.new(log_file, log_level)
     end
 
     # Setup dump file
@@ -142,7 +142,7 @@ module TrySailBlogNotification
 
     # Setup plugin
     def setup_plugin
-      @plugin = TrySailBlogNotification::Plugin.new(@base_dir)
+      @plugin = BlogNotification::Plugin.new(@base_dir)
     end
 
     # Add clients.

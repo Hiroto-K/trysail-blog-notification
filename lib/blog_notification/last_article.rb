@@ -2,7 +2,7 @@
 
 require 'uri'
 
-module TrySailBlogNotification
+module BlogNotification
   class LastArticle
 
     # Return title

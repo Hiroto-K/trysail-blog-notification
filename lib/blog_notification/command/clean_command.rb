@@ -2,7 +2,7 @@
 
 require 'fileutils'
 
-module TrySailBlogNotification::Command
+module BlogNotification::Command
   class CleanCommand < BaseCommand
 
     # Start command.

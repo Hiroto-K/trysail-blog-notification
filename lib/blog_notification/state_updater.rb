@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module TrySailBlogNotification
+module BlogNotification
   class StateUpdater
 
-    include TrySailBlogNotification::Util
+    include BlogNotification::Util
 
     # States hash.
     #
@@ -36,15 +36,15 @@ module TrySailBlogNotification
     # Create http instance.
     #
     # @param url [String]
-    # @return [TrySailBlogNotification::HTTP]
+    # @return [BlogNotification::HTTP]
     def create_http(url)
-      TrySailBlogNotification::HTTP.new(url)
+      BlogNotification::HTTP.new(url)
     end
 
     # Create http instance.
     #
     # @param url [String]
-    # @return [TrySailBlogNotification::HTTP]
+    # @return [BlogNotification::HTTP]
     def http_request(url)
       logger.debug("Send http request : #{url}.")
 
@@ -57,11 +57,11 @@ module TrySailBlogNotification
     # Get last article by rss
     #
     # @param rss_url [String]
-    # @return [TrySailBlogNotification::LastArticle]
+    # @return [BlogNotification::LastArticle]
     def pull_last_article_by_rss(rss_url)
       http = http_request(rss_url)
       rss_content = http.body
-      rss_reader = TrySailBlogNotification::RssReader.new(rss_content)
+      rss_reader = BlogNotification::RssReader.new(rss_content)
 
       rss_reader.last_article
     end
