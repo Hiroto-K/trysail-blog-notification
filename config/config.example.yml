@@ -1,7 +1,7 @@
 clients :
   # Twitter
   twitter :
-    client : "TrySailBlogNotification::Client::TwitterClient"
+    client : "BlogNotification::Client::TwitterClient"
 
     # 設定
     # CK,CS,AT,ATS
@@ -13,7 +13,7 @@ clients :
 
   # Slack
   slack :
-    client : "TrySailBlogNotification::Client::SlackClient"
+    client : "BlogNotification::Client::SlackClient"
 
     # tokenとチャンネル名を設定
     config :
