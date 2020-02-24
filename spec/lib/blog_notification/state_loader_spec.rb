@@ -1,5 +1,5 @@
-require 'trysail_blog_notification/last_article'
-require 'trysail_blog_notification/state_loader'
+require 'blog_notification/last_article'
+require 'blog_notification/state_loader'
 
 describe BlogNotification::StateLoader do
 

@@ -1,4 +1,4 @@
-require 'trysail_blog_notification/last_article'
+require 'blog_notification/last_article'
 
 describe BlogNotification::LastArticle do
 

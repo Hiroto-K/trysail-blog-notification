@@ -1,5 +1,5 @@
-require 'trysail_blog_notification/last_article'
-require 'trysail_blog_notification/rss_reader'
+require 'blog_notification/last_article'
+require 'blog_notification/rss_reader'
 
 describe BlogNotification::RssReader do
 

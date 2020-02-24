@@ -1,4 +1,4 @@
-require 'trysail_blog_notification/config'
+require 'blog_notification/config'
 
 describe BlogNotification::Config do
 
