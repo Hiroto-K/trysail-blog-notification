@@ -15,7 +15,7 @@ describe BlogNotification::LastArticle do
 
     let(:last_article) {
       BlogNotification::LastArticle.new(
-        {
+          **{
           title: title,
           url: url,
           last_update: '2018-01-01 00:00:00 +0900',
@@ -32,7 +32,7 @@ describe BlogNotification::LastArticle do
 
   describe '#to_h' do
 
-    let(:last_article) { BlogNotification::LastArticle.new(default_argument) }
+    let(:last_article) { BlogNotification::LastArticle.new(**default_argument) }
 
     it 'return hash' do
       expect(last_article.to_h).to be_a Hash
@@ -53,7 +53,7 @@ describe BlogNotification::LastArticle do
 
   describe '#[]' do
 
-    let(:last_article) { BlogNotification::LastArticle.new(default_argument) }
+    let(:last_article) { BlogNotification::LastArticle.new(**default_argument) }
 
     context 'access with String' do
       it 'access title' do
