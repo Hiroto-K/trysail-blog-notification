@@ -1,14 +1,14 @@
-require 'trysail_blog_notification/last_article'
-require 'trysail_blog_notification/rss_reader'
+require 'blog_notification/last_article'
+require 'blog_notification/rss_reader'
 
-describe TrySailBlogNotification::RssReader do
+describe BlogNotification::RssReader do
 
   let(:rss_content) { File.read(File.join(__dir__, '/../../fixtures/files/rss.rss')) }
-  let(:reader) { TrySailBlogNotification::RssReader.new(rss_content) }
+  let(:reader) { BlogNotification::RssReader.new(rss_content) }
 
   describe '#initialize' do
-    it 'Instance of TrySailBlogNotification::RssReader' do
-      expect(reader).to be_a TrySailBlogNotification::RssReader
+    it 'Instance of BlogNotification::RssReader' do
+      expect(reader).to be_a BlogNotification::RssReader
     end
 
     it 'Has RSS::Rss' do
@@ -18,9 +18,9 @@ describe TrySailBlogNotification::RssReader do
 
   describe '#last_article' do
 
-    it 'return TrySailBlogNotification::LastArticle' do
+    it 'return BlogNotification::LastArticle' do
       last_article = reader.last_article
-      expect(last_article).to be_a TrySailBlogNotification::LastArticle
+      expect(last_article).to be_a BlogNotification::LastArticle
     end
 
     it 'eql title' do

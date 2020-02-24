@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TrySailBlogNotification::Client
+module BlogNotification::Client
   class SlackClient < BaseClient
 
     # Setup.
@@ -16,7 +16,7 @@ module TrySailBlogNotification::Client
     # Before update.
     #
     # @param name [String]
-    # @param article [TrySailBlogNotification::LastArticle]
+    # @param article [BlogNotification::LastArticle]
     def before_update(name, article)
       @client.auth_test
     end
@@ -24,7 +24,7 @@ module TrySailBlogNotification::Client
     # Update.
     #
     # @param name [String]
-    # @param article [TrySailBlogNotification::LastArticle]
+    # @param article [BlogNotification::LastArticle]
     def update(name, article)
       format = '%Y-%m-%d %T %:z'
       system_date = Time.now.strftime(format)

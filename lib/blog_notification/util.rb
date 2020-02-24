@@ -1,11 +1,11 @@
-module TrySailBlogNotification
+module BlogNotification
   module Util
 
     # Return Application instance.
     #
-    # @return [TrySailBlogNotification::Application]
+    # @return [BlogNotification::Application]
     def app
-      TrySailBlogNotification::Application.app
+      BlogNotification::Application.app
     end
 
     # Return Logger instance.

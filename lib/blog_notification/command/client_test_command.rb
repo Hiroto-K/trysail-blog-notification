@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TrySailBlogNotification::Command
+module BlogNotification::Command
   class ClientTestCommand < BaseCommand
 
     # Start command.
@@ -38,20 +38,20 @@ module TrySailBlogNotification::Command
 
     # Build test data
     #
-    # @return [TrySailBlogNotification::LastArticle]
+    # @return [BlogNotification::LastArticle]
     def build_test_data
       title = options['title'] || 'Test title'
       url = options['url'] || 'https://example.com/'
       last_update = options['last-update'] || Time.now.to_s
 
-      TrySailBlogNotification::LastArticle.new(title: title, url: url, last_update: last_update)
+      BlogNotification::LastArticle.new(title: title, url: url, last_update: last_update)
     end
 
     # Initialize client
     #
     # @param client_class [String]
     # @param client_config [Hash]
-    # @return [TrySailBlogNotification::Client::BaseClient]
+    # @return [BlogNotification::Client::BaseClient]
     def initialize_client(client_class, client_config)
       klass = client_class.constantize
       klass.new(client_config)
@@ -59,9 +59,9 @@ module TrySailBlogNotification::Command
 
     # Test client
     #
-    # @param client [TrySailBlogNotification::Client::BaseClient]
+    # @param client [BlogNotification::Client::BaseClient]
     # @param test_name [String]
-    # @param test_state [TrySailBlogNotification::LastArticle]
+    # @param test_state [BlogNotification::LastArticle]
     def test_client(client, test_name, test_state)
       class_name = client.class
 

@@ -13,11 +13,11 @@ title: Plugin
 
 別途読み込む必要があるファイルがある場合は、自動で読み込まれるファイルの中で読み込む必要があります。
 
-プラグインは``TrySailBlogNotification::Application#.load_plugins``が呼ばれたタイミングで、アルファベット順に読み込まれます。
+プラグインは``BlogNotification::Application#.load_plugins``が呼ばれたタイミングで、アルファベット順に読み込まれます。
 
 ### Gemfile
 
-別途gemを利用する場合は``plugin/[plugin-name]/Gemfile``を作れば、trysail-blog-notificationの``Gemfile``より``eval_gemfile``で読み込みます。この際プラグイン側に``Gemfile.lock``は必要ではありません。
+別途gemを利用する場合は``plugin/[plugin-name]/Gemfile``を作れば、blog-notificationの``Gemfile``より``eval_gemfile``で読み込みます。この際プラグイン側に``Gemfile.lock``は必要ではありません。
 
 ## Add new blog
 
@@ -46,11 +46,11 @@ urls :
 
 通知を送るクライアントのプラグインの作成方法。
 
-``TrySailBlogNotification::Client::BaseClient``を継承したクラスを作成します。
+``BlogNotification::Client::BaseClient``を継承したクラスを作成します。
 
 ```ruby
 module Hoge
-  class FooClient < TrySailBlogNotification::Client::BaseClient
+  class FooClient < BlogNotification::Client::BaseClient
 
       # クライアントの初期化時に呼ばれます。
       def setup
@@ -60,7 +60,7 @@ module Hoge
       # updateメソッドを呼ぶ前に呼ばれます。
       #
       # @param name [String]
-      # @param article [TrySailBlogNotification::LastArticle]
+      # @param article [BlogNotification::LastArticle]
       def before_update(name, article)
         puts "before_update"
       end
@@ -68,7 +68,7 @@ module Hoge
       # 通知を送信するメソッド。実装が必須。
       #
       # @param name [String]
-      # @param article [TrySailBlogNotification::LastArticle]
+      # @param article [BlogNotification::LastArticle]
       def update(name, article)
         puts "update"
       end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TrySailBlogNotification::Command
+module BlogNotification::Command
   class ConsoleCommand < BaseCommand
 
     # Start command.

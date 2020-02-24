@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TrySailBlogNotification
+module BlogNotification
   class Log
 
     # Log file path.
@@ -37,7 +37,7 @@ module TrySailBlogNotification
       @multiple_loggers = ActiveSupport::Logger.broadcast(@stdout_logger)
       @logger.extend(@multiple_loggers)
       @logger.level = get_level_value(level)
-      @logger.progname = TrySailBlogNotification::Application::NAME
+      @logger.progname = BlogNotification::Application::NAME
     end
 
     # Set logger level

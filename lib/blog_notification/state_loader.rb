@@ -2,7 +2,7 @@
 
 require 'json'
 
-module TrySailBlogNotification
+module BlogNotification
   class StateLoader
 
     # JSON file path.
@@ -59,7 +59,7 @@ module TrySailBlogNotification
 
       @raw_states.each do |name, state|
         symbol_state = state.symbolize_keys
-        @states[name] = TrySailBlogNotification::LastArticle.new(**symbol_state)
+        @states[name] = BlogNotification::LastArticle.new(**symbol_state)
       end
     end
 

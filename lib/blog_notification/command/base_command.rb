@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module TrySailBlogNotification::Command
+module BlogNotification::Command
   class BaseCommand
 
-    include TrySailBlogNotification::Util
+    include BlogNotification::Util
 
     # Command options.
     #
