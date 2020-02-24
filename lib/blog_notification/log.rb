@@ -10,7 +10,7 @@ module BlogNotification
 
     # Initialize Log class instance.
     def initialize(program_name)
-      @logger = ActiveSupport::Logger.new('/dev/null')
+      @logger = ActiveSupport::Logger.new(nil)
       @logger.progname = @program_name = program_name
     end
 
