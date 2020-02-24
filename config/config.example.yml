@@ -21,12 +21,18 @@ clients :
       channel : ""
 
 data :
-  log :
-    file  : "log/log.log"
-    level : :debug
-
   dump :
     file : "data/dump.json"
+
+# levels : fatal,error,warn,info,debug
+logs:
+  debug-log:
+    file: 'log/debug.log'
+    level: 'debug'
+
+  info-log:
+    file: 'log/info.log'
+    level: 'info'
 
 urls :
   雨宮天 :

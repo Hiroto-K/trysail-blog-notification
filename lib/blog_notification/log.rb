@@ -3,41 +3,29 @@
 module BlogNotification
   class Log
 
-    # Log file path.
-    #
-    # @return [String]
-    attr_reader :file
-
     # ActiveSupport::Logger instance.
     #
     # @return [ActiveSupport::Logger]
     attr_reader :logger
 
-    # ActiveSupport::Logger instance.
-    #
-    # @return [ActiveSupport::Logger]
-    attr_reader :stdout_logger
-
-    # Multiple logger instance.
-    #
-    # @return [Module]
-    attr_reader :multiple_loggers
-
     # Initialize Log class instance.
-    #
-    # @param file [String] Log file path.
-    # @param level [Symbol, String] Logger level.
-    def initialize(file, level)
-      @file = file
-      create_log_file
+    def initialize(program_name)
+      @logger = ActiveSupport::Logger.new('/dev/null')
+      @logger.progname = @program_name = program_name
+    end
 
-      @logger = ActiveSupport::Logger.new(@file)
-      @logger.formatter = Logger::Formatter.new
-      @stdout_logger = ActiveSupport::Logger.new(STDOUT)
-      @multiple_loggers = ActiveSupport::Logger.broadcast(@stdout_logger)
-      @logger.extend(@multiple_loggers)
-      @logger.level = get_level_value(level)
-      @logger.progname = BlogNotification::Application::NAME
+    # Push new logger
+    #
+    # @param output [String] Log file path.
+    # @param level [Symbol, String] Logger level.
+    def push_logger(output, level)
+      new_logger = ActiveSupport::Logger.new(output)
+      new_logger.level = level
+      new_logger.formatter = Logger::Formatter.new
+      new_logger.progname = @program_name
+
+      multiple_loggers = ActiveSupport::Logger.broadcast(new_logger)
+      @logger.extend(multiple_loggers)
     end
 
     # Set logger level

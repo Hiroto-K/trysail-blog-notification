@@ -130,9 +130,13 @@ module BlogNotification
 
     # Setup logger
     def setup_logger
-      log_file = base_path(@config.get('data.log.file'))
-      log_level = @config.get('data.log.level')
-      @log = BlogNotification::Log.new(log_file, log_level)
+      @log = BlogNotification::Log.new(NAME)
+
+      config.get('logs', {}).each do |_name, options|
+        file = options['file']
+        level = options['level']
+        @log.push_logger(file, level)
+      end
     end
 
     # Setup dump file
