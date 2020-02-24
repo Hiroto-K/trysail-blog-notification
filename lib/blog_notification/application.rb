@@ -134,8 +134,9 @@ module BlogNotification
 
       config.get('logs', {}).each do |_name, options|
         file = options['file']
+        real_file_path = file.start_with?('/') ? file : base_path(file)
         level = options['level']
-        @log.push_logger(file, level)
+        @log.push_logger(real_file_path, level)
       end
     end
 
