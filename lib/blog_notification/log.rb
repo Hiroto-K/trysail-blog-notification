@@ -40,6 +40,17 @@ module BlogNotification
       @logger.progname = BlogNotification::Application::NAME
     end
 
+    # Push new logger
+    #
+    # @param output [String] Log file path.
+    def push_logger(output)
+      new_logger = ActiveSupport::Logger.new(output)
+      new_logger.formatter = Logger::Formatter.new
+
+      multiple_loggers = ActiveSupport::Logger.broadcast(new_logger)
+      @logger.extend(multiple_loggers)
+    end
+
     # Set logger level
     #
     # @param level [Symbol, String]
