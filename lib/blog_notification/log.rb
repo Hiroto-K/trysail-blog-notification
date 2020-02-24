@@ -3,39 +3,17 @@
 module BlogNotification
   class Log
 
-    # Log file path.
-    #
-    # @return [String]
-    attr_reader :file
-
     # ActiveSupport::Logger instance.
     #
     # @return [ActiveSupport::Logger]
     attr_reader :logger
 
-    # ActiveSupport::Logger instance.
-    #
-    # @return [ActiveSupport::Logger]
-    attr_reader :stdout_logger
-
-    # Multiple logger instance.
-    #
-    # @return [Module]
-    attr_reader :multiple_loggers
-
     # Initialize Log class instance.
     #
-    # @param file [String] Log file path.
     # @param level [Symbol, String] Logger level.
-    def initialize(file, level)
-      @file = file
-      create_log_file
-
-      @logger = ActiveSupport::Logger.new(@file)
+    def initialize(level)
+      @logger = ActiveSupport::Logger.new(STDOUT)
       @logger.formatter = Logger::Formatter.new
-      @stdout_logger = ActiveSupport::Logger.new(STDOUT)
-      @multiple_loggers = ActiveSupport::Logger.broadcast(@stdout_logger)
-      @logger.extend(@multiple_loggers)
       @logger.level = get_level_value(level)
       @logger.progname = BlogNotification::Application::NAME
     end
