@@ -9,21 +9,20 @@ module BlogNotification
     attr_reader :logger
 
     # Initialize Log class instance.
-    #
-    # @param level [Symbol, String] Logger level.
-    def initialize(level)
-      @logger = ActiveSupport::Logger.new(STDOUT)
-      @logger.formatter = Logger::Formatter.new
-      @logger.level = get_level_value(level)
-      @logger.progname = BlogNotification::Application::NAME
+    def initialize(program_name)
+      @logger = ActiveSupport::Logger.new('/dev/null')
+      @logger.progname = @program_name = program_name
     end
 
     # Push new logger
     #
     # @param output [String] Log file path.
-    def push_logger(output)
+    # @param level [Symbol, String] Logger level.
+    def push_logger(output, level)
       new_logger = ActiveSupport::Logger.new(output)
+      new_logger.level = level
       new_logger.formatter = Logger::Formatter.new
+      new_logger.progname = @program_name
 
       multiple_loggers = ActiveSupport::Logger.broadcast(new_logger)
       @logger.extend(multiple_loggers)
